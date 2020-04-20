@@ -5,8 +5,4 @@ using UnityEngine;
 public class AddHandler : MonoBehaviour
 {
 
-    public void AddModel()
-    {
-        Debug.Log("click on button");
-    }
 }
