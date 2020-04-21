@@ -17,7 +17,10 @@ public class InventoryControl : MonoBehaviour
     private Sprite[] iconSprites;
 
     [SerializeField]
-    private Image myItem;
+    private string[] iconNames;
+
+    //[SerializeField]
+    //private Image myItem;
 
     void Start()
     {
@@ -26,7 +29,11 @@ public class InventoryControl : MonoBehaviour
         for (int i = 1; i <= 70; i++)
         {
             PlayerItem newItem = new PlayerItem();
-            newItem.iconSprite = iconSprites[Random.Range(0, iconSprites.Length)];
+            int value = Random.Range(0, iconSprites.Length);
+            Debug.Log("the value is " + value);
+            newItem.iconSprite = iconSprites[value];
+            newItem.iconName = iconNames[value];
+            Debug.Log("the name is " + iconNames[value]);
 
             playerInventory.Add(newItem);
         }
@@ -51,6 +58,7 @@ public class InventoryControl : MonoBehaviour
             newButton.SetActive(true);
 
             newButton.GetComponent<InventoryButton>().SetIcon(newItem.iconSprite);
+            newButton.GetComponent<InventoryButton>().SetName(newItem.iconName);
             newButton.transform.SetParent(buttonTemplate.transform.parent, false);
         }
     }
@@ -58,5 +66,6 @@ public class InventoryControl : MonoBehaviour
     public class PlayerItem
     {
         public Sprite iconSprite;
+        public string iconName;
     }
 }

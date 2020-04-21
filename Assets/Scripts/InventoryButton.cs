@@ -6,32 +6,39 @@ using UnityEngine.UI;
 public class InventoryButton : MonoBehaviour
 {
     [SerializeField]
-    public Image myIcon;
+    public Image icon;
+
+    //[SerializeField]
+    private Image myItem;
 
     [SerializeField]
-    //private Item myItem;
-    private Image myItem;
+    private string name;
 
     public Button myButton;
 
     void Start()
     {
         Button btn = myButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        //btn.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
-        Debug.Log(myIcon.sprite);
-        //myItem.GetComponent<Item>().SetIcon(myIcon.sprite);
-        myItem.GetComponent<Image>().sprite = myIcon.sprite;
+        Debug.Log(icon.sprite);
+        myItem.GetComponent<Image>().sprite = icon.sprite;
     }
 
     public void SetIcon(Sprite mySprite)
     {
-        myIcon.sprite = mySprite;
+        icon.sprite = mySprite;
     }
 
+    public void SetName(string myName)
+    {
+        name = myName;
+    }
+
+    // A VIRER
     /*void Update()
     {
         Debug.Log("Test");
