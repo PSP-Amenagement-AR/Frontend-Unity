@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: openProfil
+    m_ConditionEvent: openStage
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2434237951567058478}
@@ -100,7 +100,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OpenProfil
+  m_Name: OpenStage
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -254,7 +254,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CloseProfil
+  m_Name: CloseStage
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
@@ -409,7 +409,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: openProfil
+  - m_Name: openStage
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -618,7 +618,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: openProfil
+    m_ConditionEvent: openStage
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3943076508856605522}
@@ -729,7 +729,7 @@ AnimatorStateTransition:
     m_ConditionEvent: openAdd
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: openProfil
+    m_ConditionEvent: openStage
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: openLogin

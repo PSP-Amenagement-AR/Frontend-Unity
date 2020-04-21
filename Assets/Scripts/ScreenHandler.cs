@@ -31,9 +31,9 @@ public class ScreenHandler : MonoBehaviour
         CloseMenu();
     }
 
-    public void OpenProfil()
+    public void OpenStage()
     {
-        changeStateOf("openProfil", true);
+        changeStateOf("openStage", true);
         CloseMenu();
     }
     public void OpenLogin()
@@ -58,9 +58,9 @@ public class ScreenHandler : MonoBehaviour
         changeStateOf("openAdd", false);
     }
 
-    public void CloseProfil()
+    public void CloseStage()
     {
-        changeStateOf("openProfil", false);
+        changeStateOf("openStage", false);
     }
     public void CloseLogin()
     {
