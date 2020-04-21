@@ -41,6 +41,13 @@ public class ScreenHandler : MonoBehaviour
         changeStateOf("openLogin", true);
         CloseMenu();
     }
+
+    public void OpenProfil()
+    {
+        Debug.Log("Open");
+        changeStateOf("openProfil", true);
+        CloseMenu();
+    }
     #endregion
 
     #region CloseScreen
@@ -65,6 +72,11 @@ public class ScreenHandler : MonoBehaviour
     public void CloseLogin()
     {
         changeStateOf("openLogin", false);
+    }
+    public void CloseProfil()
+    {
+        changeStateOf("openProfil", false);
+        CloseMenu();
     }
     #endregion
 }
