@@ -25,15 +25,15 @@ public class InventoryControl : MonoBehaviour
     void Start()
     {
         playerInventory = new List<PlayerItem>();
+        int value;
 
-        for (int i = 1; i <= 70; i++)
+        for (int i = 1; i <= 35; i++)
         {
             PlayerItem newItem = new PlayerItem();
-            int value = Random.Range(0, iconSprites.Length);
-            Debug.Log("the value is " + value);
+            value = Random.Range(0, iconSprites.Length);
+
             newItem.iconSprite = iconSprites[value];
             newItem.iconName = iconNames[value];
-            Debug.Log("the name is " + iconNames[value]);
 
             playerInventory.Add(newItem);
         }
@@ -57,6 +57,7 @@ public class InventoryControl : MonoBehaviour
             GameObject newButton = Instantiate(buttonTemplate) as GameObject;
             newButton.SetActive(true);
 
+            Debug.Log("name: " + newItem.iconName);
             newButton.GetComponent<InventoryButton>().SetIcon(newItem.iconSprite);
             newButton.GetComponent<InventoryButton>().SetName(newItem.iconName);
             newButton.transform.SetParent(buttonTemplate.transform.parent, false);

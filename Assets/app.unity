@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.29411766, g: 0.29411766, b: 0.29411766, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -503,10 +503,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9afbbf75b8f595c459e1b32a4c12312d, type: 3}
   - {fileID: 21300000, guid: d8c10b5303e2a61419680c5ee54ccd1a, type: 3}
   - {fileID: 21300000, guid: 8d4f26ba25ecafd4aacc7a1f1bdfefe5, type: 3}
+  - {fileID: 21300000, guid: 3dca3fe7303785a46b4adf3b6bc59fab, type: 3}
+  - {fileID: 21300000, guid: e8480f0cfad1ff24a971058739223a23, type: 3}
+  - {fileID: 21300000, guid: d8e392c21b9121b4db88188436540407, type: 3}
   iconNames:
   - Chair
   - Desk
   - Lamp
+  - Kitchen Chair
+  - Grey Bed
+  - Dark White Bed
 --- !u!1 &233582534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,7 +2698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 2014027276}
-  name: 
+  name: {fileID: 1652181988}
   myButton: {fileID: 1319302514}
 --- !u!1 &1457585335
 GameObject:
@@ -3480,7 +3486,7 @@ RectTransform:
   m_GameObject: {fileID: 1705798181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 5.82, z: 1}
   m_Children:
   - {fileID: 773583235}
   m_Father: {fileID: 181618369}

@@ -12,7 +12,7 @@ public class InventoryButton : MonoBehaviour
     private Image myItem;
 
     [SerializeField]
-    private string name;
+    private Text name;
 
     public Button myButton;
 
@@ -35,25 +35,6 @@ public class InventoryButton : MonoBehaviour
 
     public void SetName(string myName)
     {
-        name = myName;
+        name.text = myName;
     }
-
-    // A VIRER
-    /*void Update()
-    {
-        Debug.Log("Test");
-        if (Input.GetMouseButton(0))
-        {
-            Debug.Log("Click on button");
-            Debug.Log(myIcon.sprite);
-            Debug.Log("Next Step => Item apparition");
-            //myItem.GetComponent<Item>().SetIcon(myIcon.sprite);
-            myItem.GetComponent<Image>().sprite = myIcon.sprite;
-            Debug.Log("Sprite Done");
-        } else
-        {
-            Debug.Log("chelou");
-        }
-        Debug.Log("Test Final");
-    }*/
 }
