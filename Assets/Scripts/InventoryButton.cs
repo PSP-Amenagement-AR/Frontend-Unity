@@ -19,15 +19,16 @@ public class InventoryButton : MonoBehaviour
     void Start()
     {
         Button btn = myButton.GetComponent<Button>();
-        //btn.onClick.AddListener(TaskOnClick);
+        btn.onClick.AddListener(TaskOnClick);
     }
 
     void TaskOnClick()
     {
-        GameObject cubeObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        /*GameObject cubeObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
         cubeObj.transform.localScale = new Vector3(5, 5, 5);
         cubeObj.transform.position = new Vector3(0, 0, 0);
-        cubeObj.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+        cubeObj.GetComponent<Renderer>().material.color = new Color(255, 0, 0);*/
+        // TODO put effect on the image when clicking button
     }
 
     public void SetIcon(Sprite mySprite)
