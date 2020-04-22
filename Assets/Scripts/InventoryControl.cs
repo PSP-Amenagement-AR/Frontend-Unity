@@ -57,7 +57,6 @@ public class InventoryControl : MonoBehaviour
             GameObject newButton = Instantiate(buttonTemplate) as GameObject;
             newButton.SetActive(true);
 
-            Debug.Log("name: " + newItem.iconName);
             newButton.GetComponent<InventoryButton>().SetIcon(newItem.iconSprite);
             newButton.GetComponent<InventoryButton>().SetName(newItem.iconName);
             newButton.transform.SetParent(buttonTemplate.transform.parent, false);
