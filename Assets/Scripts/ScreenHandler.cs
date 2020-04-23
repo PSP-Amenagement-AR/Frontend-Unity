@@ -29,6 +29,7 @@ public class ScreenHandler : MonoBehaviour
     {
         changeStateOf("openAdd", true);
         CloseMenu();
+        CloseValidation();
     }
 
     public void OpenStage()
@@ -40,6 +41,11 @@ public class ScreenHandler : MonoBehaviour
     {
         changeStateOf("openLogin", true);
         CloseMenu();
+    }
+
+    public void OpenValidation()
+    {
+        changeStateOf("openValidation", true);
     }
 
     public void OpenProfil()
@@ -73,6 +79,12 @@ public class ScreenHandler : MonoBehaviour
     {
         changeStateOf("openLogin", false);
     }
+
+    public void CloseValidation()
+    {
+        changeStateOf("openValidation", false);
+    }
+
     public void CloseProfil()
     {
         changeStateOf("openProfil", false);
