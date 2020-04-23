@@ -8,9 +8,6 @@ public class InventoryButton : MonoBehaviour
     [SerializeField]
     public Image icon;
 
-    //[SerializeField]
-    //private Image myItem;
-
     [SerializeField]
     private Text name;
 
@@ -24,11 +21,8 @@ public class InventoryButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        /*GameObject cubeObj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        cubeObj.transform.localScale = new Vector3(5, 5, 5);
-        cubeObj.transform.position = new Vector3(0, 0, 0);
-        cubeObj.GetComponent<Renderer>().material.color = new Color(255, 0, 0);*/
         // TODO put effect on the image when clicking button
+        //this.PutTransparency(0.4f);
     }
 
     public void SetIcon(Sprite mySprite)
@@ -39,5 +33,12 @@ public class InventoryButton : MonoBehaviour
     public void SetName(string myName)
     {
         name.text = myName;
+    }
+
+    public void PutTransparency(float transparency)
+    {
+        Color color = icon.color;
+        color.a = transparency;
+        icon.color = color;
     }
 }

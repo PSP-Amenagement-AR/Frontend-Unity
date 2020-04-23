@@ -19,9 +19,6 @@ public class InventoryControl : MonoBehaviour
     [SerializeField]
     private string[] iconNames;
 
-    //[SerializeField]
-    //private Image myItem;
-
     void Start()
     {
         playerInventory = new List<PlayerItem>();
