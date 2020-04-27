@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OpenValidation
+  m_Name: OpenValidationToStage
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: AddPanel/TODOADD/MaskValidationWindow/ValidationWindow
+    path: StagePanel/MaskValidationWindow/ValidationWindow
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: AddPanel/TODOADD/MaskValidationWindow/ValidationWindow
+    path: StagePanel/MaskValidationWindow/ValidationWindow
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -98,7 +98,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: AddPanel
+    path: StagePanel
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -110,21 +110,21 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 969467625
+      path: 2103476548
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 969467625
+      path: 2103476548
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3385275318
+      path: 3015802965
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -177,7 +177,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: AddPanel/TODOADD/MaskValidationWindow/ValidationWindow
+    path: StagePanel/MaskValidationWindow/ValidationWindow
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -205,7 +205,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: AddPanel/TODOADD/MaskValidationWindow/ValidationWindow
+    path: StagePanel/MaskValidationWindow/ValidationWindow
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -233,7 +233,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: AddPanel
+    path: StagePanel
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
