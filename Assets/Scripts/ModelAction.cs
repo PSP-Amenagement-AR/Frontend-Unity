@@ -8,7 +8,6 @@ using System.IO;
 public class ModelAction : MonoBehaviour
 {
     /* TODO :
-     ajouter le script Model sur les models 3D
      récupéer le nom de l'item lors de la sélection
      aller chercher le model 3D avec le bon nom
      */

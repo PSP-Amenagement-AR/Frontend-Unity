@@ -14,7 +14,9 @@ public class InventoryButton : MonoBehaviour
     public Button myButton;
 
     [SerializeField]
-    public ModelAction o;
+    public ModelAction myGameObject;
+
+    public bool isItem;
 
     void Start()
     {
@@ -26,8 +28,8 @@ public class InventoryButton : MonoBehaviour
     {
         // TODO put effect on the image when clicking button
         //this.PutTransparency(0.4f);
-        Debug.Log("CLICK");
-        o.SetItemToPlace(name.text);
+        if (isItem)
+            myGameObject.SetItemToPlace(name.text);
     }
 
     public void SetIcon(Sprite mySprite)

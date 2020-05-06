@@ -289,7 +289,8 @@ MonoBehaviour:
   icon: {fileID: 112656625}
   name: {fileID: 933943546}
   myButton: {fileID: 18792034}
-  o: {fileID: 0}
+  myGameObject: {fileID: 0}
+  isItem: 0
 --- !u!1 &44551974
 GameObject:
   m_ObjectHideFlags: 0
@@ -5465,7 +5466,8 @@ MonoBehaviour:
   icon: {fileID: 2014027276}
   name: {fileID: 1652181988}
   myButton: {fileID: 1319302514}
-  o: {fileID: 1299724470}
+  myGameObject: {fileID: 1299724470}
+  isItem: 1
 --- !u!111 &1319302518
 Animation:
   m_ObjectHideFlags: 0
