@@ -834,7 +834,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -1973,7 +1973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &470386983
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5309,6 +5309,7 @@ MonoBehaviour:
   Cube: {fileID: 608793992070014822, guid: 1e043d439a7b5a646829f1e476aee3d5, type: 3}
   MovementJoystick: {fileID: 948165696}
   RotationJoystick: {fileID: 1824649253}
+  DelButton: {fileID: 470386984}
 --- !u!1 &1319302512
 GameObject:
   m_ObjectHideFlags: 0
@@ -5856,7 +5857,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2929252285020698103, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}

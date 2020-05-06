@@ -9,10 +9,6 @@ public class ModelBehaviour : MonoBehaviour
     public Joystick MovementJoystick;
     public Joystick RotationJoystick;
 
-    void Start()
-    {
-    }
-
     private void Update()
     {
         if (!Selected)
@@ -29,10 +25,6 @@ public class ModelBehaviour : MonoBehaviour
     public void SetSelected(bool val)
     {
         Selected = val;
-        if (Selected)
-            GlobalAction.ActivateSelectedInterface();
-        else
-            GlobalAction.DeactivateSelectedInterface();
     }
     public bool IsSelected()
     {
