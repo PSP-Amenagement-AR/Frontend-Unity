@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InitModelAfterAdd : MonoBehaviour
+public class ModelAction : MonoBehaviour
 {
 
     public GameObject Cube;

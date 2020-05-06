@@ -40,13 +40,13 @@ public class InventoryControl : MonoBehaviour
 
     void GenInventory()
     {
-        if (playerInventory.Count < 11)
+        if (playerInventory.Count < 5)
         {
             gridGroup.constraintCount = playerInventory.Count;
         }
         else
         {
-            gridGroup.constraintCount = 10;
+            gridGroup.constraintCount = 4;
         }
 
         foreach (PlayerItem newItem in playerInventory)
