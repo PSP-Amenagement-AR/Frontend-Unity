@@ -5,23 +5,9 @@ using UnityEngine.UI;
 
 public class ModelBehaviour : MonoBehaviour
 {
-
     private bool Selected = false;
-    private Joystick MovementJoystick;
-    private Joystick RotationJoystick;
-    public Text debugField;
-
-    void Start()
-    {
-        Joystick[] Joysticks;
-        Joysticks = FindObjectsOfType<Joystick>();
-        RotationJoystick = Joysticks[0];
-        MovementJoystick = Joysticks[1];
-
-        Debug.Log(MovementJoystick);
-        Debug.Log(RotationJoystick);
-        Selected = true;
-    }
+    public Joystick MovementJoystick;
+    public Joystick RotationJoystick;
 
     private void Update()
     {
