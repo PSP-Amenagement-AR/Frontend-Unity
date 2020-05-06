@@ -8,7 +8,8 @@ public class ModelAction : MonoBehaviour
 {
 
     public GameObject Cube;
-    public Text DebugField;
+    public Joystick MovementJoystick;
+    public Joystick RotationJoystick;
 
     public void AddModel()
     {
@@ -20,14 +21,17 @@ public class ModelAction : MonoBehaviour
         }
 
         GameObject model = Instantiate(Cube, transform.position, transform.rotation);
+        model.AddComponent<Model>();
         ModelBehaviour modelBehaviour = model.AddComponent<ModelBehaviour>() as ModelBehaviour;
-        modelBehaviour.debugField = DebugField;
+        modelBehaviour.SetSelected(true);
+        modelBehaviour.MovementJoystick = MovementJoystick;
+        modelBehaviour.RotationJoystick = RotationJoystick;
     }
 
     public void DeleteSelectedModel()
     {
         Model[] allModels = FindObjectsOfType<Model>();
-        
+
         foreach (Model mod in allModels)
         {
             ModelBehaviour mb = mod.GetComponent<ModelBehaviour>() as ModelBehaviour;

@@ -5,22 +5,12 @@ using UnityEngine.UI;
 
 public class ModelBehaviour : MonoBehaviour
 {
-
     private bool Selected = false;
-    private Joystick MovementJoystick;
-    private Joystick RotationJoystick;
-    public Text debugField;
+    public Joystick MovementJoystick;
+    public Joystick RotationJoystick;
 
     void Start()
     {
-        Joystick[] Joysticks;
-        Joysticks = FindObjectsOfType<Joystick>();
-        RotationJoystick = Joysticks[0];
-        MovementJoystick = Joysticks[1];
-
-        Debug.Log(MovementJoystick);
-        Debug.Log(RotationJoystick);
-        Selected = true;
     }
 
     private void Update()
@@ -39,6 +29,10 @@ public class ModelBehaviour : MonoBehaviour
     public void SetSelected(bool val)
     {
         Selected = val;
+        if (Selected)
+            GlobalAction.ActivateSelectedInterface();
+        else
+            GlobalAction.DeactivateSelectedInterface();
     }
     public bool IsSelected()
     {
