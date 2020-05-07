@@ -7,15 +7,14 @@ using System.IO;
 
 public class ModelAction : MonoBehaviour
 {
-    public GameObject Cube;
     public Joystick MovementJoystick;
     public Joystick RotationJoystick;
     public Button DelButton;
     private string ItemToPlace;
-    
+    GameObject[] List3DModels;
+
     private ModelBehaviour selectedModel;
     public ModelBehaviour SelectedModel
-
     {
         get
         {
@@ -42,9 +41,13 @@ public class ModelAction : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        List3DModels = Resources.LoadAll<GameObject>("Prefabs");
+    }
+
     public void AddModel()
     {
-
         GameObject model = Instantiate(SelectModel3D(), transform.position, transform.rotation);
         model.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
         model.transform.localScale = new Vector3(200, 200, 200);
@@ -71,31 +74,21 @@ public class ModelAction : MonoBehaviour
     }
 
     public GameObject SelectModel3D()
-    {
-        bool found = false;
-        GameObject[] List3DModels;
-        List3DModels = Resources.LoadAll<GameObject>("Prefabs");
+    {      
         foreach(GameObject model3D in List3DModels)
         {
             if (model3D.name == this.ItemToPlace)
             {
-                Debug.Log("The 3D Model " + model3D + " is found");
-                found = true;
-
-                //Cube = Instantiate(model3D, transform.position, transform.rotation);
                 Rigidbody model3DRigidBody = model3D.AddComponent<Rigidbody>();
-                //model3DRigidBody.mass = 5;
                 return model3D;
             }
         }
-        Debug.Log("This is " + found);
         return null;
     }
 
     public void SetItemToPlace(string name)
     {
         this.ItemToPlace = name;
-        Debug.Log("the item to place is " + this.ItemToPlace);
     }
 
     public void UnselectSelection()
