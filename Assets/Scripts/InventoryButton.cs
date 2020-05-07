@@ -13,16 +13,23 @@ public class InventoryButton : MonoBehaviour
 
     public Button myButton;
 
+    [SerializeField]
+    public ModelAction myGameObject;
+
+    public bool isItem;
+
     void Start()
     {
         Button btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
-    void TaskOnClick()
+    public void TaskOnClick()
     {
         // TODO put effect on the image when clicking button
         //this.PutTransparency(0.4f);
+        if (isItem)
+            myGameObject.SetItemToPlace(name.text);
     }
 
     public void SetIcon(Sprite mySprite)
