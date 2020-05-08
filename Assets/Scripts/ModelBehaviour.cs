@@ -15,11 +15,11 @@ public class ModelBehaviour : MonoBehaviour
             return;
 
         var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 50f,
+        rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 100f,
             rigidbody.velocity.y,
-            MovementJoystick.Vertical * 50f);
+            MovementJoystick.Vertical * 100f);
         float speed = RotationJoystick.Horizontal;
-        transform.Rotate(Vector3.down * speed * 50f * Time.deltaTime);
+        transform.Rotate(Vector3.back * speed * 50f * Time.deltaTime);
     }
 
     public void SetSelected(bool val)
