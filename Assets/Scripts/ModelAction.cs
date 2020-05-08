@@ -48,7 +48,7 @@ public class ModelAction : MonoBehaviour
 
     public void AddModel()
     {
-        GameObject model = Instantiate(SelectModel3D(), transform.position, transform.rotation);
+        GameObject model = Instantiate(SelectModel3D(), new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
         model.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
         model.transform.localScale = new Vector3(200, 200, 200);
         ModelBehaviour modelBehaviour = model.AddComponent<ModelBehaviour>() as ModelBehaviour;
@@ -80,6 +80,7 @@ public class ModelAction : MonoBehaviour
             if (model3D.name == this.ItemToPlace)
             {
                 Rigidbody model3DRigidBody = model3D.AddComponent<Rigidbody>();
+                model3DRigidBody.useGravity = false;
                 return model3D;
             }
         }
