@@ -10,6 +10,7 @@ public class ModelAction : MonoBehaviour
     public Joystick MovementJoystick;
     public Joystick RotationJoystick;
     public Button DelButton;
+    public Transform ParentTarget;
     private string ItemToPlace;
     GameObject[] List3DModels;
 
@@ -48,9 +49,9 @@ public class ModelAction : MonoBehaviour
 
     public void AddModel()
     {
-        GameObject model = Instantiate(SelectModel3D(), new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
+        GameObject model = Instantiate(SelectModel3D(), new Vector3(0.0f, 0.0f, 0.0f), transform.rotation, ParentTarget);
         model.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-        model.transform.localScale = new Vector3(200, 200, 200);
+        model.transform.localScale = model.transform.localScale * 3;
         ModelBehaviour modelBehaviour = model.AddComponent<ModelBehaviour>() as ModelBehaviour;
         SelectedModel = modelBehaviour;
     }
@@ -80,7 +81,12 @@ public class ModelAction : MonoBehaviour
             if (model3D.name == this.ItemToPlace)
             {
                 Rigidbody model3DRigidBody = model3D.AddComponent<Rigidbody>();
-                model3DRigidBody.useGravity = false;
+                try
+                {
+                    model3DRigidBody.useGravity = false;
+                } catch (System.Exception e)
+                {
+                }
                 return model3D;
             }
         }
