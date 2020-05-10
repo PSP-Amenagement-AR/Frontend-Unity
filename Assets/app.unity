@@ -1197,20 +1197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 1319302512}
   gridGroup: {fileID: 1823291788}
-  iconSprites:
-  - {fileID: 21300000, guid: 9afbbf75b8f595c459e1b32a4c12312d, type: 3}
-  - {fileID: 21300000, guid: d8c10b5303e2a61419680c5ee54ccd1a, type: 3}
-  - {fileID: 21300000, guid: 8d4f26ba25ecafd4aacc7a1f1bdfefe5, type: 3}
-  - {fileID: 21300000, guid: 3dca3fe7303785a46b4adf3b6bc59fab, type: 3}
-  - {fileID: 21300000, guid: e8480f0cfad1ff24a971058739223a23, type: 3}
-  - {fileID: 21300000, guid: d8e392c21b9121b4db88188436540407, type: 3}
-  iconNames:
-  - chair_1
-  - table_1
-  - torchere_1
-  - kitchen_chair_1
-  - bed_1
-  - bed_2
+  isItemList: 1
 --- !u!1 &233582534
 GameObject:
   m_ObjectHideFlags: 0
@@ -4418,16 +4405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 18792032}
   gridGroup: {fileID: 619667735}
-  iconSprites:
-  - {fileID: 21300000, guid: 1295d7cc1a55b764282528d9e8f4464b, type: 3}
-  - {fileID: 21300000, guid: 4d03f97f7d81d834bb9a5490a398c68e, type: 3}
-  - {fileID: 21300000, guid: 64c4b1b02e429e7428185e5f60bdff12, type: 3}
-  - {fileID: 21300000, guid: 953c5d2c1bfbd8b46981c42c248b3eb3, type: 3}
-  iconNames:
-  - Kitchen
-  - Room
-  - Hall
-  - Parent Room
+  isItemList: 0
 --- !u!1 &957209547
 GameObject:
   m_ObjectHideFlags: 0
