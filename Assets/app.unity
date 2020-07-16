@@ -2228,7 +2228,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299724470}
+      - m_Target: {fileID: 506115286}
         m_MethodName: DeleteSelectedModel
         m_Mode: 1
         m_Arguments:
@@ -2350,6 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540b73cf531627a45b52b1df81705136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DelButton: {fileID: 470386984}
   MovementJoystick: {fileID: 948165696}
   RotationJoystick: {fileID: 1824649253}
 --- !u!114 &506115287
@@ -3425,7 +3426,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1457585337}
         m_MethodName: set_enabled
         m_Mode: 6

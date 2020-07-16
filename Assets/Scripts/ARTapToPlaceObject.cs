@@ -114,7 +114,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             MovementJoystick.gameObject.SetActive(val);
             RotationJoystick.gameObject.SetActive(val);
             DelButton.gameObject.SetActive(val);
-            //spawnedObject = null;
         }
     }
 
@@ -150,12 +149,17 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         GameObject g = SelectedModel.gameObject;
         if (SelectedModel)
+        {
             SelectedModel = null;
+            spawnedObject = null;
+        }
         Destroy(g);
+        Destroy(spawnedObject);
     }
 
     public void UnselectSelection()
     {
         SelectedModel = null;
+        spawnedObject = null;
     }
 }
