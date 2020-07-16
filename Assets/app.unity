@@ -290,6 +290,7 @@ MonoBehaviour:
   name: {fileID: 933943546}
   myButton: {fileID: 18792034}
   myGameObject: {fileID: 0}
+  myPlane: {fileID: 0}
   isItem: 0
 --- !u!1 &44551974
 GameObject:
@@ -2349,8 +2350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540b73cf531627a45b52b1df81705136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObjectToInstantiate: {fileID: 100002, guid: b7768e1703027114b8fb81cb29192dc8,
-    type: 3}
+  MovementJoystick: {fileID: 948165696}
+  RotationJoystick: {fileID: 1824649253}
 --- !u!114 &506115287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3564,9 +3565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a917f0af64a6423093132dab321c15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableBehaviour: {fileID: 0}
-  m_PreviousStatus: 0
-  m_NewStatus: 0
 --- !u!114 &759195738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3579,20 +3577,6 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <TimeStamp>k__BackingField: 0
-  mTrackableName: target
-  mPreserveChildSize: 0
-  mInitializedInEditor: 1
-  mPreviousScale: {x: 0, y: 0, z: 0}
-  mStatus: 0
-  mStatusInfo: 1
-  mDataSetPath: Vuforia/Test.xml
-  mAspectRatio: 1.3880953
-  mImageTargetType: 0
-  mWidth: 21
-  mHeight: 29.15
-  mLastTransformScale: 29.15
-  mLastSize: {x: 21, y: 29.15}
 --- !u!4 &759195739
 Transform:
   m_ObjectHideFlags: 0
@@ -4354,7 +4338,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ADD
+  m_Text: INVENTORY
 --- !u!222 &910054599
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6105,6 +6089,7 @@ MonoBehaviour:
   name: {fileID: 1652181988}
   myButton: {fileID: 1319302514}
   myGameObject: {fileID: 1299724470}
+  myPlane: {fileID: 506115286}
   isItem: 1
 --- !u!111 &1319302518
 Animation:
@@ -7860,8 +7845,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1299724470}
-        m_MethodName: AddModel
+      - m_Target: {fileID: 506115286}
+        m_MethodName: Update
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

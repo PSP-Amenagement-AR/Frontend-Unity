@@ -16,6 +16,9 @@ public class InventoryButton : MonoBehaviour
     [SerializeField]
     public ModelAction myGameObject;
 
+    [SerializeField]
+    public ARTapToPlaceObject myPlane;
+
     public bool isItem;
 
     void Start()
@@ -29,7 +32,9 @@ public class InventoryButton : MonoBehaviour
         // TODO put effect on the image when clicking button
         //this.PutTransparency(0.4f);
         if (isItem)
-            myGameObject.SetItemToPlace(name.text);
+            //myGameObject.SetItemToPlace(name.text);
+            myPlane.SetItemToPlaceName(name.text);
+        Debug.Log("Item selectionne : " + name.text);
     }
 
     public void SetIcon(Sprite mySprite)
