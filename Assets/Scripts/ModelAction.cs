@@ -7,7 +7,7 @@ using System.IO;
 
 public class ModelAction : MonoBehaviour
 {
-    public Joystick MovementJoystick;
+    //public Joystick MovementJoystick;
     public Joystick RotationJoystick;
     public Button DelButton;
     public Transform ParentTarget;
@@ -30,12 +30,12 @@ public class ModelAction : MonoBehaviour
                 if (selectedModel)
                 {
                     selectedModel.SetSelected(false); // unselect old model
-                    selectedModel.MovementJoystick = null;
+                    //selectedModel.MovementJoystick = null;
                     selectedModel.RotationJoystick = null;
                 }
                 selectedModel = value;
                 selectedModel.SetSelected(true); // select new model
-                selectedModel.MovementJoystick = MovementJoystick;
+                //selectedModel.MovementJoystick = MovementJoystick;
                 selectedModel.RotationJoystick = RotationJoystick;
                 ActivateSelectedInterfaceTo(true);
             }
@@ -66,9 +66,9 @@ public class ModelAction : MonoBehaviour
 
     public void ActivateSelectedInterfaceTo(bool val)
     {
-        if (MovementJoystick && RotationJoystick && DelButton)
+        if (RotationJoystick && DelButton)
         {
-            MovementJoystick.gameObject.SetActive(val);
+            //MovementJoystick.gameObject.SetActive(val);
             RotationJoystick.gameObject.SetActive(val);
             DelButton.gameObject.SetActive(val);
         }

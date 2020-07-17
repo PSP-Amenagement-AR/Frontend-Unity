@@ -17,8 +17,9 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     public Button DelButton;
     public Button ValButton;
-    public Joystick MovementJoystick;
+    //public Joystick MovementJoystick;
     public Joystick RotationJoystick;
+    public Joystick VerticalRotationJoystick;
     public GameObject AddPanel;
     public bool PlacementMode;
 
@@ -42,13 +43,15 @@ public class ARTapToPlaceObject : MonoBehaviour
                 if (selectedModel)
                 {
                     selectedModel.SetSelected(false); // unselect old model
-                    selectedModel.MovementJoystick = null;
+                    //selectedModel.MovementJoystick = null;
                     selectedModel.RotationJoystick = null;
+                    selectedModel.VerticalRotationJoystick = null;
                 }
                 selectedModel = value;
                 selectedModel.SetSelected(true); // select new model
-                selectedModel.MovementJoystick = MovementJoystick;
+                //selectedModel.MovementJoystick = MovementJoystick;
                 selectedModel.RotationJoystick = RotationJoystick;
+                selectedModel.VerticalRotationJoystick = VerticalRotationJoystick;
                 ActivateSelectedInterfaceTo(true);
             }
         }
@@ -117,11 +120,11 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     public void ActivateSelectedInterfaceTo(bool val)
     {
-        if (MovementJoystick && RotationJoystick && DelButton && ValButton)
-        //if (MovementJoystick && RotationJoystick)
+        if (VerticalRotationJoystick && RotationJoystick && DelButton && ValButton)
         {
-            MovementJoystick.gameObject.SetActive(val);
+            //MovementJoystick.gameObject.SetActive(val);
             RotationJoystick.gameObject.SetActive(val);
+            VerticalRotationJoystick.gameObject.SetActive(val);
             DelButton.gameObject.SetActive(val);
             ValButton.gameObject.SetActive(val);
         }

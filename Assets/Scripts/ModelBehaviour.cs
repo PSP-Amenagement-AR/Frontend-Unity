@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ModelBehaviour : MonoBehaviour
 {
     private bool Selected = false;
-    public Joystick MovementJoystick;
+    //public Joystick MovementJoystick;
     public Joystick RotationJoystick;
+    public Joystick VerticalRotationJoystick;
 
     private void Update()
     {
@@ -15,11 +16,13 @@ public class ModelBehaviour : MonoBehaviour
             return;
 
         var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 100f,
+        /*rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 100f,
             rigidbody.velocity.y,
-            MovementJoystick.Vertical * 100f);
-        float speed = RotationJoystick.Horizontal;
-        transform.Rotate(Vector3.back * speed * 50f * Time.deltaTime);
+            MovementJoystick.Vertical * 100f);*/
+        float speed = RotationJoystick.Horizontal * -1f;
+        float speed1 = VerticalRotationJoystick.Vertical * 1f;
+        //transform.Rotate(Vector3.back * speed * 50f * Time.deltaTime);
+        transform.Rotate(speed1 * 50f * Time.deltaTime, 0, speed * 50f * Time.deltaTime);
     }
 
     public void SetSelected(bool val)
