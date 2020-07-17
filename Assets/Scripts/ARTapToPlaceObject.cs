@@ -16,6 +16,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
     public Button DelButton;
+    public Button ValButton;
     public Joystick MovementJoystick;
     public Joystick RotationJoystick;
     public GameObject AddPanel;
@@ -116,12 +117,13 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     public void ActivateSelectedInterfaceTo(bool val)
     {
-        if (MovementJoystick && RotationJoystick && DelButton)
+        if (MovementJoystick && RotationJoystick && DelButton && ValButton)
         //if (MovementJoystick && RotationJoystick)
         {
             MovementJoystick.gameObject.SetActive(val);
             RotationJoystick.gameObject.SetActive(val);
             DelButton.gameObject.SetActive(val);
+            ValButton.gameObject.SetActive(val);
         }
     }
 
