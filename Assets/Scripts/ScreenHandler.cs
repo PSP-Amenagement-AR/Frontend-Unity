@@ -29,7 +29,7 @@ public class ScreenHandler : MonoBehaviour
     {
         changeStateOf("openAdd", true);
         CloseMenu();
-        CloseValidation();
+        //CloseValidation();
     }
 
     public void OpenStage()

@@ -32,8 +32,11 @@ public class InventoryButton : MonoBehaviour
         // TODO put effect on the image when clicking button
         //this.PutTransparency(0.4f);
         if (isItem)
-            //myGameObject.SetItemToPlace(name.text);
-            myPlane.SetItemToPlaceName(name.text);
+        {
+            //myPlane.SetItemToPlaceName(name.text);
+            myPlane.AddModel(name);
+            myPlane.PlacementMode = true;
+        }
         Debug.Log("Item selectionne : " + name.text);
     }
 

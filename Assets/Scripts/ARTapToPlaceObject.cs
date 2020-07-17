@@ -18,6 +18,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     public Button DelButton;
     public Joystick MovementJoystick;
     public Joystick RotationJoystick;
+    public GameObject AddPanel;
+    public bool PlacementMode;
 
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private string ItemToPlace;
@@ -61,18 +63,27 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            touchPosition = Input.GetTouch(0).position;
-            return true;
-        }
+            /*Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {*/
+                if (AddPanel.activeSelf == false && PlacementMode == true)
+                {
+                    touchPosition = Input.GetTouch(0).position;
+                    return true;
+                }
 
+            //}
+        }
+        
         touchPosition = default;
         return false;
     }
 
-    public void SetItemToPlaceName(string itemName)
+    public void SetItemToPlaceName(Text itemName)
     {
         spawnedObject = null;
-        this.ItemToPlace = itemName;
+        this.ItemToPlace = itemName.text;
         Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
     }
 
@@ -97,14 +108,11 @@ public class ARTapToPlaceObject : MonoBehaviour
         return null;
     }
 
-    /*public void AddModel()
+    public void AddModel(Text itemName)
     {
-        GameObject model = Instantiate(SelectModel3D(), new Vector3(0.0f, 0.0f, 0.0f), transform.rotation, ParentTarget);
-        model.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-        model.transform.localScale = model.transform.localScale * 3;
-        ModelBehaviour modelBehaviour = model.AddComponent<ModelBehaviour>() as ModelBehaviour;
-        SelectedModel = modelBehaviour;
-    }*/
+        SetItemToPlaceName(itemName);
+        Update();
+    }
 
     public void ActivateSelectedInterfaceTo(bool val)
     {
@@ -155,10 +163,12 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         Destroy(g);
         Destroy(spawnedObject);
+        PlacementMode = false;
     }
 
     public void UnselectSelection()
     {
+        PlacementMode = false;
         SelectedModel = null;
         spawnedObject = null;
     }
