@@ -21,6 +21,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     public Joystick RotationJoystick;
     public Joystick VerticalRotationJoystick;
     public GameObject AddPanel;
+    public GameObject PlanelPlacementIndicator;
     public bool PlacementMode;
 
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -137,6 +138,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
+            PlanelPlacementIndicator.SetActive(false);
 
             // Positionnement de l'objet - Sélection
             if (spawnedObject == null)
