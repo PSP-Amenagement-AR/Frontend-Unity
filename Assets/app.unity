@@ -2388,7 +2388,7 @@ MonoBehaviour:
   RotationJoystick: {fileID: 1824649253}
   VerticalRotationJoystick: {fileID: 1079921014}
   AddPanel: {fileID: 364425953}
-  PlanelPlacementIndicator: {fileID: 1931369633}
+  PanelPlacementIndicator: {fileID: 1931369633}
   PlacementMode: 0
 --- !u!114 &506115287
 MonoBehaviour:
@@ -5257,7 +5257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 281, y: 370.5}
+  m_AnchoredPosition: {x: 43, y: 370.5}
   m_SizeDelta: {x: 181.2, y: 335.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075641598
