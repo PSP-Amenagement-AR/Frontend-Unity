@@ -14,9 +14,6 @@ public class InventoryButton : MonoBehaviour
     public Button myButton;
 
     [SerializeField]
-    public ModelAction myGameObject;
-
-    [SerializeField]
     public ARTapToPlaceObject myPlane;
 
     public bool isItem;
@@ -33,11 +30,9 @@ public class InventoryButton : MonoBehaviour
         //this.PutTransparency(0.4f);
         if (isItem)
         {
-            //myPlane.SetItemToPlaceName(name.text);
             myPlane.AddModel(name);
             myPlane.PlacementMode = true;
         }
-        Debug.Log("Item selectionne : " + name.text);
     }
 
     public void SetIcon(Sprite mySprite)
