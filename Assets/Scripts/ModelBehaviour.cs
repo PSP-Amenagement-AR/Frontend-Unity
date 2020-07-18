@@ -19,10 +19,16 @@ public class ModelBehaviour : MonoBehaviour
         /*rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 100f,
             rigidbody.velocity.y,
             MovementJoystick.Vertical * 100f);*/
+        //float speed = RotationJoystick.Horizontal * 1f;
+
         float speed = RotationJoystick.Horizontal * -1f;
         float speed1 = VerticalRotationJoystick.Vertical * 1f;
-        //transform.Rotate(Vector3.back * speed * 50f * Time.deltaTime);
+
+        /*float rotateVertical = MovementJoystick.Vertical * 1f;
+        float rotateHorizontal = MovementJoystick.Horizontal * 1f;*/
+
         transform.Rotate(speed1 * 50f * Time.deltaTime, 0, speed * 50f * Time.deltaTime);
+        //transform.Rotate(rotateHorizontal, 0, rotateVertical);
     }
 
     public void SetSelected(bool val)

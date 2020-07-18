@@ -141,7 +141,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             // Positionnement de l'objet - Sélection
             if (spawnedObject == null)
             {
-                //spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
                 spawnedObject = Instantiate(SelectModel3D(), hitPose.position, hitPose.rotation);
                 spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
                 spawnedObject.transform.localScale = spawnedObject.transform.localScale * 3;
