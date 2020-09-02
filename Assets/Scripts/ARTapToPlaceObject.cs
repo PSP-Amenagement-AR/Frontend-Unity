@@ -145,7 +145,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             {
                 spawnedObject = Instantiate(SelectModel3D(), hitPose.position, hitPose.rotation);
                 spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-                spawnedObject.transform.localScale = spawnedObject.transform.localScale * 3;
+
                 ModelBehaviour modelBehaviour = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
                 SelectedModel = modelBehaviour;
                 Debug.Log("Test1");
