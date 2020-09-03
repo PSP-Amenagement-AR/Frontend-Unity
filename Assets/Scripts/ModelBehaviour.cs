@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,22 @@ using UnityEngine.UI;
 public class ModelBehaviour : MonoBehaviour
 {
     private bool Selected = false;
+    private Guid _guid;
     //public Joystick MovementJoystick;
     public Joystick RotationJoystick;
     public Joystick VerticalRotationJoystick;
+
+    private void Awake()
+    {
+        this._guid = Guid.NewGuid();
+
+    }
+
+    public Guid GetId()
+    {
+        return this._guid;
+    }
+
 
     private void Update()
     {
