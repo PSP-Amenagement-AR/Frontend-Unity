@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.ARFoundation;
 
 public class ARItemsHandling : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ARItemsHandling : MonoBehaviour
     public Joystick VerticalRotationJoystick;
     public Button DeleteButton;
     public Button ValidateButton;
+    public CameraHandler cameraHandler;
 
     private List<GameObject> Items = new List<GameObject>();
     // Start is called before the first frame update
@@ -21,7 +23,22 @@ public class ARItemsHandling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!IsAnItemSelected() && Input.GetMouseButtonDown(0))
+        {
+            Ray ray = cameraHandler.GetCamera().ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(ray, out hitInfo))
+            {
+                this.SelectItem(hitInfo.transform.gameObject);
+            }
+
+        }
+    }
+
+    bool IsAnItemSelected()
+    {
+        return this.SelectedItem != null;
     }
 
     ModelBehaviour GetModelBehaviour(GameObject item)
@@ -93,7 +110,10 @@ public class ARItemsHandling : MonoBehaviour
     {
         GameObject spawnedObject = Instantiate(objectModel, position, rotation);
         spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-
+        if (ARSession.state == ARSessionState.Unsupported)
+        {
+            spawnedObject.transform.localScale = spawnedObject.transform.localScale * 100;
+        }
         _ = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
         this.Items.Add(spawnedObject);
         this.SelectItem(spawnedObject);

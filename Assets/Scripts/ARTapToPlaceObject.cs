@@ -36,17 +36,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            /*Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {*/
                 if (AddPanel.activeSelf == false && objectToPlace)
                 {
                     touchPosition = Input.GetTouch(0).position;
                     return true;
                 }
-
-            //}
         }
         
         touchPosition = default;
@@ -101,14 +95,25 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (objectToPlace)
         {
-            if (!TryGetTouchPosition(out Vector2 touchPosition))
-                return;
-            if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+            if (ARSession.state == ARSessionState.Unsupported)
             {
-                var hitPose = hits[0].pose;
-                itemsHandling.AddItem(this.ItemToPlace, hitPose.position, hitPose.rotation);
-                this.CleanInterface();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    itemsHandling.AddItem(this.ItemToPlace, new Vector3(Screen.width / 2, Screen.height / 2, 0), Quaternion.identity);
+                    this.CleanInterface();
+                }
+            } else
+            {
+                if (!TryGetTouchPosition(out Vector2 touchPosition))
+                    return;
+                if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+                {
+                    var hitPose = hits[0].pose;
+                    itemsHandling.AddItem(this.ItemToPlace, hitPose.position, hitPose.rotation);
+                    this.CleanInterface();
+                }
             }
+
         }
     }
 }
