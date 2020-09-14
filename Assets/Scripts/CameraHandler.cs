@@ -7,16 +7,25 @@ public class CameraHandler : MonoBehaviour
 {
     public Camera ARCamera;
     public Camera Camera;
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        
-    }
+        if ((ARSession.state == ARSessionState.None) ||
+            (ARSession.state == ARSessionState.CheckingAvailability))
+        {
+            yield return ARSession.CheckAvailability();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (ARSession.state == ARSessionState.Unsupported)
+        {
+            Debug.Log("No AR mode");
+            this.ARCamera.gameObject.SetActive(false);
+            this.Camera.gameObject.SetActive(true);
+        }
+        else
+        {
+            this.ARCamera.gameObject.SetActive(true);
+            this.Camera.gameObject.SetActive(false);
+        }
     }
 
     public Camera GetCamera()
@@ -25,18 +34,5 @@ public class CameraHandler : MonoBehaviour
             return Camera;
         else
             return ARCamera;
-    }
-
-    private void Awake()
-    {
-        if (ARSession.state == ARSessionState.Unsupported)
-        {
-            this.ARCamera.gameObject.SetActive(false);
-            this.Camera.gameObject.SetActive(true);
-        } else
-        {
-            this.ARCamera.gameObject.SetActive(true);
-            this.Camera.gameObject.SetActive(false);
-        }
     }
 }

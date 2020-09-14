@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
 public class ARItemsHandling : MonoBehaviour
 {
-    private GameObject SelectedItem;
+    public GameObject SelectedItem;
     public Joystick RotationJoystick;
     public Joystick VerticalRotationJoystick;
     public Button DeleteButton;
@@ -36,7 +35,7 @@ public class ARItemsHandling : MonoBehaviour
         }
     }
 
-    bool IsAnItemSelected()
+    public bool IsAnItemSelected()
     {
         return this.SelectedItem != null;
     }
