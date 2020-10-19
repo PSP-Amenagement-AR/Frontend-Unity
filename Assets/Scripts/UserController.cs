@@ -10,6 +10,11 @@ public class UserController : MonoBehaviour
     public ScreenHandler canvas;
 
     public Button submitButton;
+    public Button loginButton;
+
+    public InputField loginMailField;
+    public InputField loginPasswordField;
+
     public InputField firstnameField;
     public InputField lastnameField;
     public InputField mailField;
@@ -17,15 +22,24 @@ public class UserController : MonoBehaviour
     public InputField confirmedPasswordField;
 
     private bool created = false;
+    private bool connected = false;
 
     private void Awake()
     {
         submitButton.onClick.AddListener(() =>
         {
-            if (UserCheckInformations())
+            if (RegistrationCheckInformations())
             {
                 canvas.CloseRegistration();
                 canvas.OpenLogin();
+            }
+        });
+
+        loginButton.onClick.AddListener(() =>
+        {
+            if (LoginCheckInformations())
+            {
+                canvas.CloseLogin();
             }
         });
     }
@@ -40,7 +54,7 @@ public class UserController : MonoBehaviour
         
     }
 
-    bool UserCheckInformations()
+    bool RegistrationCheckInformations()
     {
         if ((firstnameField.text.ToString() != "") && (lastnameField.text.ToString() != "") &&
                 (mailField.text.ToString() != "") && (passwordField.text.ToString() != "") && (confirmedPasswordField.text.ToString() != ""))
@@ -63,7 +77,6 @@ public class UserController : MonoBehaviour
             else
             {
                 InitPopup("User created");
-
                 created = true;
             }
         }
@@ -73,6 +86,29 @@ public class UserController : MonoBehaviour
             created = false;
         }
         return created;
+    }
+
+    bool LoginCheckInformations()
+    {
+        if ((loginMailField.text.ToString() != "") && (loginPasswordField.text.ToString() != ""))
+        {
+            if ((loginMailField.text.ToString().Contains("@") == false) || (loginMailField.text.ToString().Contains(".com") == false))
+            {
+                InitPopup("The mail is not correct");
+                connected = false;
+            }
+            else
+            {
+                InitPopup("Connected");
+                connected = true;
+            }
+        }
+        else
+        {
+            InitPopup("One or many field(s) are missing");
+            connected = false;
+        }
+        return connected;
     }
 
     void InitPopup(string str)
