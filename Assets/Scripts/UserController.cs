@@ -114,7 +114,10 @@ public class UserController : MonoBehaviour
     void InitPopup(string str)
     {
         popupText.text = str;
-        StartCoroutine(PopupText());
+        if (str != "Connected")
+        {
+            StartCoroutine(PopupText());
+        } 
     }
 
     IEnumerator PopupText()
