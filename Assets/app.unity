@@ -781,7 +781,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
@@ -871,6 +871,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 164342896}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &179356182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442631072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &181618368
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 1319302512}
   gridGroup: {fileID: 1823291788}
+  aRItemsHandling: {fileID: 506115288}
   isItemList: 1
 --- !u!1 &233582534
 GameObject:
@@ -2197,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectedItem: {fileID: 0}
   RotationJoystick: {fileID: 1824649253}
-  VerticalRotationJoystick: {fileID: 1079921014}
+  MovementJoystick: {fileID: 179356182}
   DeleteButton: {fileID: 470386984}
   ValidateButton: {fileID: 591026148}
   cameraHandler: {fileID: 506115289}
@@ -4024,6 +4037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonTemplate: {fileID: 18792032}
   gridGroup: {fileID: 619667735}
+  aRItemsHandling: {fileID: 0}
   isItemList: 0
 --- !u!1 &957209547
 GameObject:
@@ -4859,18 +4873,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1079921012}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1079921014 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
-    type: 3}
-  m_PrefabInstance: {fileID: 1079921012}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1086644894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7707,8 +7709,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 13.125, y: -469.7}
-  m_SizeDelta: {x: -294.75, y: -997.4}
+  m_AnchoredPosition: {x: 13.125, y: -618.8}
+  m_SizeDelta: {x: -294.8, y: -1295.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931369635
 MonoBehaviour:

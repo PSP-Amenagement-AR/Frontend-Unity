@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -23,7 +21,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     private GameObject ItemToPlace;
     GameObject[] List3DModels;
 
-    [SerializeField]
     public ARItemsHandling itemsHandling;
 
     private void Awake()
@@ -71,10 +68,14 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     public void PreAddItem(string name)
     {
-        this.ItemToPlace = this.GetModel3D(name);
-        Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
-        this.EnableInterface();
-        Update();
+        ARItemsHandling.ConfigItem found = itemsHandling.GetConfigItems().Find((config) => config.name == name);
+        if (found != null)
+        {
+            this.ItemToPlace = found.loadedPrefab;
+            Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
+            this.EnableInterface();
+            Update();
+        }
     }
 
     public void EnableInterface()
@@ -99,7 +100,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    itemsHandling.AddItem(this.ItemToPlace, new Vector3(Screen.width / 2, Screen.height / 2, 0), Quaternion.identity);
+                    itemsHandling.AddItem(this.ItemToPlace, new Vector3(Screen.width / 2, 0, 0), Quaternion.identity);
                     this.CleanInterface();
                 }
             } else

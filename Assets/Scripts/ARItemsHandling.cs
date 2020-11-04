@@ -5,18 +5,60 @@ using UnityEngine.XR.ARFoundation;
 
 public class ARItemsHandling : MonoBehaviour
 {
+    public class ConfigItem
+    {
+        public string name;
+        public GameObject loadedPrefab;
+
+        public ConfigItem(string name)
+        {
+            this.name = name;
+            Debug.Log("Prefab Path: " + this.PrefabPath());
+            this.loadedPrefab = Resources.Load<GameObject>(this.PrefabPath());
+            Debug.Log("loadedPrefab: " + this.loadedPrefab);
+        }
+
+        public string DirPath()
+        {
+            return "Items/" + this.name;
+        }
+
+        public string SpritePath()
+        {
+            return this.DirPath() + "/" + this.name;
+        }
+
+        public string PrefabPath()
+        {
+            return this.DirPath() + "/" + this.name;
+        }
+
+    }
+
     public GameObject SelectedItem;
     public Joystick RotationJoystick;
-    public Joystick VerticalRotationJoystick;
+    //public Joystick VerticalRotationJoystick;
+    public Joystick MovementJoystick;
     public Button DeleteButton;
     public Button ValidateButton;
     public CameraHandler cameraHandler;
 
     private List<GameObject> Items = new List<GameObject>();
-    // Start is called before the first frame update
-    void Start()
+    private List<ConfigItem> ConfigItems = new List<ConfigItem>();
+
+    public List<ConfigItem> GetConfigItems()
     {
-        
+        return this.ConfigItems;
+    }
+
+    private void Awake()
+    {
+        ConfigItems.Add(new ConfigItem("chair_1"));
+        ConfigItems.Add(new ConfigItem("kitchen_chair_1"));
+        ConfigItems.Add(new ConfigItem("bed_1"));
+        ConfigItems.Add(new ConfigItem("bed_2"));
+        ConfigItems.Add(new ConfigItem("torchere_1"));
+        ConfigItems.Add(new ConfigItem("table_1"));
     }
 
     // Update is called once per frame
@@ -52,11 +94,11 @@ public class ARItemsHandling : MonoBehaviour
 
     public void ActivateSelectedInterface(bool val)
     {
-        if (VerticalRotationJoystick && RotationJoystick && DeleteButton && ValidateButton)
+        if (MovementJoystick && RotationJoystick && DeleteButton && ValidateButton)
         {
             //MovementJoystick.gameObject.SetActive(val);
             RotationJoystick.gameObject.SetActive(val);
-            VerticalRotationJoystick.gameObject.SetActive(val);
+            MovementJoystick.gameObject.SetActive(val);
             DeleteButton.gameObject.SetActive(val);
             ValidateButton.gameObject.SetActive(val);
         }
@@ -75,7 +117,7 @@ public class ARItemsHandling : MonoBehaviour
                 {
                     model.SetSelected(false);
                     model.RotationJoystick = null;
-                    model.VerticalRotationJoystick = null;
+                    model.MovementJoystick = null;
                 }
             }
             ModelBehaviour foundModel = this.GetModelBehaviour(found);
@@ -84,7 +126,7 @@ public class ARItemsHandling : MonoBehaviour
                 this.SelectedItem = found;
                 foundModel.SetSelected(true);
                 foundModel.RotationJoystick = RotationJoystick;
-                foundModel.VerticalRotationJoystick = VerticalRotationJoystick;
+                foundModel.MovementJoystick = MovementJoystick;
                 this.ActivateSelectedInterface(true);
             }
         }
