@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
@@ -46,6 +47,8 @@ public class ARItemsHandling : MonoBehaviour
     private List<GameObject> Items = new List<GameObject>();
     private List<ConfigItem> ConfigItems = new List<ConfigItem>();
 
+    private string ItemsDirPath = "Assets/Resources/Items";
+
     public List<ConfigItem> GetConfigItems()
     {
         return this.ConfigItems;
@@ -53,12 +56,26 @@ public class ARItemsHandling : MonoBehaviour
 
     private void Awake()
     {
-        ConfigItems.Add(new ConfigItem("chair_1"));
-        ConfigItems.Add(new ConfigItem("kitchen_chair_1"));
-        ConfigItems.Add(new ConfigItem("bed_1"));
-        ConfigItems.Add(new ConfigItem("bed_2"));
-        ConfigItems.Add(new ConfigItem("torchere_1"));
-        ConfigItems.Add(new ConfigItem("table_1"));
+        this.FetchPrefabsFromDisk();
+    }
+
+    private void ClearItems()
+    {
+        this.ConfigItems.Clear();
+    }
+
+    void FetchPrefabsFromDisk()
+    {
+        this.ClearItems();
+        DirectoryInfo dir = new DirectoryInfo(this.ItemsDirPath);
+        DirectoryInfo[] info = dir.GetDirectories("*");
+        Debug.Log("Auto load items from disk...");
+        foreach (DirectoryInfo d in info)
+        {
+            Debug.Log("Item found: " + d.Name);
+            ConfigItems.Add(new ConfigItem(d.Name));
+        }
+        Debug.Log("Auto load items from disk finished.");
     }
 
     // Update is called once per frame
