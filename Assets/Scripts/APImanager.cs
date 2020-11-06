@@ -6,45 +6,16 @@ using SimpleJSON;
 
 public class APImanager : MonoBehaviour
 {
-    public string jsonURL;
+    APIrequestManager webApi = new APIrequestManager();
 
     void Start()
     {
-        StartCoroutine(GetRequest());
-    }
+        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = "userTest@mail.com", password = "userTestPassord@2132" }); 
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+        Debug.Log("response" + request.responseCode + " : " + dataJSON["email"].Value + " / " + dataJSON["password"].Value);
 
-    IEnumerator GetRequest()
-    {
-        Debug.Log("Processing Data");
-        /* WWW _www = new WWW(jsonURL);
-         yield return _www;
-
-         if (_www.error == null)
-         {
-             processJsonData(_www.text);
-         }
-         else
-         {
-             Debug.Log("Error something went wrong");
-         }*/
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(jsonURL))
-        {
-            yield return webRequest.SendWebRequest();
-
-            var N = JSON.Parse(webRequest.downloadHandler.text);
-            /*string result = N["balls"][0]["name"].Value;
-            Debug.Log(result);*/
-            processJsonData(webRequest.downloadHandler.text);
-        }
-    }
-
-    private void processJsonData(string data)
-    {
-        jsonDataClass jsnData = JsonUtility.FromJson<jsonDataClass>(data);
-
-        foreach (ballList x in jsnData.balls)
-        {
-            Debug.Log(x.name + ": " + x.description);
-        }
+        var request1 = webApi.SendApiRequest("/users/login", "POST", new Users { email = "userTest@mail.com", password = "userTestPassord@2132" });
+        JSONNode dataJSON1 = JSON.Parse(request1.downloadHandler.text);
+        Debug.Log("response" + request1.responseCode + " : " + dataJSON1["token"].Value);
     }
 }
