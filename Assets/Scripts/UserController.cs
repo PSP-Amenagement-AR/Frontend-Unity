@@ -23,8 +23,7 @@ public class UserController : MonoBehaviour
     public InputField passwordField;
     public InputField confirmedPasswordField;
 
-    private bool created = false;
-    private bool connected = false;
+    private string token;
 
     APIrequestManager webApi = new APIrequestManager();
 
@@ -59,8 +58,15 @@ public class UserController : MonoBehaviour
                 try
                 {
                     var sendRequest = Login();
-                    if (sendRequest != null)
+                    if (this.token != null)
+                        InitPopup("The user is already connected");
+                    else if (sendRequest != null)
+                    {
                         canvas.CloseLogin();
+                        this.token = sendRequest["token"].Value;
+                        Debug.Log("token : " + this.token);
+                    }
+                    
                     else
                         InitPopup("The credentials are incorrect");
                 }
@@ -106,6 +112,7 @@ public class UserController : MonoBehaviour
 
     bool RegistrationCheckInformations()
     {
+        bool created;
         if ((firstnameField.text.ToString() != "") && (lastnameField.text.ToString() != "") &&
                 (mailField.text.ToString() != "") && (passwordField.text.ToString() != "") && (confirmedPasswordField.text.ToString() != ""))
         {
@@ -140,6 +147,7 @@ public class UserController : MonoBehaviour
 
     bool LoginCheckInformations()
     {
+        bool connected;
         if ((loginMailField.text.ToString() != "") && (loginPasswordField.text.ToString() != ""))
         {
             if ((loginMailField.text.ToString().Contains("@") == false) || (loginMailField.text.ToString().Contains(".com") == false))
