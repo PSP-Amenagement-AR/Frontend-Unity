@@ -41,8 +41,6 @@ public class UserController : MonoBehaviour
                         canvas.CloseRegistration();
                         canvas.OpenLogin();
                     }
-                    else
-                        InitPopup("This email is already used");
                 }
                 catch (Exception e)
                 {
@@ -66,9 +64,6 @@ public class UserController : MonoBehaviour
                         this.token = sendRequest["token"].Value;
                         Debug.Log("token : " + this.token);
                     }
-                    
-                    else
-                        InitPopup("The credentials are incorrect");
                 }
                 catch (Exception e)
                 {
@@ -95,6 +90,13 @@ public class UserController : MonoBehaviour
 
         if (request.responseCode == 200 || request.responseCode == 201)
             return dataJSON;
+        else if (request.responseCode == 0)
+        {
+            InitPopup("No connection ...");
+            return null;
+        }
+      /* else if ()
+            InitPopup("This email is already used"); A faire lorsque la vérif aura été faire côté Back */
         else
             return null;
     }
@@ -106,6 +108,16 @@ public class UserController : MonoBehaviour
 
         if (request.responseCode == 200 || request.responseCode == 201)
             return dataJSON;
+        else if (request.responseCode == 404)
+        {
+            InitPopup("The credentials are incorrect");
+            return null;
+        }
+        else if (request.responseCode == 0)
+        {
+            InitPopup("No connection ...");
+            return null;
+        }
         else
             return null;
     }
