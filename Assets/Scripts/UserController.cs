@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class UserController : MonoBehaviour
 {
@@ -24,22 +26,48 @@ public class UserController : MonoBehaviour
     private bool created = false;
     private bool connected = false;
 
+    APIrequestManager webApi = new APIrequestManager();
+
     private void Awake()
     {
         submitButton.onClick.AddListener(() =>
         {
             if (RegistrationCheckInformations())
             {
-                canvas.CloseRegistration();
-                canvas.OpenLogin();
+                try
+                {
+                    var sendRequest = Registration();
+                    if (sendRequest != null)
+                    {
+                        canvas.CloseRegistration();
+                        canvas.OpenLogin();
+                    }
+                    else
+                        InitPopup("This email is already used");
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Error : " + e.Message);
+                }
             }
         });
 
         loginButton.onClick.AddListener(() =>
         {
             if (LoginCheckInformations())
-            {
-                canvas.CloseLogin();
+            { 
+                try
+                {
+                    var sendRequest = Login();
+                    if (sendRequest != null)
+                        canvas.CloseLogin();
+                    else
+                        InitPopup("The credentials are incorrect");
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Error : " + e.Message);
+                }
             }
         });
     }
@@ -52,6 +80,28 @@ public class UserController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    JSONNode Registration()
+    {
+        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString() }); // A complèter avec les champs "nom" et "prenom" lorsque le Back sera à jour
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 200 || request.responseCode == 201)
+            return dataJSON;
+        else
+            return null;
+    }
+
+    JSONNode Login()
+    {
+        var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 200 || request.responseCode == 201)
+            return dataJSON;
+        else
+            return null;
     }
 
     bool RegistrationCheckInformations()
@@ -126,4 +176,10 @@ public class UserController : MonoBehaviour
         yield return new WaitForSeconds(2);
         popup.SetActive(false);
     }
+}
+
+public class Users
+{
+    public string email;
+    public string password;
 }
