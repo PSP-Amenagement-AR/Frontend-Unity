@@ -67,6 +67,11 @@ public class ScreenHandler : MonoBehaviour
         CloseMenu();
     }
 
+    public void OpenRegistration()
+    {
+        changeStateOf("openRegistration", true);
+    }
+
     public void OpenValidation()
     {
         changeStateOf("openValidation", true);
@@ -102,6 +107,11 @@ public class ScreenHandler : MonoBehaviour
     public void CloseLogin()
     {
         changeStateOf("openLogin", false);
+    }
+
+    public void CloseRegistration()
+    {
+        changeStateOf("openRegistration", false);
     }
 
     public void CloseValidation()
