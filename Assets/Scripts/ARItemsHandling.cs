@@ -54,11 +54,8 @@ public class ARItemsHandling : MonoBehaviour
     private void Awake()
     {
         ConfigItems.Add(new ConfigItem("chair_1"));
-        ConfigItems.Add(new ConfigItem("kitchen_chair_1"));
         ConfigItems.Add(new ConfigItem("bed_1"));
-        ConfigItems.Add(new ConfigItem("bed_2"));
         ConfigItems.Add(new ConfigItem("torchere_1"));
-        ConfigItems.Add(new ConfigItem("table_1"));
     }
 
     // Update is called once per frame
