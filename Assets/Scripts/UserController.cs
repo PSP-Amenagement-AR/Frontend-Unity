@@ -54,8 +54,6 @@ public class UserController : MonoBehaviour
                 try
                 {
                     var sendRequest = Login();
-                    /*if (GlobalStatus.token != "")
-                        InitPopup("Please disconnect the actual account before reconnect");*/
                     if (sendRequest != null)
                     {
                         canvas.CloseLogin();
