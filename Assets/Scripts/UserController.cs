@@ -86,7 +86,7 @@ public class UserController : MonoBehaviour
 
     JSONNode Registration()
     {
-        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString() }); // A complèter avec les champs "nom" et "prenom" lorsque le Back sera à jour
+        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString(), firstName = firstnameField.text.ToString(), lastName = lastnameField.text.ToString() }); // A complèter avec les champs "nom" et "prenom" lorsque le Back sera à jour
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
         if (request.responseCode == 200 || request.responseCode == 201)
@@ -96,8 +96,11 @@ public class UserController : MonoBehaviour
             InitPopup("No connection ...");
             return null;
         }
-      /* else if ()
-            InitPopup("This email is already used"); A faire lorsque la vérif aura été faire côté Back */
+        else if (request.responseCode == 400)
+        {
+            InitPopup("This account already exist");
+            return null;
+        }
         else
             return null;
     }
@@ -203,4 +206,6 @@ public class Users
 {
     public string email;
     public string password;
+    public string firstName;
+    public string lastName;
 }
