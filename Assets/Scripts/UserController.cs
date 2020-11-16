@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SimpleJSON;
 
 public class UserController : MonoBehaviour
 {
@@ -21,8 +23,9 @@ public class UserController : MonoBehaviour
     public InputField passwordField;
     public InputField confirmedPasswordField;
 
-    private bool created = false;
-    private bool connected = false;
+    private string token;
+
+    APIrequestManager webApi = new APIrequestManager();
 
     private void Awake()
     {
@@ -30,16 +33,43 @@ public class UserController : MonoBehaviour
         {
             if (RegistrationCheckInformations())
             {
-                canvas.CloseRegistration();
-                canvas.OpenLogin();
+                try
+                {
+                    var sendRequest = Registration();
+                    if (sendRequest != null)
+                    {
+                        canvas.CloseRegistration();
+                        canvas.OpenLogin();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Error : " + e.Message);
+                }
             }
         });
 
         loginButton.onClick.AddListener(() =>
         {
             if (LoginCheckInformations())
-            {
-                canvas.CloseLogin();
+            { 
+                try
+                {
+                    var sendRequest = Login();
+                    if (this.token != null)
+                        InitPopup("The user is already connected");
+                    else if (sendRequest != null)
+                    {
+                        canvas.CloseLogin();
+                        this.token = sendRequest["token"].Value;
+                        GlobalStatus.token = this.token;
+                        Debug.Log("token : " + GlobalStatus.token);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.Log("Error : " + e.Message);
+                }
             }
         });
     }
@@ -54,8 +84,48 @@ public class UserController : MonoBehaviour
         
     }
 
+    JSONNode Registration()
+    {
+        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString() }); // A complèter avec les champs "nom" et "prenom" lorsque le Back sera à jour
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 200 || request.responseCode == 201)
+            return dataJSON;
+        else if (request.responseCode == 0)
+        {
+            InitPopup("No connection ...");
+            return null;
+        }
+      /* else if ()
+            InitPopup("This email is already used"); A faire lorsque la vérif aura été faire côté Back */
+        else
+            return null;
+    }
+
+    JSONNode Login()
+    {
+        var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 200 || request.responseCode == 201)
+            return dataJSON;
+        else if (request.responseCode == 404)
+        {
+            InitPopup("The credentials are incorrect");
+            return null;
+        }
+        else if (request.responseCode == 0)
+        {
+            InitPopup("No connection ...");
+            return null;
+        }
+        else
+            return null;
+    }
+
     bool RegistrationCheckInformations()
     {
+        bool created;
         if ((firstnameField.text.ToString() != "") && (lastnameField.text.ToString() != "") &&
                 (mailField.text.ToString() != "") && (passwordField.text.ToString() != "") && (confirmedPasswordField.text.ToString() != ""))
         {
@@ -90,6 +160,7 @@ public class UserController : MonoBehaviour
 
     bool LoginCheckInformations()
     {
+        bool connected;
         if ((loginMailField.text.ToString() != "") && (loginPasswordField.text.ToString() != ""))
         {
             if ((loginMailField.text.ToString().Contains("@") == false) || (loginMailField.text.ToString().Contains(".com") == false))
@@ -126,4 +197,10 @@ public class UserController : MonoBehaviour
         yield return new WaitForSeconds(2);
         popup.SetActive(false);
     }
+}
+
+public class Users
+{
+    public string email;
+    public string password;
 }
