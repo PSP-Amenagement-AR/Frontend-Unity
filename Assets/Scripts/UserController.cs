@@ -23,8 +23,6 @@ public class UserController : MonoBehaviour
     public InputField passwordField;
     public InputField confirmedPasswordField;
 
-    private string token;
-
     APIrequestManager webApi = new APIrequestManager();
 
     private void Awake()
@@ -56,13 +54,12 @@ public class UserController : MonoBehaviour
                 try
                 {
                     var sendRequest = Login();
-                    if (this.token != null)
-                        InitPopup("The user is already connected");
-                    else if (sendRequest != null)
+                    /*if (GlobalStatus.token != "")
+                        InitPopup("Please disconnect the actual account before reconnect");*/
+                    if (sendRequest != null)
                     {
                         canvas.CloseLogin();
-                        this.token = sendRequest["token"].Value;
-                        GlobalStatus.token = this.token;
+                        GlobalStatus.token = sendRequest["token"].Value;
                         Debug.Log("token : " + GlobalStatus.token);
                     }
                 }
@@ -107,23 +104,31 @@ public class UserController : MonoBehaviour
 
     JSONNode Login()
     {
-        var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
-        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
-
-        if (request.responseCode == 200 || request.responseCode == 201)
-            return dataJSON;
-        else if (request.responseCode == 404)
+        if (GlobalStatus.token != "")
         {
-            InitPopup("The credentials are incorrect");
-            return null;
-        }
-        else if (request.responseCode == 0)
-        {
-            InitPopup("No connection ...");
+            InitPopup("Please disconnect the actual account before reconnect");
             return null;
         }
         else
-            return null;
+        {
+            var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
+            JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+            if (request.responseCode == 200 || request.responseCode == 201)
+                return dataJSON;
+            else if (request.responseCode == 404)
+            {
+                InitPopup("The credentials are incorrect");
+                return null;
+            }
+            else if (request.responseCode == 0)
+            {
+                InitPopup("No connection ...");
+                return null;
+            }
+            else
+                return null;
+        }
     }
 
     bool RegistrationCheckInformations()

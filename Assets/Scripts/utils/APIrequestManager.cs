@@ -36,6 +36,7 @@ public class APIrequestManager : MonoBehaviour
         request.uploadHandler = new UploadHandlerRaw(string.IsNullOrEmpty(bodyString) ? null : System.Text.Encoding.UTF8.GetBytes(bodyString));
         request.SetRequestHeader("Accept", "application/json");
         request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", GlobalStatus.token);
         request.timeout = 60;
         return request;
     }
