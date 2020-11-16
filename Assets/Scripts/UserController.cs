@@ -62,7 +62,8 @@ public class UserController : MonoBehaviour
                     {
                         canvas.CloseLogin();
                         this.token = sendRequest["token"].Value;
-                        Debug.Log("token : " + this.token);
+                        GlobalStatus.token = this.token;
+                        Debug.Log("token : " + GlobalStatus.token);
                     }
                 }
                 catch (Exception e)

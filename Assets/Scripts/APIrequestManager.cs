@@ -6,17 +6,15 @@ using UnityEngine;
 using SimpleJSON;
 
 public class APIrequestManager : MonoBehaviour
-{   
-    public string BaseUrl = "http://127.0.0.1:3000";
-
+{
     UnityWebRequest CreateApiGetRequest(string actionUrl, object body = null)
     {
-        return CreateApiRequest(BaseUrl + actionUrl, UnityWebRequest.kHttpVerbGET, body);
+        return CreateApiRequest(GlobalStatus.BaseUrl + actionUrl, UnityWebRequest.kHttpVerbGET, body);
     }
 
     UnityWebRequest CreateApiPostRequest(string actionUrl, object body = null)
     {
-        return CreateApiRequest(BaseUrl + actionUrl, UnityWebRequest.kHttpVerbPOST, body);
+        return CreateApiRequest(GlobalStatus.BaseUrl + actionUrl, UnityWebRequest.kHttpVerbPOST, body);
     }
 
     UnityWebRequest CreateApiRequest(string url, string method, object body)
