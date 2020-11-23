@@ -1,10 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreenHandler : MonoBehaviour
 {
     public Animator animator;
+
+    public GameObject MenuButton;
+    public GameObject ProfileButton;
+
+
+    private void Awake()
+    {
+        this.ShowUi();
+    }
+
+    public void HideUi()
+    {
+        CloseMenu();
+        MenuButton.SetActive(false);
+        ProfileButton.SetActive(false);
+    }
+
+    public void ShowUi()
+    {
+        CloseMenu();
+        MenuButton.SetActive(true);
+        ProfileButton.SetActive(true);
+    }
 
     private void changeStateOf(string varname, bool b)
     {
