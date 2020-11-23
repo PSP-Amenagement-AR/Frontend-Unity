@@ -55,7 +55,6 @@ public class ScreenHandler : MonoBehaviour
 
     public void OpenProfil()
     {
-        Debug.Log("Open");
         changeStateOf("openProfil", true);
         CloseMenu();
     }
