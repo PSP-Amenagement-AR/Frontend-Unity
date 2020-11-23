@@ -11,6 +11,9 @@ public class UserController : MonoBehaviour
     public Text popupText;
     public ScreenHandler canvas;
 
+    public Button logoutButton;
+    public Button ProfilButton;
+
     public Button submitButton;
     public Button loginButton;
 
@@ -58,6 +61,7 @@ public class UserController : MonoBehaviour
                     {
                         canvas.CloseLogin();
                         GlobalStatus.token = sendRequest["token"].Value;
+                        ProfilButton.gameObject.SetActive(true);
                         Debug.Log("token : " + GlobalStatus.token);
                     }
                 }
@@ -66,6 +70,13 @@ public class UserController : MonoBehaviour
                     Debug.Log("Error : " + e.Message);
                 }
             }
+        });
+
+        logoutButton.onClick.AddListener(() => 
+        {
+            Logout();
+            canvas.CloseProfil();
+            ProfilButton.gameObject.SetActive(false);
         });
     }
 
@@ -127,6 +138,20 @@ public class UserController : MonoBehaviour
             else
                 return null;
         }
+    }
+
+    JSONNode Logout()
+    {
+        var request = webApi.SendApiRequest("/users/disconnect", "GET");
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode != 401 || request.responseCode != 500)
+        {
+            InitPopup("Disconnected");
+            GlobalStatus.token = "";
+            return dataJSON;
+        }
+        return null;
     }
 
     bool RegistrationCheckInformations()
