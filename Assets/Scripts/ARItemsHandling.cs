@@ -53,6 +53,7 @@ public class ARItemsHandling : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("PASSSED");
         ConfigItems.Add(new ConfigItem("chair_1"));
         ConfigItems.Add(new ConfigItem("bed_1"));
         ConfigItems.Add(new ConfigItem("torchere_1"));

@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 2313494772
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 96d433f50979914cbb4575b79afeb7e6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a77d2377c95ba634f19ed86b324d3a21
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Items/torchere_1/torchere_1.prefab
+- Assets/Resources/Items/torchere_1/torchere_1.png
+Dependencies: []
