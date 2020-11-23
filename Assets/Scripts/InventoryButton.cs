@@ -30,8 +30,7 @@ public class InventoryButton : MonoBehaviour
         //this.PutTransparency(0.4f);
         if (isItem)
         {
-            myPlane.AddModel(name);
-            myPlane.PlacementMode = true;
+            myPlane.PreAddItem(name.text);
         }
     }
 

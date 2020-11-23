@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using System.IO;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
@@ -12,51 +10,18 @@ public class ARTapToPlaceObject : MonoBehaviour
 
     //public GameObject gameObjectToInstantiate;
 
-    private GameObject spawnedObject;
+    private bool objectToPlace = false;
     private ARRaycastManager _arRaycastManager;
-    private Vector2 touchPosition;
-    public Button DelButton;
-    public Button ValButton;
     //public Joystick MovementJoystick;
-    public Joystick RotationJoystick;
-    public Joystick VerticalRotationJoystick;
     public GameObject AddPanel;
     public GameObject PanelPlacementIndicator;
-    public bool PlacementMode;
+    public ScreenHandler screenHandler;
 
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
-    private string ItemToPlace;
+    private GameObject ItemToPlace;
     GameObject[] List3DModels;
 
-    private ModelBehaviour selectedModel;
-    public ModelBehaviour SelectedModel
-    {
-        get
-        {
-            return selectedModel;
-        }
-        set
-        {
-            if (!value)
-                ActivateSelectedInterfaceTo(false);
-            else
-            {
-                if (selectedModel)
-                {
-                    selectedModel.SetSelected(false); // unselect old model
-                    //selectedModel.MovementJoystick = null;
-                    selectedModel.RotationJoystick = null;
-                    selectedModel.VerticalRotationJoystick = null;
-                }
-                selectedModel = value;
-                selectedModel.SetSelected(true); // select new model
-                //selectedModel.MovementJoystick = MovementJoystick;
-                selectedModel.RotationJoystick = RotationJoystick;
-                selectedModel.VerticalRotationJoystick = VerticalRotationJoystick;
-                ActivateSelectedInterfaceTo(true);
-            }
-        }
-    }
+    public ARItemsHandling itemsHandling;
 
     private void Awake()
     {
@@ -68,35 +33,22 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            /*Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {*/
-                if (AddPanel.activeSelf == false && PlacementMode == true)
+                if (AddPanel.activeSelf == false && objectToPlace)
                 {
                     touchPosition = Input.GetTouch(0).position;
                     return true;
                 }
-
-            //}
         }
         
         touchPosition = default;
         return false;
     }
 
-    public void SetItemToPlaceName(Text itemName)
-    {
-        spawnedObject = null;
-        this.ItemToPlace = itemName.text;
-        Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
-    }
-
-    public GameObject SelectModel3D()
+    public GameObject GetModel3D(string name)
     {
         foreach (GameObject model3D in List3DModels)
         {
-            if (model3D.name == this.ItemToPlace)
+            if (model3D.name == name)
             {
                 Debug.Log("Item Found in the List3DModels");
                 Rigidbody model3DRigidBody = model3D.AddComponent<Rigidbody>();
@@ -113,69 +65,56 @@ public class ARTapToPlaceObject : MonoBehaviour
         return null;
     }
 
-    public void AddModel(Text itemName)
+
+    public void PreAddItem(string name)
     {
-        SetItemToPlaceName(itemName);
-        Update();
+        ARItemsHandling.ConfigItem found = itemsHandling.GetConfigItems().Find((config) => config.name == name);
+        if (found != null)
+        {
+            this.ItemToPlace = found.loadedPrefab;
+            Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
+            this.EnableInterface();
+            Update();
+        }
     }
 
-    public void ActivateSelectedInterfaceTo(bool val)
+    public void EnableInterface()
     {
-        if (VerticalRotationJoystick && RotationJoystick && DelButton && ValButton)
-        {
-            //MovementJoystick.gameObject.SetActive(val);
-            RotationJoystick.gameObject.SetActive(val);
-            VerticalRotationJoystick.gameObject.SetActive(val);
-            DelButton.gameObject.SetActive(val);
-            ValButton.gameObject.SetActive(val);
-        }
+        PanelPlacementIndicator.SetActive(true);
+        this.objectToPlace = true;
+        screenHandler.HideUi();
+    }
+    public void CleanInterface()
+    {
+        PanelPlacementIndicator.SetActive(false);
+        this.ItemToPlace = null;
+        objectToPlace = false;
+        screenHandler.ShowUi();
     }
 
     public void Update()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition))
-            return;
-        if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        if (objectToPlace)
         {
-            var hitPose = hits[0].pose;
-            PanelPlacementIndicator.SetActive(false);
-
-            // Positionnement de l'objet - Sélection
-            if (spawnedObject == null)
+            if (ARSession.state == ARSessionState.Unsupported)
             {
-                spawnedObject = Instantiate(SelectModel3D(), hitPose.position, hitPose.rotation);
-                spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
-
-                ModelBehaviour modelBehaviour = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
-                SelectedModel = modelBehaviour;
-                Debug.Log("Test1");
-            }
-            // Déplacement de l'objet en drag (si il est toujours sélectionné)
-            else
+                if (Input.GetMouseButtonDown(0))
+                {
+                    itemsHandling.AddItem(this.ItemToPlace, new Vector3(Screen.width / 2, 0, 0), Quaternion.identity);
+                    this.CleanInterface();
+                }
+            } else
             {
-                spawnedObject.transform.position = hitPose.position;
-                Debug.Log("Test2");
+                if (!TryGetTouchPosition(out Vector2 touchPosition))
+                    return;
+                if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+                {
+                    var hitPose = hits[0].pose;
+                    itemsHandling.AddItem(this.ItemToPlace, hitPose.position, hitPose.rotation);
+                    this.CleanInterface();
+                }
             }
-        }
-    }
 
-    public void DeleteSelectedModel()
-    {
-        GameObject g = SelectedModel.gameObject;
-        if (SelectedModel)
-        {
-            SelectedModel = null;
-            spawnedObject = null;
         }
-        Destroy(g);
-        Destroy(spawnedObject);
-        PlacementMode = false;
-    }
-
-    public void UnselectSelection()
-    {
-        PlacementMode = false;
-        SelectedModel = null;
-        spawnedObject = null;
     }
 }
