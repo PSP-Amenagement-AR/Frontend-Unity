@@ -27,7 +27,7 @@ public class ScreenHandler : MonoBehaviour
     {
         CloseMenu();
         MenuButton.SetActive(true);
-        ProfileButton.SetActive(true);
+        ProfileButton.SetActive(false);
     }
 
     private void changeStateOf(string varname, bool b)

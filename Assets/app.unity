@@ -4531,6 +4531,7 @@ GameObject:
   - component: {fileID: 760644062}
   - component: {fileID: 760644063}
   - component: {fileID: 760644064}
+  - component: {fileID: 760644065}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4664,8 +4665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 760644062}
-  MenuButton: {fileID: 0}
-  ProfileButton: {fileID: 0}
+  MenuButton: {fileID: 153476872}
+  ProfileButton: {fileID: 1086644894}
 --- !u!114 &760644064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4678,6 +4679,32 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &760644065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760644057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfde0168d2169844fa36d40b2fcbe367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popup: {fileID: 1695730164}
+  popupText: {fileID: 1118795869}
+  canvas: {fileID: 760644063}
+  logoutButton: {fileID: 1629199168}
+  ProfilButton: {fileID: 1086644896}
+  submitButton: {fileID: 1551455656}
+  loginButton: {fileID: 528641302}
+  loginMailField: {fileID: 355966616}
+  loginPasswordField: {fileID: 2134292722}
+  firstnameField: {fileID: 1935351015}
+  lastnameField: {fileID: 1267275513}
+  mailField: {fileID: 597542720}
+  passwordField: {fileID: 166123798}
+  confirmedPasswordField: {fileID: 415141222}
 --- !u!224 &776973459
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6659,7 +6686,6 @@ GameObject:
   - component: {fileID: 1111004741}
   - component: {fileID: 1111004743}
   - component: {fileID: 1111004742}
-  - component: {fileID: 1111004744}
   m_Layer: 5
   m_Name: LoginPanel
   m_TagString: Untagged
@@ -6725,32 +6751,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111004740}
   m_CullTransparentMesh: 0
---- !u!114 &1111004744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111004740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfde0168d2169844fa36d40b2fcbe367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popup: {fileID: 1695730164}
-  popupText: {fileID: 1118795869}
-  canvas: {fileID: 760644063}
-  logoutButton: {fileID: 1629199168}
-  ProfilButton: {fileID: 1086644896}
-  submitButton: {fileID: 1551455656}
-  loginButton: {fileID: 528641302}
-  loginMailField: {fileID: 355966616}
-  loginPasswordField: {fileID: 2134292722}
-  firstnameField: {fileID: 1935351015}
-  lastnameField: {fileID: 1267275513}
-  mailField: {fileID: 597542720}
-  passwordField: {fileID: 166123798}
-  confirmedPasswordField: {fileID: 415141222}
 --- !u!1 &1118795867
 GameObject:
   m_ObjectHideFlags: 0
@@ -9582,7 +9582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1047, y: -914}
+  m_AnchoredPosition: {x: 122, y: -914}
   m_SizeDelta: {x: 213.2, y: 1287.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629199168
@@ -10508,7 +10508,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.8}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 428.70007, y: -920.4}
+  m_AnchoredPosition: {x: -496.3, y: -920.4}
   m_SizeDelta: {x: -947.8, y: -101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805808174

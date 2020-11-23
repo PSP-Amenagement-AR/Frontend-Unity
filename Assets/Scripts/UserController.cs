@@ -56,14 +56,22 @@ public class UserController : MonoBehaviour
             { 
                 try
                 {
-                    var sendRequest = Login();
-                    if (sendRequest != null)
+                    if (GlobalStatus.token != "")
                     {
-                        canvas.CloseLogin();
-                        GlobalStatus.token = sendRequest["token"].Value;
-                        ProfilButton.gameObject.SetActive(true);
-                        Debug.Log("token : " + GlobalStatus.token);
+                        InitPopup("Please disconnect the actual account before reconnect");
+                        Debug.Log("token already exist : " + GlobalStatus.token);
+                    } else
+                    {
+                        var sendRequest = Login();
+                        if (sendRequest != null)
+                        {
+                            canvas.CloseLogin();
+                            GlobalStatus.token = sendRequest["token"].Value;
+                            ProfilButton.gameObject.SetActive(true);
+                            Debug.Log("token : " + GlobalStatus.token);
+                        }
                     }
+                    
                 }
                 catch (Exception e)
                 {
@@ -74,7 +82,7 @@ public class UserController : MonoBehaviour
 
         logoutButton.onClick.AddListener(() => 
         {
-            Logout();
+            var sendRequest = Logout();
             canvas.CloseProfil();
             ProfilButton.gameObject.SetActive(false);
         });
@@ -113,31 +121,23 @@ public class UserController : MonoBehaviour
 
     JSONNode Login()
     {
-        if (GlobalStatus.token != "")
-        {
-            InitPopup("Please disconnect the actual account before reconnect");
-            return null;
-        }
-        else
-        {
-            var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
-            JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+      var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
+      JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
-            if (request.responseCode == 200 || request.responseCode == 201)
-                return dataJSON;
-            else if (request.responseCode == 404)
-            {
-                InitPopup("The credentials are incorrect");
-                return null;
-            }
-            else if (request.responseCode == 0)
-            {
-                InitPopup("No connection ...");
-                return null;
-            }
-            else
-                return null;
-        }
+      if (request.responseCode == 200 || request.responseCode == 201)
+           return dataJSON;
+       else if (request.responseCode == 404)
+       {
+           InitPopup("The credentials are incorrect");
+           return null;
+       }
+       else if (request.responseCode == 0)
+       {
+           InitPopup("No connection ...");
+           return null;
+       }
+       else
+           return null;
     }
 
     JSONNode Logout()
@@ -145,13 +145,18 @@ public class UserController : MonoBehaviour
         var request = webApi.SendApiRequest("/users/disconnect", "GET");
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
-        if (request.responseCode != 401 || request.responseCode != 500)
+        if (request.responseCode == 204)
         {
             InitPopup("Disconnected");
             GlobalStatus.token = "";
+            Debug.Log("Bye : " + GlobalStatus.token);
             return dataJSON;
+        } else
+        {
+            InitPopup("Error connection");
+            return null;
         }
-        return null;
+        
     }
 
     bool RegistrationCheckInformations()
