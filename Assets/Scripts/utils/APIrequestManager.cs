@@ -17,6 +17,11 @@ public class APIrequestManager : MonoBehaviour
         return CreateApiRequest(GlobalStatus.BaseUrl + actionUrl, UnityWebRequest.kHttpVerbPOST, body);
     }
 
+    UnityWebRequest CreateApiPutRequest(string actionUrl, object body = null)
+    {
+        return CreateApiRequest(GlobalStatus.BaseUrl + actionUrl, UnityWebRequest.kHttpVerbPUT, body);
+    }
+
     UnityWebRequest CreateApiRequest(string url, string method, object body)
     {
         string bodyString = null;
@@ -51,6 +56,9 @@ public class APIrequestManager : MonoBehaviour
                 break;
             case "POST":
                 request = CreateApiPostRequest(actionUrl, body);
+                break;
+            case "PUT":
+                request = CreateApiPutRequest(actionUrl, body);
                 break;
         }
 
