@@ -54,6 +54,7 @@ public class UserController : MonoBehaviour
                     {
                         canvas.CloseRegistration();
                         canvas.OpenLogin();
+                        CleanRegistrationFields();
                     }
                 }
                 catch (Exception e)
@@ -90,6 +91,8 @@ public class UserController : MonoBehaviour
                             lastnameProfilField.text = this.lastname;
                             mailProfilField.text = loginMailField.text.ToString();
                             passwordProfilField.text = loginPasswordField.text.ToString();
+
+                            CleanLoginFields();
                         }
                     }
                 }
@@ -308,6 +311,21 @@ public class UserController : MonoBehaviour
         this.firstname = "";
         this.lastname = "";
         this.id = "";
+    }
+
+    void CleanRegistrationFields()
+    {
+        firstnameField.text = "";
+        lastnameField.text = "";
+        mailField.text = "";
+        passwordField.text = "";
+        confirmedPasswordField.text = "";
+    }
+
+    void CleanLoginFields()
+    {
+        loginMailField.text = "";
+        loginPasswordField.text = "";
     }
 }
 
