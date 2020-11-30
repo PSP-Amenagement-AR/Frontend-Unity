@@ -27,11 +27,11 @@ jobs:
         - name: Build OSX Player
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
         
-        - name: Archive Windows Build
-          uses: actions/upload-artifact@v1
-          with:
-            name: CISampleWin64Binary
-            path: ./bin-win64
+        #- name: Archive Windows Build
+        #  uses: actions/upload-artifact@v1
+        #  with:
+        #    name: CISampleWin64Binary
+        #    path: ./bin-win64
 
         - name: Archive Mac Build
           uses: actions/upload-artifact@v1
