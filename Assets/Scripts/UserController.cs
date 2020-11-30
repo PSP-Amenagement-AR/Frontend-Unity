@@ -17,6 +17,7 @@ public class UserController : MonoBehaviour
     public Button submitButton;
     public Button loginButton;
     public Button updateButton;
+    public Button deleteButton;
 
     // Login fields
     public InputField loginMailField;
@@ -35,7 +36,10 @@ public class UserController : MonoBehaviour
     public InputField mailProfilField;
     public InputField passwordProfilField;
 
-   //APIrequestManager webApi = new APIrequestManager();
+    // User informations
+    private string firstname = "";
+    private string lastname = "";
+    private string id = "";
 
     private void Awake()
     {
@@ -68,7 +72,6 @@ public class UserController : MonoBehaviour
                     if (GlobalStatus.token != "")
                     {
                         InitPopup("Please disconnect the actual account before reconnect");
-                        Debug.Log("token already exist : " + GlobalStatus.token);
                     } else
                     {
                         var sendRequest = Login();
@@ -77,14 +80,14 @@ public class UserController : MonoBehaviour
                             canvas.CloseLogin();
 
                             GlobalStatus.token = sendRequest["token"].Value;
-                            GlobalStatus.firstname = sendRequest["firstName"].Value;
-                            GlobalStatus.lastname = sendRequest["lastName"].Value;
+                            this.firstname = sendRequest["firstName"].Value;
+                            this.lastname = sendRequest["lastName"].Value;
+                            this.id = sendRequest["id"].Value;
 
                             ProfilButton.gameObject.SetActive(true);
-                            Debug.Log("token : " + GlobalStatus.token);
 
-                            firstnameProfilField.text = GlobalStatus.firstname;
-                            lastnameProfilField.text = GlobalStatus.lastname;
+                            firstnameProfilField.text = this.firstname;
+                            lastnameProfilField.text = this.lastname;
                             mailProfilField.text = loginMailField.text.ToString();
                             passwordProfilField.text = loginPasswordField.text.ToString();
                         }
@@ -106,8 +109,15 @@ public class UserController : MonoBehaviour
 
         updateButton.onClick.AddListener(() =>
         {
-            var sendRequest = UpdateUser();
+            var sendRequest = UpdateInfos();
             canvas.CloseProfil();
+        });
+
+        deleteButton.onClick.AddListener(() =>
+        {
+            var sendRequest = Deletion();
+            canvas.CloseProfil();
+            //ProfilButton.gameObject.SetActive(false);
         });
     }
 
@@ -124,8 +134,6 @@ public class UserController : MonoBehaviour
     JSONNode Registration()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString(), firstName = firstnameField.text.ToString(), lastName = lastnameField.text.ToString() });
-        //var request = webApi.SendApiRequest("/users/register", "POST", new Users(mailField.text.ToString(), passwordField.text.ToString(), firstnameField.text.ToString(), lastnameField.text.ToString()));
-
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
         if (request.responseCode == 200 || request.responseCode == 201)
@@ -147,7 +155,6 @@ public class UserController : MonoBehaviour
     JSONNode Login()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
-        //var request = webApi.SendApiRequest("/users/login", "POST", new Users ( loginMailField.text.ToString(), loginPasswordField.text.ToString() ));
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
       if (request.responseCode == 200 || request.responseCode == 201)
@@ -174,10 +181,7 @@ public class UserController : MonoBehaviour
         if (request.responseCode == 204)
         {
             InitPopup("Disconnected");
-            GlobalStatus.token = "";
-            GlobalStatus.firstname = "";
-            GlobalStatus.lastname = "";
-            Debug.Log("Bye : " + GlobalStatus.token);
+            DeleteUserInformations();
             return dataJSON;
         } else
         {
@@ -187,13 +191,40 @@ public class UserController : MonoBehaviour
         
     }
 
-    JSONNode UpdateUser()
+    JSONNode UpdateInfos()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users", "PUT", new Users { email = mailProfilField.text.ToString(), password = passwordProfilField.text.ToString(), firstName = firstnameProfilField.text.ToString(), lastName = lastnameProfilField.text.ToString() });
-
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
-        Debug.Log(request.downloadHandler.text);
-        return dataJSON;
+
+        if (request.responseCode == 200)
+        {
+            InitPopup("Informations updated");
+            return dataJSON;
+        } else
+        {
+            InitPopup("Error connection");
+            return null;
+        }
+    }
+
+    JSONNode Deletion()
+    {
+        var url = "/users" + this.id;
+        var request = GlobalStatus.webApi.SendApiRequest(url, "DELETE");
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+        Debug.Log("id : " + this.id);
+        Debug.Log("Deletion : " + request.responseCode);
+        if (request.responseCode == 204)
+        {
+            InitPopup("Account deleted");
+            DeleteUserInformations();
+            return dataJSON;
+        }
+        else
+        {
+            InitPopup("You don't have the rights for delete an account");
+            return null;
+        }
     }
 
     bool RegistrationCheckInformations()
@@ -270,6 +301,14 @@ public class UserController : MonoBehaviour
         yield return new WaitForSeconds(2);
         popup.SetActive(false);
     }
+
+    void DeleteUserInformations()
+    {
+        GlobalStatus.token = "";
+        this.firstname = "";
+        this.lastname = "";
+        this.id = "";
+    }
 }
 
 public class Users
@@ -278,23 +317,4 @@ public class Users
     public string password;
     public string firstName;
     public string lastName;
-
-    /*public Users(string email, string password, string firstname, string lastname)
-    {
-        this.email = email;
-        this.password = password;
-        this.firstName = firstname;
-        this.lastName = lastname;
-    }
-
-    public Users(string email, string password)
-    {
-        this.email = email;
-        this.password = password;
-    }
-
-    public Users(string password)
-    {
-        this.password = password;
-    }*/
 }
