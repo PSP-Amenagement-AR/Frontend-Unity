@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: gableroux/unity3d:2019.3.1f1-windows-64-ci-generator-fails-to-generate-version-definition-correclty
+    container: gableroux/unity3d:2019.3.1f1
     steps:
         - name: Checkout Project
           uses: actions/checkout@v1
