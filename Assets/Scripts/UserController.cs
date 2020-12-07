@@ -18,6 +18,8 @@ public class UserController : MonoBehaviour
     public Button loginButton;
     public Button updateButton;
     public Button deleteButton;
+    public Button returnLoginButton;
+    public Button returnRegistrationButton;
 
     // Login fields
     public InputField loginMailField;
@@ -54,7 +56,7 @@ public class UserController : MonoBehaviour
                     {
                         canvas.CloseRegistration();
                         canvas.OpenLogin();
-                        CleanRegistrationFields(true);
+                        CleanFields(true);
                     }
                 }
                 catch (Exception e)
@@ -84,7 +86,7 @@ public class UserController : MonoBehaviour
                             this.firstname = sendRequest["firstName"].Value;
                             this.lastname = sendRequest["lastName"].Value;
                             this.id = sendRequest["id"].Value;
-
+                            InitPopup("Welcome " + this.firstname + " " + this.lastname + " !");
                             ProfilButton.gameObject.SetActive(true);
 
                             firstnameProfilField.text = this.firstname;
@@ -92,7 +94,7 @@ public class UserController : MonoBehaviour
                             mailProfilField.text = loginMailField.text.ToString();
                             passwordProfilField.text = loginPasswordField.text.ToString();
 
-                            CleanRegistrationFields(false);
+                            CleanFields(false);
                         }
                     }
                 }
@@ -121,6 +123,16 @@ public class UserController : MonoBehaviour
             var sendRequest = Deletion();
             canvas.CloseProfil();
             //ProfilButton.gameObject.SetActive(false);
+        });
+
+        returnLoginButton.onClick.AddListener(() =>
+        {
+            CleanFields(false);
+        });
+
+        returnRegistrationButton.onClick.AddListener(() =>
+        {
+            CleanFields(true);
         });
     }
 
@@ -313,7 +325,7 @@ public class UserController : MonoBehaviour
         this.id = "";
     }
 
-    void CleanRegistrationFields(bool flag)
+    void CleanFields(bool flag)
     {
         if (flag)
         {
