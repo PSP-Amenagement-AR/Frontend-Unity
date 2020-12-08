@@ -11,19 +11,37 @@ public class UserController : MonoBehaviour
     public Text popupText;
     public ScreenHandler canvas;
 
+    // Buttons
+    public Button logoutButton;
+    public Button ProfilButton;
     public Button submitButton;
     public Button loginButton;
+    public Button updateButton;
+    public Button deleteButton;
+    public Button returnLoginButton;
+    public Button returnRegistrationButton;
 
+    // Login fields
     public InputField loginMailField;
     public InputField loginPasswordField;
 
+    // Registration fields
     public InputField firstnameField;
     public InputField lastnameField;
     public InputField mailField;
     public InputField passwordField;
     public InputField confirmedPasswordField;
 
-    APIrequestManager webApi = new APIrequestManager();
+    // Profil page fields (update)
+    public InputField firstnameProfilField;
+    public InputField lastnameProfilField;
+    public InputField mailProfilField;
+    public InputField passwordProfilField;
+
+    // User informations
+    private string firstname = "";
+    private string lastname = "";
+    private string id = "";
 
     private void Awake()
     {
@@ -38,6 +56,7 @@ public class UserController : MonoBehaviour
                     {
                         canvas.CloseRegistration();
                         canvas.OpenLogin();
+                        CleanFields(true);
                     }
                 }
                 catch (Exception e)
@@ -53,12 +72,30 @@ public class UserController : MonoBehaviour
             { 
                 try
                 {
-                    var sendRequest = Login();
-                    if (sendRequest != null)
+                    if (GlobalStatus.token != "")
                     {
-                        canvas.CloseLogin();
-                        GlobalStatus.token = sendRequest["token"].Value;
-                        Debug.Log("token : " + GlobalStatus.token);
+                        InitPopup("Please disconnect the actual account before reconnect");
+                    } else
+                    {
+                        var sendRequest = Login();
+                        if (sendRequest != null)
+                        {
+                            canvas.CloseLogin();
+
+                            GlobalStatus.token = sendRequest["token"].Value;
+                            this.firstname = sendRequest["firstName"].Value;
+                            this.lastname = sendRequest["lastName"].Value;
+                            this.id = sendRequest["id"].Value;
+                            InitPopup("Welcome " + this.firstname + " " + this.lastname + " !");
+                            ProfilButton.gameObject.SetActive(true);
+
+                            firstnameProfilField.text = this.firstname;
+                            lastnameProfilField.text = this.lastname;
+                            mailProfilField.text = loginMailField.text.ToString();
+                            passwordProfilField.text = loginPasswordField.text.ToString();
+
+                            CleanFields(false);
+                        }
                     }
                 }
                 catch (Exception e)
@@ -66,6 +103,36 @@ public class UserController : MonoBehaviour
                     Debug.Log("Error : " + e.Message);
                 }
             }
+        });
+
+        logoutButton.onClick.AddListener(() => 
+        {
+            var sendRequest = Logout();
+            canvas.CloseProfil();
+            ProfilButton.gameObject.SetActive(false);
+        });
+
+        updateButton.onClick.AddListener(() =>
+        {
+            var sendRequest = UpdateInfos();
+            canvas.CloseProfil();
+        });
+
+        deleteButton.onClick.AddListener(() =>
+        {
+            var sendRequest = Deletion();
+            canvas.CloseProfil();
+            //ProfilButton.gameObject.SetActive(false);
+        });
+
+        returnLoginButton.onClick.AddListener(() =>
+        {
+            CleanFields(false);
+        });
+
+        returnRegistrationButton.onClick.AddListener(() =>
+        {
+            CleanFields(true);
         });
     }
 
@@ -81,7 +148,7 @@ public class UserController : MonoBehaviour
 
     JSONNode Registration()
     {
-        var request = webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString(), firstName = firstnameField.text.ToString(), lastName = lastnameField.text.ToString() }); // A complèter avec les champs "nom" et "prenom" lorsque le Back sera à jour
+        var request = GlobalStatus.webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString(), firstName = firstnameField.text.ToString(), lastName = lastnameField.text.ToString() });
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
 
         if (request.responseCode == 200 || request.responseCode == 201)
@@ -102,30 +169,76 @@ public class UserController : MonoBehaviour
 
     JSONNode Login()
     {
-        if (GlobalStatus.token != "")
+        var request = GlobalStatus.webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+      if (request.responseCode == 200 || request.responseCode == 201)
+            return dataJSON;
+       else if (request.responseCode == 404)
+       {
+           InitPopup("The credentials are incorrect");
+           return null;
+       }
+       else if (request.responseCode == 0)
+       {
+           InitPopup("No connection ...");
+           return null;
+       }
+       else
+           return null;
+    }
+
+    JSONNode Logout()
+    {
+        var request = GlobalStatus.webApi.SendApiRequest("/users/disconnect", "GET");
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 204)
         {
-            InitPopup("Please disconnect the actual account before reconnect");
+            InitPopup("Disconnected");
+            DeleteUserInformations();
+            return dataJSON;
+        } else
+        {
+            InitPopup("Error connection");
             return null;
+        }
+        
+    }
+
+    JSONNode UpdateInfos()
+    {
+        var request = GlobalStatus.webApi.SendApiRequest("/users", "PUT", new Users { email = mailProfilField.text.ToString(), password = passwordProfilField.text.ToString(), firstName = firstnameProfilField.text.ToString(), lastName = lastnameProfilField.text.ToString() });
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+
+        if (request.responseCode == 200)
+        {
+            InitPopup("Informations updated");
+            return dataJSON;
+        } else
+        {
+            InitPopup("Error connection");
+            return null;
+        }
+    }
+
+    JSONNode Deletion()
+    {
+        var url = "/users" + this.id;
+        var request = GlobalStatus.webApi.SendApiRequest(url, "DELETE");
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+        Debug.Log("id : " + this.id);
+        Debug.Log("Deletion : " + request.responseCode);
+        if (request.responseCode == 204)
+        {
+            InitPopup("Account deleted");
+            DeleteUserInformations();
+            return dataJSON;
         }
         else
         {
-            var request = webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
-            JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
-
-            if (request.responseCode == 200 || request.responseCode == 201)
-                return dataJSON;
-            else if (request.responseCode == 404)
-            {
-                InitPopup("The credentials are incorrect");
-                return null;
-            }
-            else if (request.responseCode == 0)
-            {
-                InitPopup("No connection ...");
-                return null;
-            }
-            else
-                return null;
+            InitPopup("You don't have the rights for delete an account");
+            return null;
         }
     }
 
@@ -202,6 +315,31 @@ public class UserController : MonoBehaviour
         popup.SetActive(true);
         yield return new WaitForSeconds(2);
         popup.SetActive(false);
+    }
+
+    void DeleteUserInformations()
+    {
+        GlobalStatus.token = "";
+        this.firstname = "";
+        this.lastname = "";
+        this.id = "";
+    }
+
+    void CleanFields(bool flag)
+    {
+        if (flag)
+        {
+            firstnameField.text = "";
+            lastnameField.text = "";
+            mailField.text = "";
+            passwordField.text = "";
+            confirmedPasswordField.text = "";
+        } else
+        {
+            loginMailField.text = "";
+            loginPasswordField.text = "";
+        }
+        
     }
 }
 
