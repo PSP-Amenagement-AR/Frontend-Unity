@@ -120,9 +120,8 @@ public class UserController : MonoBehaviour
 
         deleteButton.onClick.AddListener(() =>
         {
-            var sendRequest = Deletion();
+            //var sendRequest = Deletion();
             canvas.CloseProfil();
-            //ProfilButton.gameObject.SetActive(false);
         });
 
         returnLoginButton.onClick.AddListener(() =>
@@ -224,21 +223,22 @@ public class UserController : MonoBehaviour
 
     JSONNode Deletion()
     {
-        var url = "/users" + this.id;
+        var url = "/users/" + this.id;
         var request = GlobalStatus.webApi.SendApiRequest(url, "DELETE");
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
         Debug.Log("id : " + this.id);
         Debug.Log("Deletion : " + request.responseCode);
-        if (request.responseCode == 204)
-        {
-            InitPopup("Account deleted");
-            DeleteUserInformations();
-            return dataJSON;
-        }
-        else
+        if (request.responseCode == 401)
         {
             InitPopup("You don't have the rights for delete an account");
             return null;
+        }
+        else
+        {
+            InitPopup("Account deleted" + request.responseCode);
+            DeleteUserInformations();
+            ProfilButton.gameObject.SetActive(false);
+            return dataJSON;
         }
     }
 
