@@ -146,7 +146,29 @@ public class ARItemsHandling : MonoBehaviour
 
     public void AddItem(GameObject objectModel, Vector3 position, Quaternion rotation)
     {
+        // Edit Materials
+        if (objectModel.name == "chair_1")
+        {
+            Material cloth1 = (Material)Resources.Load("Materials/cloth_1");
+            Material cloth2 = (Material)Resources.Load("Materials/cloth_2");
+            GameObject child = objectModel.transform.GetChild(0).gameObject;
+
+            // Edit Prefab Chair
+            GameObject seat = objectModel.transform.Find("seat").gameObject;
+            GameObject metal = objectModel.transform.Find("metal").gameObject;
+            GameObject plastic = objectModel.transform.Find("plastic").gameObject;
+
+            // Apply Color & Material on Prefab
+            //Texture2D tempTexture = (Texture2D)Resources.Load("Items/chair_1/Boucle.jpg") as Texture2D;
+            seat.GetComponent<MeshRenderer>().material = cloth1;
+            //seat.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.red);
+            metal.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.blue);
+            plastic.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.green);
+        }
+        //****
+
         GameObject spawnedObject = Instantiate(objectModel, position, rotation);
+
         spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
         if (ARSession.state == ARSessionState.Unsupported)
         {
