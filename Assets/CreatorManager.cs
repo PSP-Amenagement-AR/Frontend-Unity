@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Linq;
+
+public struct Appearance
+{
+    public string color;
+    public string texture;
+}
 
 public class CreatorManager : MonoBehaviour
 {
     private string objectType;
     private GameObject prefab;
-    private Dictionary<GameObject, string> features;
-    //[SerializeField]
+    //private Dictionary<GameObject, string> features;
+    private Dictionary<GameObject, Appearance> features;
     private GameObject canvasTemplate;
     [SerializeField]
     private GameObject content;
+    [SerializeField]
+    Text indice;
 
     void Start()
     {
@@ -31,12 +41,6 @@ public class CreatorManager : MonoBehaviour
         SelectFeatures();
 
         UpdateCreatorManager();
-        /*foreach(var pair in this.features)
-        {
-            GameObject feature = pair.Key;
-            string color = pair.Value;
-            Debug.Log("-> " + feature.name + " is in " + color);
-        }*/
     }
 
     public GameObject SetPrefab()
@@ -48,13 +52,17 @@ public class CreatorManager : MonoBehaviour
 
     public void SelectFeatures()
     {
+        Appearance val;
         int childs = this.prefab.transform.childCount;
-        this.features = new Dictionary<GameObject, string>();
+        this.features = new Dictionary<GameObject, Appearance>();
 
         for (int i = 0; i < childs; i++)
         {
+            val.color = "white";
+            val.texture = "base_material";
+
             GameObject feature = this.prefab.transform.GetChild(i).gameObject;
-            this.features.Add(feature, "white");
+            this.features.Add(feature, val);
         }
     }
 
@@ -76,6 +84,9 @@ public class CreatorManager : MonoBehaviour
 
                 Text name = GameObject.Find("Name").GetComponent<Text>();
                 name.text = pair.Key.name;
+                Text index = GameObject.Find("Indice").GetComponent<Text>();
+                index.text = indice.ToString();
+
                 newCanvas.transform.SetParent(canvasTemplate.transform.parent, false);
             }
             indice += 1;
@@ -84,6 +95,8 @@ public class CreatorManager : MonoBehaviour
 
     public void ClearFeatures()
     {
+        // TODO
+        // Reset le label Color à "white"
         int counter = content.transform.childCount;
         GameObject feature_to_remove = new GameObject();
 
@@ -97,6 +110,43 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    public void ApplyColor(string pColor)
+    {
+        int index = Convert.ToInt16(this.indice.text);
+
+        for (int i = 0; i < this.features.Count; i++)
+        {
+            if (i == index)
+            {
+                Appearance val = this.features.ElementAt(i).Value;
+                val.color = pColor;
+                this.features[this.features.ElementAt(i).Key] = val;
+
+                // Update Color label in the feature
+                GameObject actualFeature = content.transform.GetChild(i).gameObject;
+                GameObject colorObject = actualFeature.transform.Find("Color").gameObject;
+
+                Text colorLabel = colorObject.GetComponent<Text>();
+                colorLabel.text = pColor;
+            }
+        }
+    }
+
+    public void SetIndice(Text indice)
+    {
+        this.indice = indice;
+    }
+
+    public void ReadFeatures()
+    {
+        foreach(var pair in this.features)
+        {
+            GameObject feature = pair.Key;
+            string col = pair.Value.color;
+            string mat = pair.Value.texture;
+            Debug.Log("-> " + feature.name + " is in " + col + " and " + mat);
+        }
+    }
 }
 
 /*
