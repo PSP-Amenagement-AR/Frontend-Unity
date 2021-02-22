@@ -301,6 +301,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 256520667}
+        m_MethodName: ClearFeatures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &10217794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3036,7 +3047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa257c25d507cd45b9cbdf9d7cfa0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasTemplate: {fileID: 465198320}
+  content: {fileID: 1954279285}
 --- !u!114 &256520668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17090,7 +17101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa257c25d507cd45b9cbdf9d7cfa0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasTemplate: {fileID: 465198320}
+  content: {fileID: 1954279285}
 --- !u!1 &2046793573
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,14 @@ public class CreatorManager : MonoBehaviour
     private string objectType;
     private GameObject prefab;
     private Dictionary<GameObject, string> features;
-    [SerializeField]
+    //[SerializeField]
     private GameObject canvasTemplate;
+    [SerializeField]
+    private GameObject content;
 
     void Start()
     {
-
+        canvasTemplate = this.content.transform.GetChild(0).gameObject;
     }
 
     void Update()
@@ -79,6 +81,22 @@ public class CreatorManager : MonoBehaviour
             indice += 1;
         }
     }
+
+    public void ClearFeatures()
+    {
+        int counter = content.transform.childCount;
+        GameObject feature_to_remove = new GameObject();
+
+        for (int i = 0; i < counter; i++)
+        {
+            feature_to_remove = this.content.transform.GetChild(i).gameObject;
+            if (i != 0)
+            {
+                Destroy(feature_to_remove);
+            }
+        }
+    }
+
 }
 
 /*
