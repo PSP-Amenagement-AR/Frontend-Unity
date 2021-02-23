@@ -15,9 +15,9 @@ public class CreatorManager : MonoBehaviour
 {
     private string objectType;
     private GameObject prefab;
-    //private Dictionary<GameObject, string> features;
     private Dictionary<GameObject, Appearance> features;
     private GameObject canvasTemplate;
+
     [SerializeField]
     private GameObject content;
     [SerializeField]
@@ -95,15 +95,18 @@ public class CreatorManager : MonoBehaviour
 
     public void ClearFeatures()
     {
-        // TODO
-        // Reset le label Color à "white"
         int counter = content.transform.childCount;
         GameObject feature_to_remove = new GameObject();
 
         for (int i = 0; i < counter; i++)
         {
             feature_to_remove = this.content.transform.GetChild(i).gameObject;
-            if (i != 0)
+            if (i == 0)
+            {
+                feature_to_remove.transform.Find("Color").gameObject.GetComponent<Text>().text = "white";
+                feature_to_remove.transform.Find("Texture").gameObject.GetComponent<Text>().text = "base_material";
+            }
+            else
             {
                 Destroy(feature_to_remove);
             }
@@ -128,6 +131,28 @@ public class CreatorManager : MonoBehaviour
 
                 Text colorLabel = colorObject.GetComponent<Text>();
                 colorLabel.text = pColor;
+            }
+        }
+    }
+
+    public void ApplyTexture(string pTexture)
+    {
+        int index = Convert.ToInt16(this.indice.text);
+
+        for (int i = 0; i < this.features.Count; i++)
+        {
+            if (i == index)
+            {
+                Appearance val = this.features.ElementAt(i).Value;
+                val.texture = pTexture;
+                this.features[this.features.ElementAt(i).Key] = val;
+
+                // Update Texture label in the feature
+                GameObject actualFeature = content.transform.GetChild(i).gameObject;
+                GameObject textureObject = actualFeature.transform.Find("Texture").gameObject;
+
+                Text textureLabel = textureObject.GetComponent<Text>();
+                textureLabel.text = pTexture;
             }
         }
     }
