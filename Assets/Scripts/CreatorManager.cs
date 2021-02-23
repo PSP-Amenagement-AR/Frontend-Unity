@@ -22,6 +22,10 @@ public class CreatorManager : MonoBehaviour
     private GameObject content;
     [SerializeField]
     Text indice;
+    [SerializeField]
+    private GameObject colorWindow;
+    [SerializeField]
+    private GameObject textureWindow;
 
     void Start()
     {
@@ -171,6 +175,16 @@ public class CreatorManager : MonoBehaviour
             string mat = pair.Value.texture;
             Debug.Log("-> " + feature.name + " is in " + col + " and " + mat);
         }
+    }
+
+    public void OpenColorPalette()
+    {
+        if (!this.textureWindow.activeSelf) { this.colorWindow.SetActive(true); }
+    }
+
+    public void OpenTexturePalette()
+    {
+        if (!this.colorWindow.activeSelf) { this.textureWindow.SetActive(true); }
     }
 }
 
