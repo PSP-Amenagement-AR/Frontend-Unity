@@ -982,7 +982,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 760644063}
         m_MethodName: ClosePrefabManager
         m_Mode: 1
@@ -1007,6 +1007,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 256520667}
         m_MethodName: ClearFeatures
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2037550872}
+        m_MethodName: EditNewObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1141,7 +1152,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: white
+          m_StringArgument: default
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -1683,7 +1694,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: orange
+          m_StringArgument: '#FFA600'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -2297,7 +2308,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: yellow
+          m_StringArgument: '#ECFF00'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -4148,7 +4159,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: black
+          m_StringArgument: '#000000'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -4557,7 +4568,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: red
+          m_StringArgument: '#FF0000'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -5250,7 +5261,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: blue
+          m_StringArgument: '#0F92FF'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -5836,7 +5847,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkyellow
+          m_StringArgument: '#8B8B01'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -6588,7 +6599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: white
+  m_Text: default
 --- !u!222 &455935101
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7192,7 +7203,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkblue
+          m_StringArgument: '#000A71'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -7331,7 +7342,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: brown
+          m_StringArgument: '#AB6811'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -12513,7 +12524,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: green
+          m_StringArgument: '#23FF00'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -13823,7 +13834,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: cyan
+          m_StringArgument: '#00FFF3'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -14339,7 +14350,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkmagenta
+          m_StringArgument: '#95008C'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -15656,7 +15667,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkgreen
+          m_StringArgument: '#007B18'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -17399,7 +17410,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: magenta
+          m_StringArgument: '#F000FF'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -17769,7 +17780,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkbrown
+          m_StringArgument: '#5E3510'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -21076,7 +21087,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkgray
+          m_StringArgument: '#565656'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -22521,7 +22532,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: gray
+          m_StringArgument: '#838383'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}
@@ -22660,7 +22671,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: darkred
+          m_StringArgument: '#A30000'
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1741628084}

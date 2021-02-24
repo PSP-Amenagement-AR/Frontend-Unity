@@ -4,6 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Linq;
+using UnityEditor;
+//using System.Windows.ColorConverter;
+
+// TODO
+//
+// Appliquer les couleurs et textures au Prefab
+// Possibilité de renseigner un nom pour l'objet
+// Mettre l'objet créé dans l'inventaire
+// Ajouter d'autres objets dans le Customiseur de prefab
+
+// Possibilité de visualiser l'objet avant de l'enregistrer ??
+// lorsque un Color ou Texture palette est ouvert, bloquer les autres features
+
+// Enregistrer l'objet en Back
+// SI l'utilisateur est connecté, le Prefab est rengistré en Back & ajouté dans l'inventaire
+// SINON le prefab est juste ajotué dans l'inventaire
+//
+// TODO
 
 public struct Appearance
 {
@@ -62,7 +80,7 @@ public class CreatorManager : MonoBehaviour
 
         for (int i = 0; i < childs; i++)
         {
-            val.color = "white";
+            val.color = "default";
             val.texture = "base_material";
 
             GameObject feature = this.prefab.transform.GetChild(i).gameObject;
@@ -107,7 +125,7 @@ public class CreatorManager : MonoBehaviour
             feature_to_remove = this.content.transform.GetChild(i).gameObject;
             if (i == 0)
             {
-                feature_to_remove.transform.Find("Color").gameObject.GetComponent<Text>().text = "white";
+                feature_to_remove.transform.Find("Color").gameObject.GetComponent<Text>().text = "default";
                 feature_to_remove.transform.Find("Texture").gameObject.GetComponent<Text>().text = "base_material";
             }
             else
@@ -185,6 +203,40 @@ public class CreatorManager : MonoBehaviour
     public void OpenTexturePalette()
     {
         if (!this.colorWindow.activeSelf) { this.textureWindow.SetActive(true); }
+    }
+
+    public void EditNewObject()
+    {
+        int count = 0;
+        GameObject feature_to_edit;
+        string feature_name;
+        //string feature_color;
+        //string feature_texture;
+        string valColor;
+        string valTexture;
+        Color myColor;
+        Material myMaterial;
+        string path_to_material;
+
+        foreach (var pair in this.features)
+        {
+            feature_name = pair.Key.name;
+            valColor = pair.Value.color;
+            valTexture = pair.Value.texture;
+
+            path_to_material = "Materials/" + valTexture;
+            myMaterial = (Material)Resources.Load(path_to_material);
+
+            myColor = Color.clear;
+            if (valColor == "default") { valColor = "#FFFFFF"; }
+            ColorUtility.TryParseHtmlString(valColor, out myColor);
+
+            feature_to_edit = this.prefab.transform.Find(feature_name).gameObject; // peut être pas nécessaire, on a deja le GameObject dans le Dico en pair.Key
+            feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
+            feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
+
+            Debug.Log(feature_to_edit.name + " will be in " + myColor + " and " + path_to_material);
+        }
     }
 }
 
