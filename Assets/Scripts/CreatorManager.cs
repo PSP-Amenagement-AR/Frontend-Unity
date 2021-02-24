@@ -9,12 +9,11 @@ using UnityEditor;
 
 // TODO
 //
-// Appliquer les couleurs et textures au Prefab
+// Copier le prefab utilisé dans un nouveau repo "/Items/MonObjet" et modifier ce prefab
 // Possibilité de renseigner un nom pour l'objet
 // Mettre l'objet créé dans l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
 
-// Possibilité de visualiser l'objet avant de l'enregistrer ??
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
 
 // Enregistrer l'objet en Back
@@ -44,6 +43,8 @@ public class CreatorManager : MonoBehaviour
     private GameObject colorWindow;
     [SerializeField]
     private GameObject textureWindow;
+
+    public ARItemsHandling itemsHandling;
 
     void Start()
     {
@@ -231,12 +232,17 @@ public class CreatorManager : MonoBehaviour
             if (valColor == "default") { valColor = "#FFFFFF"; }
             ColorUtility.TryParseHtmlString(valColor, out myColor);
 
-            feature_to_edit = this.prefab.transform.Find(feature_name).gameObject; // peut être pas nécessaire, on a deja le GameObject dans le Dico en pair.Key
+            feature_to_edit = this.prefab.transform.Find(feature_name).gameObject;
             feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
             feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
 
             Debug.Log(feature_to_edit.name + " will be in " + myColor + " and " + path_to_material);
         }
+    }
+
+    public void VisualizeObject()
+    {
+        
     }
 }
 
