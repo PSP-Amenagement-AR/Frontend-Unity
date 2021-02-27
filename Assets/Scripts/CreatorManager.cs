@@ -5,12 +5,13 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using UnityEditor;
+using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 //using System.Windows.ColorConverter;
 
 // TODO
 //
-// Copier le prefab utilisé dans un nouveau repo "/Items/MonObjet" et modifier ce prefab
-// Possibilité de renseigner un nom pour l'objet
 // Mettre l'objet créé dans l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
 
@@ -22,18 +23,13 @@ using UnityEditor;
 //
 // TODO
 
-public struct Appearance
-{
-    public string color;
-    public string texture;
-}
-
 public class CreatorManager : MonoBehaviour
 {
     private string objectType;
     private GameObject prefab;
     private Dictionary<GameObject, Appearance> features;
     private GameObject canvasTemplate;
+    private string title;
 
     [SerializeField]
     private GameObject content;
@@ -51,10 +47,7 @@ public class CreatorManager : MonoBehaviour
         canvasTemplate = this.content.transform.GetChild(0).gameObject;
     }
 
-    void Update()
-    {
-        
-    }
+    void Update() {}
 
     public void SetObject(string name)
     {
@@ -85,6 +78,7 @@ public class CreatorManager : MonoBehaviour
             val.texture = "base_material";
 
             GameObject feature = this.prefab.transform.GetChild(i).gameObject;
+            val.name = feature.name;
             this.features.Add(feature, val);
         }
     }
@@ -211,8 +205,6 @@ public class CreatorManager : MonoBehaviour
         int count = 0;
         GameObject feature_to_edit;
         string feature_name;
-        //string feature_color;
-        //string feature_texture;
         string valColor;
         string valTexture;
         Color myColor;
@@ -235,19 +227,42 @@ public class CreatorManager : MonoBehaviour
             feature_to_edit = this.prefab.transform.Find(feature_name).gameObject;
             feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
             feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
-
-            Debug.Log(feature_to_edit.name + " will be in " + myColor + " and " + path_to_material);
         }
     }
 
-    public void VisualizeObject()
+    public void SetTitle(Text pTitle)
     {
+        this.title = pTitle.text;
+    }
+
+    public void SaveObject()
+    {
+        PrefabJSON prf = new PrefabJSON();
+        prf.appearances = new List<Appearance>();
+
+        prf.TypeName = this.prefab.name;
+        if (this.title == "") { prf.title = "Default Object"; }
+        else { prf.title = this.title; }
         
+        foreach (var pair in this.features)
+        {
+            Appearance apr = new Appearance();
+            
+            if (pair.Value.color == "default") { apr.color = "#FFFFFF"; }
+            else { apr.color = pair.Value.color; }
+            
+            apr.texture = pair.Value.texture;
+            apr.name = pair.Value.name;
+
+            prf.appearances.Add(apr);
+        }
+        string JSONresult = JsonConvert.SerializeObject(prf);
+        Debug.Log(JSONresult);
     }
 }
 
 /*
-// Récupérer le nombre de Prefab enfant par objet ainsi que leurs npm
+// Récupérer le nombre de Prefab enfant par objet ainsi que leurs noms
 int childs = objectModel.transform.childCount;
 
 for (int i = 0; i<childs; i++)
