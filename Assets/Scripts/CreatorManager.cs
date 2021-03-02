@@ -231,7 +231,10 @@ public class CreatorManager : MonoBehaviour
 
     public void SetTitle(Text pTitle)
     {
-        this.title = pTitle.text;
+        if (pTitle.text == "" || pTitle.text == null)
+            this.title = "Default Object";
+        else
+            this.title = pTitle.text;
     }
 
     public void SaveObject()
