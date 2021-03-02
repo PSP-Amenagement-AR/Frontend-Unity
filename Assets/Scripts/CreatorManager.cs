@@ -239,8 +239,9 @@ public class CreatorManager : MonoBehaviour
 
     public void SaveObject()
     {
+        int i = 0;
         PrefabJSON prf = new PrefabJSON();
-        prf.appearances = new List<Appearance>();
+        prf.appearances = new Appearance[this.features.Count];
 
         prf.typeName = this.prefab.name;
         if (this.title == "") { prf.title = "Default Object"; }
@@ -255,25 +256,20 @@ public class CreatorManager : MonoBehaviour
 
             apr.texture = pair.Value.texture;
             apr.name = pair.Value.name;
-            Debug.Log("-> " + apr.texture + " / " + apr.color + " / " + apr.name);
-            prf.appearances.Add(apr);
+
+            prf.appearances[i] = apr;
+            i += 1;
         }
 
-        //string JSONresult = JsonConvert.SerializeObject(prf);
-        //Debug.Log("JSONreuslt : " + JSONresult);
+        var JSONresult = JsonConvert.SerializeObject(prf);
 
-        this.SaveToBack(prf);
+        this.SaveToBack(JSONresult);
     }
 
-    public JSONNode SaveToBack(object JSONresult)
+    public JSONNode SaveToBack(string JSONresult)
     {
-        //*** Fonction a changer lorsque l'update en Back sera fait
-        var id = "1";
-        var url = "/files/" + id + "/" + this.title;
-
-        var request = GlobalStatus.webApi.SendApiRequest(url, "POST", JSONresult);
+        var request = GlobalStatus.webApi.SendApiRequest("/objects", "POST", JSONresult);
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
-        //***
 
         if (request.responseCode == 200 || request.responseCode == 201)
         {

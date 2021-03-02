@@ -13,8 +13,7 @@ public class PrefabJSON
 {
     public string typeName;
     public string title;
-    public List<Appearance> appearances;
-    //public Appearance[] appearances;
+    public Appearance[] appearances;
 }
 
 
