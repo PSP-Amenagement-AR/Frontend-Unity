@@ -11,9 +11,10 @@ public struct Appearance
 
 public class PrefabJSON
 {
-    public string TypeName;
+    public string typeName;
     public string title;
     public List<Appearance> appearances;
+    //public Appearance[] appearances;
 }
 
 

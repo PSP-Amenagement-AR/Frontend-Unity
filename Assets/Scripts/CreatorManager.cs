@@ -8,16 +8,15 @@ using UnityEditor;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
-//using System.Windows.ColorConverter;
+using SimpleJSON;
 
 // TODO
 //
 // Mettre l'objet créé dans l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
-
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
-
 // Enregistrer l'objet en Back
+
 // SI l'utilisateur est connecté, le Prefab est rengistré en Back & ajouté dans l'inventaire
 // SINON le prefab est juste ajotué dans l'inventaire
 //
@@ -47,7 +46,7 @@ public class CreatorManager : MonoBehaviour
         canvasTemplate = this.content.transform.GetChild(0).gameObject;
     }
 
-    void Update() {}
+    void Update() { }
 
     public void SetObject(string name)
     {
@@ -181,7 +180,7 @@ public class CreatorManager : MonoBehaviour
 
     public void ReadFeatures()
     {
-        foreach(var pair in this.features)
+        foreach (var pair in this.features)
         {
             GameObject feature = pair.Key;
             string col = pair.Value.color;
@@ -240,25 +239,52 @@ public class CreatorManager : MonoBehaviour
         PrefabJSON prf = new PrefabJSON();
         prf.appearances = new List<Appearance>();
 
-        prf.TypeName = this.prefab.name;
+        prf.typeName = this.prefab.name;
         if (this.title == "") { prf.title = "Default Object"; }
         else { prf.title = this.title; }
-        
+
         foreach (var pair in this.features)
         {
             Appearance apr = new Appearance();
-            
+
             if (pair.Value.color == "default") { apr.color = "#FFFFFF"; }
             else { apr.color = pair.Value.color; }
-            
+
             apr.texture = pair.Value.texture;
             apr.name = pair.Value.name;
-
+            Debug.Log("-> " + apr.texture + " / " + apr.color + " / " + apr.name);
             prf.appearances.Add(apr);
         }
-        string JSONresult = JsonConvert.SerializeObject(prf);
-        Debug.Log(JSONresult);
+
+        //string JSONresult = JsonConvert.SerializeObject(prf);
+        //Debug.Log("JSONreuslt : " + JSONresult);
+
+        this.SaveToBack(prf);
     }
+
+    public JSONNode SaveToBack(object JSONresult)
+    {
+        //*** Fonction a changer lorsque l'update en Back sera fait
+        var id = "1";
+        var url = "/files/" + id + "/" + this.title;
+
+        var request = GlobalStatus.webApi.SendApiRequest(url, "POST", JSONresult);
+        JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
+        //***
+
+        if (request.responseCode == 200 || request.responseCode == 201)
+        {
+            Debug.Log(request.responseCode + " is a success");
+            return dataJSON;
+        }
+        else
+        {
+            Debug.Log(request.responseCode + " is a fail");
+            return null;
+
+        }
+    }
+
 }
 
 /*
