@@ -66,12 +66,13 @@ public class ARTapToPlaceObject : MonoBehaviour
     }
 
 
-    public void PreAddItem(string name)
+    public void PreAddItem(PrefabJSON prefab)
     {
-        ARItemsHandling.ConfigItem found = itemsHandling.GetConfigItems().Find((config) => config.name == name);
+        ARItemsHandling.ConfigItem found = itemsHandling.GetConfigItems().Find((config) => config.name == prefab.typeName);
         if (found != null)
         {
             this.ItemToPlace = found.loadedPrefab;
+            itemsHandling.SetPrefabJSON(prefab);
             Debug.Log("SetItemToPlaceName : " + this.ItemToPlace);
             this.EnableInterface();
             Update();

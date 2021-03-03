@@ -11,7 +11,6 @@ using Newtonsoft.Json;
 using SimpleJSON;
 
 // TODO
-// Appliquer l'option ApplyColor + Texture lorsque l'on clique sur l'item depuis l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
 
@@ -197,36 +196,6 @@ public class CreatorManager : MonoBehaviour
         if (!this.colorWindow.activeSelf) { this.textureWindow.SetActive(true); }
     }
 
-    public void EditNewObject()
-    {
-        int count = 0;
-        GameObject feature_to_edit;
-        string feature_name;
-        string valColor;
-        string valTexture;
-        Color myColor;
-        Material myMaterial;
-        string path_to_material;
-
-        foreach (var pair in this.features)
-        {
-            feature_name = pair.Key.name;
-            valColor = pair.Value.color;
-            valTexture = pair.Value.texture;
-
-            path_to_material = "Materials/" + valTexture;
-            myMaterial = (Material)Resources.Load(path_to_material);
-
-            myColor = Color.clear;
-            if (valColor == "default") { valColor = "#FFFFFF"; }
-            ColorUtility.TryParseHtmlString(valColor, out myColor);
-
-            feature_to_edit = this.prefab.transform.Find(feature_name).gameObject;
-            feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
-            feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
-        }
-    }
-
     public void SetTitle(Text pTitle)
     {
         if (pTitle.text == "" || pTitle.text == null)
@@ -261,11 +230,8 @@ public class CreatorManager : MonoBehaviour
 
         var JSONresult = JsonConvert.SerializeObject(prf);
         this.SaveToBack(JSONresult);
-        //**
 
         this.UpdateInventory(prf);
-
-        //**
     }
 
     public JSONNode SaveToBack(string JSONresult)
@@ -315,32 +281,3 @@ public class CreatorManager : MonoBehaviour
     }
 
 }
-
-/*
-// Récupérer le nombre de Prefab enfant par objet ainsi que leurs noms
-int childs = objectModel.transform.childCount;
-
-for (int i = 0; i<childs; i++)
-{
-    Debug.Log("TEST " + i + " child " + objectModel.transform.GetChild(i).gameObject.name);
-}
-
-// Edit Prefab
-if (objectModel.name == "chair_1")
-{
-    Material cloth1 = (Material)Resources.Load("Materials/cloth_1");
-    Material cloth2 = (Material)Resources.Load("Materials/cloth_2");
-    GameObject child = objectModel.transform.GetChild(0).gameObject;
-
-    // Edit Prefab Chair
-    GameObject seat = objectModel.transform.Find("seat").gameObject;
-    GameObject metal = objectModel.transform.Find("metal").gameObject;
-    GameObject plastic = objectModel.transform.Find("plastic").gameObject;
-
-    // Apply Color & Material on Prefab
-    seat.GetComponent<MeshRenderer>().material = cloth1;
-    //seat.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.red);
-    metal.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.blue);
-    plastic.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", Color.green);
- }
- */

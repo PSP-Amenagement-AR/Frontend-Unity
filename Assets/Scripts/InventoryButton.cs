@@ -32,7 +32,7 @@ public class InventoryButton : MonoBehaviour
         ReadPrefabJSON();
         if (isItem)
         {
-            myPlane.PreAddItem(prefabDescription.typeName);
+            myPlane.PreAddItem(prefabDescription);
         }
     }
 
