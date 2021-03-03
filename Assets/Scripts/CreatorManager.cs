@@ -39,7 +39,8 @@ public class CreatorManager : MonoBehaviour
     [SerializeField]
     private GameObject textureWindow;
 
-    public ARItemsHandling itemsHandling;
+   /* [SerializeField]
+    private GameObject buttonTemplate;*/
 
     void Start()
     {
@@ -237,7 +238,7 @@ public class CreatorManager : MonoBehaviour
             this.title = pTitle.text;
     }
 
-    public void SaveObject()
+    public void SaveObject(GameObject buttonTemplate)
     {
         int i = 0;
         PrefabJSON prf = new PrefabJSON();
@@ -264,6 +265,9 @@ public class CreatorManager : MonoBehaviour
         var JSONresult = JsonConvert.SerializeObject(prf);
 
         this.SaveToBack(JSONresult);
+        //**
+        this.UpdateInventory(buttonTemplate);
+        //**
     }
 
     public JSONNode SaveToBack(string JSONresult)
@@ -282,6 +286,32 @@ public class CreatorManager : MonoBehaviour
             return null;
 
         }
+    }
+
+    public void UpdateInventory(GameObject buttonTemplate)
+    {
+        if (buttonTemplate) { Debug.Log("Test 1"); }
+
+        GameObject newButton = Instantiate(buttonTemplate) as GameObject;
+        newButton.SetActive(true);
+
+        switch(this.prefab.name)
+        {
+            case "chair_1":
+                Debug.Log("CHAIR 1");
+                newButton.GetComponent<InventoryButton>().SetIcon(Resources.Load<Sprite>("Sprites/Items/chair_1_prefab"));
+                break;
+            case "bed_1":
+                Debug.Log("BED 1");
+                newButton.GetComponent<InventoryButton>().SetIcon(Resources.Load<Sprite>("Sprites/Items/bed_1_prefab"));
+                break;
+            case "torchere_1":
+                Debug.Log("TORCHERE 1");
+                newButton.GetComponent<InventoryButton>().SetIcon(Resources.Load<Sprite>("Sprites/Items/torchere_1_prefab"));
+                break;
+        }
+        newButton.GetComponent<InventoryButton>().SetName(this.title);
+        newButton.transform.SetParent(buttonTemplate.transform.parent, false);
     }
 
 }
