@@ -34,6 +34,7 @@ public class CreatorManager : MonoBehaviour
     private GameObject textureWindow;
     [SerializeField]
     private GameObject buttonTemplate;
+    public InputField titleField;
 
     void Start()
     {
@@ -193,12 +194,13 @@ public class CreatorManager : MonoBehaviour
         if (!this.colorWindow.activeSelf) { this.textureWindow.SetActive(true); }
     }
 
-    public void SetTitle(Text pTitle)
+    public void SetTitle()
     {
-        if (pTitle.text == "" || pTitle.text == null)
+        if (titleField.text == "" || titleField.text == null)
             this.title = "Default Object";
         else
-            this.title = pTitle.text;
+            this.title = titleField.text;
+        titleField.text = "";
     }
 
     public void SaveObject()
