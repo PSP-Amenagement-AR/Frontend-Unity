@@ -15,7 +15,6 @@ using SimpleJSON;
 // Mettre l'objet créé dans l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
-// Enregistrer l'objet en Back
 
 // SI l'utilisateur est connecté, le Prefab est rengistré en Back & ajouté dans l'inventaire
 // SINON le prefab est juste ajotué dans l'inventaire
@@ -38,9 +37,8 @@ public class CreatorManager : MonoBehaviour
     private GameObject colorWindow;
     [SerializeField]
     private GameObject textureWindow;
-
-   /* [SerializeField]
-    private GameObject buttonTemplate;*/
+    [SerializeField]
+    private GameObject buttonTemplate;
 
     void Start()
     {
@@ -238,7 +236,7 @@ public class CreatorManager : MonoBehaviour
             this.title = pTitle.text;
     }
 
-    public void SaveObject(GameObject buttonTemplate)
+    public void SaveObject()
     {
         int i = 0;
         PrefabJSON prf = new PrefabJSON();
@@ -263,10 +261,11 @@ public class CreatorManager : MonoBehaviour
         }
 
         var JSONresult = JsonConvert.SerializeObject(prf);
-
         this.SaveToBack(JSONresult);
         //**
-        this.UpdateInventory(buttonTemplate);
+
+        this.UpdateInventory(prf);
+
         //**
     }
 
@@ -288,7 +287,7 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
-    public void UpdateInventory(GameObject buttonTemplate)
+    public void UpdateInventory(PrefabJSON prf)
     {
         if (buttonTemplate) { Debug.Log("Test 1"); }
 
@@ -310,7 +309,9 @@ public class CreatorManager : MonoBehaviour
                 newButton.GetComponent<InventoryButton>().SetIcon(Resources.Load<Sprite>("Sprites/Items/torchere_1_prefab"));
                 break;
         }
+
         newButton.GetComponent<InventoryButton>().SetName(this.title);
+        newButton.GetComponent<InventoryButton>().SetPrefabJSON(prf);
         newButton.transform.SetParent(buttonTemplate.transform.parent, false);
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Newtonsoft.Json;
 
 public class InventoryButton : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class InventoryButton : MonoBehaviour
 
     public bool isItem;
 
+    public PrefabJSON prefabDescription;
+
     void Start()
     {
         Button btn = myButton.GetComponent<Button>();
@@ -26,8 +29,7 @@ public class InventoryButton : MonoBehaviour
 
     public void TaskOnClick()
     {
-        // TODO put effect on the image when clicking button
-        //this.PutTransparency(0.4f);
+        ReadPrefabJSON();
         if (isItem)
         {
             myPlane.PreAddItem(name.text);
@@ -49,5 +51,45 @@ public class InventoryButton : MonoBehaviour
         Color color = icon.color;
         color.a = transparency;
         icon.color = color;
+    }
+
+    public void InitPrefabJSON()
+    {
+        prefabDescription = new PrefabJSON();
+        prefabDescription.typeName = name.text;
+        prefabDescription.title = name.text;
+        if (name.text == "chair_1")
+        {
+            prefabDescription.appearances = new Appearance[3];
+            prefabDescription.appearances[0] = new Appearance { name = "metal", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[1] = new Appearance { name = "plastic", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[2] = new Appearance { name = "seat", color = "#FFFFFF", texture = "base_material" };
+        }
+        if (name.text == "bed_1")
+        {
+            prefabDescription.appearances = new Appearance[5];
+            prefabDescription.appearances[0] = new Appearance { name = "base", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[1] = new Appearance { name = "blanket", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[2] = new Appearance { name = "mattress", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[3] = new Appearance { name = "pillow", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[4] = new Appearance { name = "pillow 1", color = "#FFFFFF", texture = "base_material" };
+        }
+        if (name.text == "torchere_1")
+        {
+            prefabDescription.appearances = new Appearance[2];
+            prefabDescription.appearances[0] = new Appearance { name = "base", color = "#FFFFFF", texture = "base_material" };
+            prefabDescription.appearances[1] = new Appearance { name = "plafond", color = "#FFFFFF", texture = "base_material" };
+        }
+    }
+
+    public void SetPrefabJSON(PrefabJSON prefab)
+    {
+        this.prefabDescription = prefab;
+    }
+
+    public void ReadPrefabJSON()
+    {
+        string JSONresult = JsonConvert.SerializeObject(this.prefabDescription);
+        Debug.Log("Result : " + JSONresult);
     }
 }
