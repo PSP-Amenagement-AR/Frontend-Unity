@@ -13,9 +13,6 @@ using SimpleJSON;
 // TODO
 // Ajouter d'autres objets dans le Customiseur de prefab
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
-
-// SI l'utilisateur est connecté, le Prefab est rengistré en Back & ajouté dans l'inventaire
-// SINON le prefab est juste ajotué dans l'inventaire
 //
 // TODO
 
@@ -228,9 +225,12 @@ public class CreatorManager : MonoBehaviour
             i += 1;
         }
 
-        var JSONresult = JsonConvert.SerializeObject(prf);
-        this.SaveToBack(JSONresult);
-
+        if (GlobalStatus.token != "")
+        {
+            var JSONresult = JsonConvert.SerializeObject(prf);
+            this.SaveToBack(JSONresult);
+        }
+        
         this.UpdateInventory(prf);
     }
 
