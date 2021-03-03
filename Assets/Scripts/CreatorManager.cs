@@ -11,8 +11,7 @@ using Newtonsoft.Json;
 using SimpleJSON;
 
 // TODO
-//
-// Mettre l'objet créé dans l'inventaire
+// Appliquer l'option ApplyColor + Texture lorsque l'on clique sur l'item depuis l'inventaire
 // Ajouter d'autres objets dans le Customiseur de prefab
 // lorsque un Color ou Texture palette est ouvert, bloquer les autres features
 
