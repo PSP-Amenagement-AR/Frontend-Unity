@@ -46,6 +46,8 @@ public class ARItemsHandling : MonoBehaviour
     private List<GameObject> Items = new List<GameObject>();
     private List<ConfigItem> ConfigItems = new List<ConfigItem>();
 
+    public PrefabJSON prefabDescription;
+
     public List<ConfigItem> GetConfigItems()
     {
         return this.ConfigItems;
@@ -146,6 +148,8 @@ public class ARItemsHandling : MonoBehaviour
 
     public void AddItem(GameObject objectModel, Vector3 position, Quaternion rotation)
     {
+        EditNewObject(objectModel);
+
         GameObject spawnedObject = Instantiate(objectModel, position, rotation);
         spawnedObject.transform.rotation = Quaternion.Euler(-90.0f, 0.0f, 0.0f);
         if (ARSession.state == ARSessionState.Unsupported)
@@ -155,5 +159,43 @@ public class ARItemsHandling : MonoBehaviour
         _ = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
         this.Items.Add(spawnedObject);
         this.SelectItem(spawnedObject);
+    }
+
+    public void SetPrefabJSON(PrefabJSON prefab)
+    {
+        this.prefabDescription = prefab;
+        Debug.Log(prefab.title + " -> " + prefab.appearances[0].color);
+    }
+
+    public void EditNewObject(GameObject prefab)
+    {
+        int childs = prefab.transform.childCount;
+        
+        GameObject feature_to_edit;
+        string feature_name;
+        string valColor;
+        string valTexture;
+        Color myColor;
+        Material myMaterial;
+        string path_to_material;
+
+        for (int i = 0; i < childs; i++)
+        {
+            Appearance appearance = prefabDescription.appearances[i];
+            feature_name = appearance.name;
+            valColor = appearance.color;
+            valTexture = appearance.texture;
+
+            path_to_material = "Materials/" + valTexture;
+            myMaterial = (Material)Resources.Load(path_to_material);
+
+            myColor = Color.clear;
+            if (valColor == "default") { valColor = "#FFFFFF"; }
+            ColorUtility.TryParseHtmlString(valColor, out myColor);
+
+            feature_to_edit = prefab.transform.Find(feature_name).gameObject;
+            feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
+            feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
+        }
     }
 }

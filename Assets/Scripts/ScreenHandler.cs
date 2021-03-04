@@ -82,6 +82,11 @@ public class ScreenHandler : MonoBehaviour
         changeStateOf("openProfil", true);
         CloseMenu();
     }
+
+    public void OpenPrefabManager()
+    {
+        changeStateOf("openPrefabManager", true);
+    }
     #endregion
 
     #region CloseScreen
@@ -122,6 +127,11 @@ public class ScreenHandler : MonoBehaviour
     {
         changeStateOf("openProfil", false);
         CloseMenu();
+    }
+
+    public void ClosePrefabManager()
+    {
+        changeStateOf("openPrefabManager", false);
     }
     #endregion
 }

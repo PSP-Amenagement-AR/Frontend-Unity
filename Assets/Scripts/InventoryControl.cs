@@ -75,6 +75,7 @@ public class InventoryControl : MonoBehaviour
 
             newButton.GetComponent<InventoryButton>().SetIcon(newItem.iconSprite);
             newButton.GetComponent<InventoryButton>().SetName(newItem.iconName);
+            newButton.GetComponent<InventoryButton>().InitPrefabJSON();
             newButton.transform.SetParent(buttonTemplate.transform.parent, false);
         }
     }
