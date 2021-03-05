@@ -22815,8 +22815,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1954279285}
   indice: {fileID: 0}
-  colorWindow: {fileID: 0}
-  textureWindow: {fileID: 0}
+  colorWindow: {fileID: 1741628084}
+  textureWindow: {fileID: 106524119}
   buttonTemplate: {fileID: 1319302512}
   titleField: {fileID: 271725192}
 --- !u!1 &2046549992
