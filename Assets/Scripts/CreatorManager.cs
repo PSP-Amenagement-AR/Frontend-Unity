@@ -170,7 +170,8 @@ public class CreatorManager : MonoBehaviour
 
     public void SetIndice(Text indice)
     {
-        this.indice = indice;
+        if (!this.textureWindow.activeSelf && !this.colorWindow.activeSelf)
+            this.indice = indice;
     }
 
     public void ReadFeatures()
