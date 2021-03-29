@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>JSON parder and builder library.</summary>
+/// @note This class is from an Unity library for manage and use JSON assets. The code has to be copy in a SimpleJSON.cs file into the project to be used.
 namespace SimpleJSON
 {
     public enum JSONNodeType

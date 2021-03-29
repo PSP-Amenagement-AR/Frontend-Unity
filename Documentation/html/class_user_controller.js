@@ -1,0 +1,25 @@
+var class_user_controller =
+[
+    [ "canvas", "class_user_controller.html#a880855d5e11eaab5d2d4b3f6f0fd6f37", null ],
+    [ "confirmedPasswordField", "class_user_controller.html#a609b3fa4a000da8f0a7908f6e2fdd9a7", null ],
+    [ "deleteButton", "class_user_controller.html#add1a7627ef8b7f48efe39741e3ad467e", null ],
+    [ "firstnameField", "class_user_controller.html#a6545ae11a50d0a26a83948c30b577260", null ],
+    [ "firstnameProfilField", "class_user_controller.html#aacdd027daad8b230c187a45ba89dc28a", null ],
+    [ "lastnameField", "class_user_controller.html#aafa743a52cb171b6ede30ed7cad96fa2", null ],
+    [ "lastnameProfilField", "class_user_controller.html#a8d03388036c2bd5d620d85ec9bfd7ab9", null ],
+    [ "loginButton", "class_user_controller.html#aeb941132636557ebc5e8e073020087df", null ],
+    [ "loginMailField", "class_user_controller.html#ad001d3c77a3fdbee3c72dbd14be1e6ef", null ],
+    [ "loginPasswordField", "class_user_controller.html#ac0da04287da42663675d89d750f6fe7d", null ],
+    [ "logoutButton", "class_user_controller.html#a2f2bcd19e5496c0ea19466f18b387cdf", null ],
+    [ "mailField", "class_user_controller.html#a6753c21c1e6fd236d63e8e203d56c439", null ],
+    [ "mailProfilField", "class_user_controller.html#ad2857305dd8cee830f6fe8e458f24eec", null ],
+    [ "passwordField", "class_user_controller.html#a8bd6d3ba03496811cd2226c0c5c2d2b4", null ],
+    [ "passwordProfilField", "class_user_controller.html#a0744b329e92e40ef5c3cfe203ae1f055", null ],
+    [ "popup", "class_user_controller.html#a500ad25dcc309d10b996d044e5ebe0e2", null ],
+    [ "popupText", "class_user_controller.html#a64a7f9d39291bf17b41dee6e18cd6402", null ],
+    [ "ProfilButton", "class_user_controller.html#a46554ad6c323ffa29da46b67f7b29a1e", null ],
+    [ "returnLoginButton", "class_user_controller.html#a6fd5c443b775ff361f3c705055035552", null ],
+    [ "returnRegistrationButton", "class_user_controller.html#a834a92ce8a3f36e7565bcd57c41ce3aa", null ],
+    [ "submitButton", "class_user_controller.html#a27f936303c3064b1e85c9445757ab7e7", null ],
+    [ "updateButton", "class_user_controller.html#a5287cafa070084a168abe9f7b9455188", null ]
+];

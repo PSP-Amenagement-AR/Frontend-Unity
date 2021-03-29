@@ -1,0 +1,26 @@
+var class_screen_handler =
+[
+    [ "CloseAdd", "class_screen_handler.html#af0dffc3c6f88c57f31dc11cd73aa0842", null ],
+    [ "CloseLogin", "class_screen_handler.html#ac7d660f11a64d89d8df5328e00b70dce", null ],
+    [ "CloseMenu", "class_screen_handler.html#ad2afd2cc7681ade35c86c5ed9ee09184", null ],
+    [ "ClosePrefabManager", "class_screen_handler.html#a1c8e46adf3b53fad4901c2d873d90191", null ],
+    [ "CloseProfil", "class_screen_handler.html#ab3246a9e2bd35c839d356a63b1752afd", null ],
+    [ "CloseRegistration", "class_screen_handler.html#ab11ec70a10e93e67daf50f374799e042", null ],
+    [ "CloseScan", "class_screen_handler.html#a146226cc742f38b52dee5182c1f26a9b", null ],
+    [ "CloseStage", "class_screen_handler.html#a9407c39f71b68e86e59eb1844ff97757", null ],
+    [ "CloseValidation", "class_screen_handler.html#a441c48a8e74819e3476bfdcc8d02f80d", null ],
+    [ "HideUi", "class_screen_handler.html#abc364c9ba5f723040b95df12e0ecfb8f", null ],
+    [ "OpenAdd", "class_screen_handler.html#adf7769351da6a33d90287b476f38e107", null ],
+    [ "OpenLogin", "class_screen_handler.html#a1bca52075636140a29add09846aa3cb6", null ],
+    [ "OpenMenu", "class_screen_handler.html#a7a1e76e9648befcb64e13ddb001815c0", null ],
+    [ "OpenPrefabManager", "class_screen_handler.html#a32cbf5946d01410a545a624cdbe83f36", null ],
+    [ "OpenProfil", "class_screen_handler.html#a67ff4735e218da09f3a925ae6bd61414", null ],
+    [ "OpenRegistration", "class_screen_handler.html#aeca5d47df0f8413627278649d8941a45", null ],
+    [ "OpenScan", "class_screen_handler.html#a063d2f025989ad308eb2aaaaf56d95aa", null ],
+    [ "OpenStage", "class_screen_handler.html#a9c001cc05c994779b88dca3f51d0d386", null ],
+    [ "OpenValidation", "class_screen_handler.html#a8a5dac1da2a7552d9973b0d042684fb6", null ],
+    [ "ShowUi", "class_screen_handler.html#a75a3b3576ad8342a47512e1adca7813a", null ],
+    [ "animator", "class_screen_handler.html#af5753d646087e1ed9a50a6c8e1f3e970", null ],
+    [ "MenuButton", "class_screen_handler.html#a3e5e1f476c1670d11c671a980c10e16b", null ],
+    [ "ProfileButton", "class_screen_handler.html#af7f3a443545d8b622bb4a3ecc1c6a658", null ]
+];
