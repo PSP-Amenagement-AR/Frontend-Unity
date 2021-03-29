@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class ARItemsHandling : MonoBehaviour
 {
@@ -42,11 +43,18 @@ public class ARItemsHandling : MonoBehaviour
     public Button DeleteButton;
     public Button ValidateButton;
     public CameraHandler cameraHandler;
+    private ARRaycastManager _arRaycastManager;
 
     private List<GameObject> Items = new List<GameObject>();
     private List<ConfigItem> ConfigItems = new List<ConfigItem>();
 
+    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
     public PrefabJSON prefabDescription;
+
+    private bool onTouchHold = false;
+
+    private Vector2 touchPosition;
 
     public List<ConfigItem> GetConfigItems()
     {
@@ -55,6 +63,8 @@ public class ARItemsHandling : MonoBehaviour
 
     private void Awake()
     {
+        _arRaycastManager = GetComponent<ARRaycastManager>();
+
         ConfigItems.Add(new ConfigItem("chair_1"));
         ConfigItems.Add(new ConfigItem("bed_1"));
         ConfigItems.Add(new ConfigItem("torchere_1"));
@@ -72,7 +82,47 @@ public class ARItemsHandling : MonoBehaviour
             {
                 this.SelectItem(hitInfo.transform.gameObject);
             }
+        }
+        if (IsAnItemSelected())
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
 
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Ray ray = cameraHandler.GetCamera().ScreenPointToRay(touch.position);
+                    RaycastHit hitObject;
+
+                    if (Physics.Raycast(ray, out hitObject, 25.0f))
+                    {
+                        if (hitObject.transform.gameObject == SelectedItem)
+                        {
+                            onTouchHold = true;
+                        }
+                    }
+                }
+
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    touchPosition = touch.position;
+                }
+
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    onTouchHold = false;
+                }
+
+            }
+
+            if (onTouchHold)
+            {
+                if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon)) {
+                    Pose hitPose = hits[0].pose;
+                    SelectedItem.transform.position = hitPose.position;
+
+                }
+            }
         }
     }
 
@@ -93,11 +143,14 @@ public class ARItemsHandling : MonoBehaviour
 
     public void ActivateSelectedInterface(bool val)
     {
-        if (MovementJoystick && RotationJoystick && DeleteButton && ValidateButton)
+        if (ARSession.state == ARSessionState.Unsupported && MovementJoystick)
         {
-            //MovementJoystick.gameObject.SetActive(val);
-            RotationJoystick.gameObject.SetActive(val);
             MovementJoystick.gameObject.SetActive(val);
+        }
+
+        if (RotationJoystick && DeleteButton && ValidateButton)
+        {
+            RotationJoystick.gameObject.SetActive(val);
             DeleteButton.gameObject.SetActive(val);
             ValidateButton.gameObject.SetActive(val);
         }
@@ -125,7 +178,10 @@ public class ARItemsHandling : MonoBehaviour
                 this.SelectedItem = found;
                 foundModel.SetSelected(true);
                 foundModel.RotationJoystick = RotationJoystick;
-                foundModel.MovementJoystick = MovementJoystick;
+                if (ARSession.state == ARSessionState.Unsupported && MovementJoystick)
+                {
+                    foundModel.MovementJoystick = MovementJoystick;
+                }
                 this.ActivateSelectedInterface(true);
             }
         }
@@ -156,7 +212,8 @@ public class ARItemsHandling : MonoBehaviour
         {
             spawnedObject.transform.localScale = spawnedObject.transform.localScale * 100;
         }
-        _ = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
+        ModelBehaviour modelBehaviour = spawnedObject.AddComponent<ModelBehaviour>() as ModelBehaviour;
+        modelBehaviour.cameraHandler = cameraHandler;
         this.Items.Add(spawnedObject);
         this.SelectItem(spawnedObject);
     }
@@ -194,8 +251,8 @@ public class ARItemsHandling : MonoBehaviour
             ColorUtility.TryParseHtmlString(valColor, out myColor);
 
             feature_to_edit = prefab.transform.Find(feature_name).gameObject;
-            feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
-            feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
+            feature_to_edit.GetComponent<MeshRenderer>().sharedMaterial = myMaterial;
+            feature_to_edit.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", myColor);
         }
     }
 }

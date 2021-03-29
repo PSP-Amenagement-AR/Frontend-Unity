@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class ModelBehaviour : MonoBehaviour
 {
@@ -15,13 +16,17 @@ public class ModelBehaviour : MonoBehaviour
     public Joystick RotationJoystick;
     //public Joystick VerticalRotationJoystick;
 
+
+    public CameraHandler cameraHandler;
+
     private void Awake()
     {
         this._guid = Guid.NewGuid();
         if (ARSession.state == ARSessionState.Unsupported)
         {
             movementSpeed = 30f;
-        } else
+        }
+        else
         {
             movementSpeed = 1f;
         }
@@ -46,11 +51,16 @@ public class ModelBehaviour : MonoBehaviour
         //float speed = RotationJoystick.Horizontal * 1f;
 
         float speed = RotationJoystick.Horizontal * -1f;
+        transform.Rotate(0, 0, speed * 50f * Time.deltaTime);
+
+        if (MovementJoystick)
+        {
+            Vector3 newPos = transform.position + new Vector3(MovementJoystick.Horizontal * movementSpeed * Time.deltaTime, 0, MovementJoystick.Vertical * movementSpeed * Time.deltaTime);
+            transform.position = newPos;
+        }
 
         /*float rotateVertical = MovementJoystick.Vertical * 1f;
         float rotateHorizontal = MovementJoystick.Horizontal * 1f;*/
-        transform.position = transform.position + new Vector3(MovementJoystick.Horizontal * movementSpeed * Time.deltaTime, 0, MovementJoystick.Vertical * movementSpeed * Time.deltaTime);
-        transform.Rotate(0, 0, speed * 50f * Time.deltaTime);
         //transform.Rotate(rotateHorizontal, 0, rotateVertical);
     }
 
