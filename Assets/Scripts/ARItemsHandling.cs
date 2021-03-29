@@ -4,13 +4,20 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/// <summary>Class for manage the selection and the emergence of items in the screen.</summary>
 public class ARItemsHandling : MonoBehaviour
 {
+    /// <summary>Class for load template and prefab objetc. Part of ARItemsHandling class.</summary>
+    /// @see ARItemsHandling
     public class ConfigItem
     {
+        /// <summary>Name of the prefab.</summary>
         public string name;
+        /// <summary>Prefab object.</summary>
         public GameObject loadedPrefab;
 
+        /// Constructor for ConfigItem class.
+        /// @param name The name of the prefab to load.
         public ConfigItem(string name)
         {
             this.name = name;
@@ -19,16 +26,22 @@ public class ARItemsHandling : MonoBehaviour
             Debug.Log("loadedPrefab: " + this.loadedPrefab);
         }
 
+        /// Complete the path to directory.
+        /// @returns The string containing the path.
         public string DirPath()
         {
             return "Items/" + this.name;
         }
 
+        /// Complete the path to sprite file.
+        /// @returns The string containing the path.
         public string SpritePath()
         {
             return this.DirPath() + "/" + this.name;
         }
 
+        /// Complete the path to prefab file.
+        /// @returns The string containing the path.
         public string PrefabPath()
         {
             return this.DirPath() + "/" + this.name;
@@ -36,31 +49,47 @@ public class ARItemsHandling : MonoBehaviour
 
     }
 
+    /// <summary>GameObject object for item selected in the stage.</summary>
     public GameObject SelectedItem;
+    /// <summary>Joystick object for the rotation joystick.</summary>
     public Joystick RotationJoystick;
-    //public Joystick VerticalRotationJoystick;
     public Joystick MovementJoystick;
+    /// <summary>Button object for the delete button.</summary>
     public Button DeleteButton;
+    /// <summary>Button object for the validation button.</summary>
     public Button ValidateButton;
+    /// <summary>CameraHandler object for the camera in the stage.</summary>
     public CameraHandler cameraHandler;
+    /// <summary>ARRaycastManager object for the detector of area in the stage.</summary>
     private ARRaycastManager _arRaycastManager;
 
+    /// <summary>List of GameObject for list the items in the stage.</summary>
     private List<GameObject> Items = new List<GameObject>();
+    /// <summary>List of ConfigItems objects.</summary>
+    /// @see ConfigItems
     private List<ConfigItem> ConfigItems = new List<ConfigItem>();
 
+    /// <summary>List of ARRaycastHit object for resume points and placements where the user hit the screen.</summary>
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
+    /// <summary>PrefabJSON object containing the description of a virtual furniture.</summary>
     public PrefabJSON prefabDescription;
 
+    /// <summary>Boolean for detect when the user hold the pression on the screen. It's allow to detect the "drag and drop" process.</summary>
     private bool onTouchHold = false;
 
+    /// <summary>Vector2 object containing the contact informations of the position touched by the user.</summary>
     private Vector2 touchPosition;
 
+    /// Get the list of ConfigItems objects.
+    /// @returns The list of ConfigItems objects.
     public List<ConfigItem> GetConfigItems()
     {
         return this.ConfigItems;
     }
 
+    /// Function executed when the script is started.
+    /// Load the prefab files in ConfigItems object and set in a list.
     private void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
@@ -70,7 +99,8 @@ public class ARItemsHandling : MonoBehaviour
         ConfigItems.Add(new ConfigItem("torchere_1"));
     }
 
-    // Update is called once per frame
+    /// Function executed once per frame.*
+    /// Detect the area and manage the hit on the screen.
     void Update()
     {
         if (!IsAnItemSelected() && Input.GetMouseButtonDown(0))
@@ -126,21 +156,32 @@ public class ARItemsHandling : MonoBehaviour
         }
     }
 
+    /// <summary>Detect if an item is selected</summary>
+    /// @returns The item selected.
+    /// @note If no items are selected, no items are returned from the function.
     public bool IsAnItemSelected()
     {
         return this.SelectedItem != null;
     }
 
+    /// Function which allow to get an item as ModelBehaviour object.
+    /// @param item A GameObject item.
+    /// @returns ModelBehavious object from an item.
     ModelBehaviour GetModelBehaviour(GameObject item)
     {
         return item.GetComponent<ModelBehaviour>();
     }
 
+    /// Function for find an item.
+    /// @param itemToFind The item to find.
+    /// @returns The GameObject containing the item found.
     public GameObject FindItem(GameObject itemToFind)
     {
         return this.Items.Find(item => GetModelBehaviour(item).GetId() == GetModelBehaviour(itemToFind).GetId());
     }
 
+    /// Activation of the interfac for manage a selected item in the stage.
+    /// @param val A boolean indicating that an item is selected.
     public void ActivateSelectedInterface(bool val)
     {
         if (ARSession.state == ARSessionState.Unsupported && MovementJoystick)
@@ -156,6 +197,8 @@ public class ARItemsHandling : MonoBehaviour
         }
     }
 
+    /// Allow to select an item in the stage.
+    /// @param item A GameObject containing the item to select.
     public void SelectItem(GameObject item)
     {
         GameObject found = this.FindItem(item);
@@ -187,6 +230,7 @@ public class ARItemsHandling : MonoBehaviour
         }
     }
 
+    /// Function for unselect an item.
     public void UnSelectItem()
     {
         GetModelBehaviour(this.SelectedItem).SetSelected(false);
@@ -194,6 +238,7 @@ public class ARItemsHandling : MonoBehaviour
         this.ActivateSelectedInterface(false);
     }
 
+    /// Function for delete the selected item.
     public void DeleteSelectedItem()
     {
         GameObject toRemove = this.SelectedItem;
@@ -202,6 +247,10 @@ public class ARItemsHandling : MonoBehaviour
         Destroy(toRemove);
     }
 
+    /// Function for add an item in the stage.
+    /// @param objectModel The prefab of the object to add.
+    /// @param position Vector3 object containing the position where the item will be added.
+    /// @param rotation Quaternion object containing the rotation values of the item.
     public void AddItem(GameObject objectModel, Vector3 position, Quaternion rotation)
     {
         EditNewObject(objectModel);
@@ -218,12 +267,20 @@ public class ARItemsHandling : MonoBehaviour
         this.SelectItem(spawnedObject);
     }
 
+    /// Set the description of an item from a PrefabJSON object.
+    /// @param prefab A PrefabJSON object containing the description of an item created.
+    /// @see PrefabJSON
     public void SetPrefabJSON(PrefabJSON prefab)
     {
         this.prefabDescription = prefab;
         Debug.Log(prefab.title + " -> " + prefab.appearances[0].color);
     }
 
+    /// Function allowing to edit a new item created in the stage.
+    /// @param prefab GameObject containing the prefab to add in a new object.
+    /// @note Load of the textures and colors for new item edition.
+    /// @note If the color is set on "default" so the object will not have color but only the texture appearance.
+    /// @attention The prefab customized is the same for all other items using this prefab. The prefab is overwrite whenever a new object is added to the scene.
     public void EditNewObject(GameObject prefab)
     {
         int childs = prefab.transform.childCount;
