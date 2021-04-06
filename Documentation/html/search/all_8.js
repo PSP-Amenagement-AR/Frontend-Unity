@@ -1,25 +1,5 @@
 var searchData=
 [
-  ['icon_88',['icon',['../class_inventory_button.html#a73203ec282c66c9b7a118f5c9088b650',1,'InventoryButton']]],
-  ['iconname_89',['iconName',['../class_inventory_control_1_1_player_item.html#a8349ee8ab6db89f19808af8aa3ea8101',1,'InventoryControl::PlayerItem']]],
-  ['iconsprite_90',['iconSprite',['../class_inventory_control_1_1_player_item.html#a99319dd1cc970776e115b4332b7a006c',1,'InventoryControl::PlayerItem']]],
-  ['indent_91',['Indent',['../namespace_simple_j_s_o_n.html#a3981ef39adf14ef6bd21bd800720ca0ea497470e76a40fc53e14c0df9b4e4ec9f',1,'SimpleJSON']]],
-  ['initprefabjson_92',['InitPrefabJSON',['../class_inventory_button.html#a4edef88b51a485d8c5e42e88ab091c7a',1,'InventoryButton']]],
-  ['inline_93',['Inline',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a5c26469b760151a6b01064b5e181908e',1,'SimpleJSON.JSONNode.Inline()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html#a97e0ad9f59528a8303a9296294388951',1,'SimpleJSON.JSONArray.Inline()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#adfff304857552de0caee82f7c8b6d4ba',1,'SimpleJSON.JSONObject.Inline()']]],
-  ['inventorybutton_94',['InventoryButton',['../class_inventory_button.html',1,'']]],
-  ['inventorybutton_2ecs_95',['InventoryButton.cs',['../_inventory_button_8cs.html',1,'']]],
-  ['inventorycontrol_96',['InventoryControl',['../class_inventory_control.html',1,'']]],
-  ['inventorycontrol_2ecs_97',['InventoryControl.cs',['../_inventory_control_8cs.html',1,'']]],
-  ['isanitemselected_98',['IsAnItemSelected',['../class_a_r_items_handling.html#a38c77de71e59837632d76dd203eb769c',1,'ARItemsHandling']]],
-  ['isarray_99',['IsArray',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ac70c413f178bd98e48b320494db49334',1,'SimpleJSON.JSONNode.IsArray()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html#a79e7d51274f2fce37a049ed4d02e5ebc',1,'SimpleJSON.JSONArray.IsArray()']]],
-  ['isboolean_100',['IsBoolean',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a0b07e43cd23a0f8994209fec0b6a4ba1',1,'SimpleJSON.JSONNode.IsBoolean()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_bool.html#affadfd5bba7f1118afac492cc6699982',1,'SimpleJSON.JSONBool.IsBoolean()']]],
-  ['isitem_101',['isItem',['../class_inventory_button.html#a6ac7be4b51fdc577691b5e6ce68f5e9b',1,'InventoryButton']]],
-  ['isitemlist_102',['isItemList',['../class_inventory_control.html#a7bfdfd89dadf5802fc321c3213837dbb',1,'InventoryControl']]],
-  ['isnull_103',['IsNull',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a9a7b8c9b11af3ad9a15e79c5d6c9d3cd',1,'SimpleJSON.JSONNode.IsNull()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_null.html#a4121bf62ec02d9e1a8049befb556403f',1,'SimpleJSON.JSONNull.IsNull()']]],
-  ['isnumber_104',['IsNumber',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ae828903f697940332193f01bf5b4f5a0',1,'SimpleJSON.JSONNode.IsNumber()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_number.html#a8e9db9a63b45de658be33bcea65d4d38',1,'SimpleJSON.JSONNumber.IsNumber()']]],
-  ['isobject_105',['IsObject',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a4d23f8cb3b4c7af0429910e69d114cd0',1,'SimpleJSON.JSONNode.IsObject()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#a8fb6746d254d692a0a7347bbb2ca60be',1,'SimpleJSON.JSONObject.IsObject()']]],
-  ['isselected_106',['IsSelected',['../class_model_behaviour.html#add2052d0f7f3336611e766b56ad019e8',1,'ModelBehaviour']]],
-  ['isstring_107',['IsString',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a69574bf41a66d52106cd34007d4efb7a',1,'SimpleJSON.JSONNode.IsString()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_string.html#a742375d29619fea9517daa72c966dc26',1,'SimpleJSON.JSONString.IsString()']]],
-  ['isvalid_108',['IsValid',['../struct_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_enumerator.html#a76ddaa34c7f9b13ce4291eca03d3bb45',1,'SimpleJSON::JSONNode::Enumerator']]],
-  ['itemshandling_109',['itemsHandling',['../class_a_r_tap_to_place_object.html#ac2868d68c5624dd6331e39a235c8cc6e',1,'ARTapToPlaceObject']]]
+  ['hideui_94',['HideUi',['../class_screen_handler.html#abc364c9ba5f723040b95df12e0ecfb8f',1,'ScreenHandler']]],
+  ['hits_95',['hits',['../class_a_r_items_handling.html#affb9927ee0fc09d6930688be5d085385',1,'ARItemsHandling.hits()'],['../class_a_r_tap_to_place_object.html#a7a188299348c3734e1a069e6132a3b20',1,'ARTapToPlaceObject.hits()']]]
 ];

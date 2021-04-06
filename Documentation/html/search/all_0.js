@@ -1,27 +1,4 @@
 var searchData=
 [
-  ['activateselectedinterface_0',['ActivateSelectedInterface',['../class_a_r_items_handling.html#a106bfe7e33854d18d05283e682f1b158',1,'ARItemsHandling']]],
-  ['add_1',['Add',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ac50b24bfebca8d2d6ae3c4ac6d12afe6',1,'SimpleJSON.JSONNode.Add(string aKey, JSONNode aItem)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#aad53be508d347581118aefec0fea5c0e',1,'SimpleJSON.JSONNode.Add(JSONNode aItem)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html#a9192aa5b6319426c74de7a462f123cd7',1,'SimpleJSON.JSONArray.Add()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#adb6e416049b90dc558c6c358d44437ae',1,'SimpleJSON.JSONObject.Add()']]],
-  ['additem_2',['AddItem',['../class_a_r_items_handling.html#a348dcf11ffaad6c8a4547d61cce5a4c4',1,'ARItemsHandling']]],
-  ['addpanel_3',['AddPanel',['../class_a_r_tap_to_place_object.html#aa8d8037335834af9b42b4d5c7e824a4c',1,'ARTapToPlaceObject']]],
-  ['animator_4',['animator',['../class_screen_handler.html#af5753d646087e1ed9a50a6c8e1f3e970',1,'ScreenHandler']]],
-  ['apirequestmanager_5',['APIrequestManager',['../class_a_p_irequest_manager.html',1,'']]],
-  ['apirequestmanager_2ecs_6',['APIrequestManager.cs',['../_a_p_irequest_manager_8cs.html',1,'']]],
-  ['appearance_7',['Appearance',['../struct_appearance.html',1,'']]],
-  ['appearances_8',['appearances',['../class_prefab_j_s_o_n.html#a1e4db602e3fa45a93bbc5551f663c80f',1,'PrefabJSON']]],
-  ['applycolor_9',['ApplyColor',['../class_creator_manager.html#a4960bb33ca8af80c5aee43aae1113c25',1,'CreatorManager']]],
-  ['applytexture_10',['ApplyTexture',['../class_creator_manager.html#a58f10e9503685f431fc45050c2e7781e',1,'CreatorManager']]],
-  ['arcamera_11',['ARCamera',['../class_camera_handler.html#a08cbbc15e9497f5338bc950cf1ba8ee9',1,'CameraHandler']]],
-  ['aritemshandling_12',['ARItemsHandling',['../class_a_r_items_handling.html',1,'']]],
-  ['aritemshandling_13',['aRItemsHandling',['../class_inventory_control.html#a93559529ea70da137f3cb883e6d62881',1,'InventoryControl']]],
-  ['aritemshandling_2ecs_14',['ARItemsHandling.cs',['../_a_r_items_handling_8cs.html',1,'']]],
-  ['array_15',['Array',['../namespace_simple_j_s_o_n.html#a62af00acc7925cc0284e634fb10626f5a4410ec34d9e6c1a68100ca0ce033fb17',1,'SimpleJSON']]],
-  ['artaptoplaceobject_16',['ARTapToPlaceObject',['../class_a_r_tap_to_place_object.html',1,'']]],
-  ['artaptoplaceobject_2ecs_17',['ARTapToPlaceObject.cs',['../_a_r_tap_to_place_object_8cs.html',1,'']]],
-  ['asarray_18',['AsArray',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a5cabad97e7187a09ea7581f1cb30cb75',1,'SimpleJSON::JSONNode']]],
-  ['asbool_19',['AsBool',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a789a27ef095e11716db9cd2706714a4b',1,'SimpleJSON.JSONNode.AsBool()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_bool.html#a30367e2048a00e800a9b47f9998f2b4b',1,'SimpleJSON.JSONBool.AsBool()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_null.html#ad2d2c4e4b121a249c8f7557ac3779ca5',1,'SimpleJSON.JSONNull.AsBool()']]],
-  ['asdouble_20',['AsDouble',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ad9364dff62c04c6fc46cc50981c44941',1,'SimpleJSON.JSONNode.AsDouble()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_number.html#a735e0ab9bbc1ef27878424211db77a9d',1,'SimpleJSON.JSONNumber.AsDouble()']]],
-  ['asfloat_21',['AsFloat',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a78fd9e2a7fb6a99a4f9b106f793e7686',1,'SimpleJSON::JSONNode']]],
-  ['asint_22',['AsInt',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a1e771cb19c2928bcea2ad18f96021610',1,'SimpleJSON::JSONNode']]],
-  ['asobject_23',['AsObject',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ae77298ed6cea74259c6d3c35479a3f0c',1,'SimpleJSON::JSONNode']]]
+  ['_5farraycastmanager_0',['_arRaycastManager',['../class_a_r_items_handling.html#a0a2692c8c0b147f88fe92f453d44094b',1,'ARItemsHandling._arRaycastManager()'],['../class_a_r_tap_to_place_object.html#ab4c3dfd7d6eb12e11f9134020153a993',1,'ARTapToPlaceObject._arRaycastManager()']]]
 ];

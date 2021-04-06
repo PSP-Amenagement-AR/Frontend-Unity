@@ -9,10 +9,10 @@ using UnityEngine.XR.ARSubsystems;
 public class ARTapToPlaceObject : MonoBehaviour
 {
     /// <summary>Boolean if object is placed or not.</summary>
-    private bool objectToPlace = false;
+    public bool objectToPlace = false;
     /// <summary>ARRaycastManager object for plane detection.</summary>
     /// @see ARRaycastManager()
-    private ARRaycastManager _arRaycastManager;
+    public ARRaycastManager _arRaycastManager;
     /// <summary>Add of a new panel.</summary>
     public GameObject AddPanel;
     /// <summary>Indicator for the object placement.</summary>
@@ -22,18 +22,18 @@ public class ARTapToPlaceObject : MonoBehaviour
     public ScreenHandler screenHandler;
     /// <summary>List of ARRaycastHit for each hit of the user on screen.</summary>
     /// @see ARRaycastHit()
-    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    public static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     /// <summary>GameObject for the object to place in the stage.</summary>
-    private GameObject ItemToPlace;
+    public GameObject ItemToPlace;
     /// <summary>List of the 3D objects.</summary>
-    GameObject[] List3DModels;
+    public GameObject[] List3DModels;
     /// <summary>Instance of ARItemsHandling class.</summary>
     /// @see ARItemsHandling
     public ARItemsHandling itemsHandling;
 
     /// Function executed when the script is started.
     /// Load prefab objects from the ressources and get of scanned plane.
-    private void Awake()
+    public void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
         List3DModels = Resources.LoadAll<GameObject>("Prefabs");
@@ -42,7 +42,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     /// Try to get the touched position by the user.
     /// @param touchPosition Vector2 object which contains the position of the touch point.
     /// @return Return a boolean if the touched position is valid.
-    bool TryGetTouchPosition(out Vector2 touchPosition)
+    public bool TryGetTouchPosition(out Vector2 touchPosition)
     {
         if (Input.touchCount > 0)
         {

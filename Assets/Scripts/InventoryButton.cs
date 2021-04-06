@@ -12,7 +12,7 @@ public class InventoryButton : MonoBehaviour
     public Image icon;
     /// Name of the button.
     [SerializeField]
-    private Text name;
+    public Text name;
     /// The button assigned to the InventoryButton object.
     public Button myButton;
     /// The plane scaned.
@@ -26,7 +26,7 @@ public class InventoryButton : MonoBehaviour
     public PrefabJSON prefabDescription;
 
     /// Intiate the button.
-    void Start()
+    public void Start()
     {
         Button btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);

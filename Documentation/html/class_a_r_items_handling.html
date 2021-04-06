@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('class_a_r_items_handling.html',''); in
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_a_r_items_handling-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ARItemsHandling Class Reference</div>  </div>
@@ -124,9 +125,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a62575c28d0d467e9fbe65f181cc441f8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_a_r_items_handling_1_1_config_item.html">ConfigItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a62575c28d0d467e9fbe65f181cc441f8">GetConfigItems</a> ()</td></tr>
 <tr class="memdesc:a62575c28d0d467e9fbe65f181cc441f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of ConfigItems objects.  <a href="class_a_r_items_handling.html#a62575c28d0d467e9fbe65f181cc441f8">More...</a><br /></td></tr>
 <tr class="separator:a62575c28d0d467e9fbe65f181cc441f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9ad787a6bb6bf3048892dabcca8f7ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#aa9ad787a6bb6bf3048892dabcca8f7ea">Awake</a> ()</td></tr>
+<tr class="memdesc:aa9ad787a6bb6bf3048892dabcca8f7ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function executed when the script is started.  <a href="class_a_r_items_handling.html#aa9ad787a6bb6bf3048892dabcca8f7ea">More...</a><br /></td></tr>
+<tr class="separator:aa9ad787a6bb6bf3048892dabcca8f7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad156cd2ae2dc37bc410529839593d860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#ad156cd2ae2dc37bc410529839593d860">Update</a> ()</td></tr>
+<tr class="memdesc:ad156cd2ae2dc37bc410529839593d860"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function executed once per frame.  <a href="class_a_r_items_handling.html#ad156cd2ae2dc37bc410529839593d860">More...</a><br /></td></tr>
+<tr class="separator:ad156cd2ae2dc37bc410529839593d860"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38c77de71e59837632d76dd203eb769c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a38c77de71e59837632d76dd203eb769c">IsAnItemSelected</a> ()</td></tr>
 <tr class="memdesc:a38c77de71e59837632d76dd203eb769c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detect if an item is selected  <a href="class_a_r_items_handling.html#a38c77de71e59837632d76dd203eb769c">More...</a><br /></td></tr>
 <tr class="separator:a38c77de71e59837632d76dd203eb769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc6bc1ef7aa22efbcc030e3a22f3c69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_model_behaviour.html">ModelBehaviour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a9dc6bc1ef7aa22efbcc030e3a22f3c69">GetModelBehaviour</a> (GameObject item)</td></tr>
+<tr class="memdesc:a9dc6bc1ef7aa22efbcc030e3a22f3c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function which allow to get an item as <a class="el" href="class_model_behaviour.html">ModelBehaviour</a> object.  <a href="class_a_r_items_handling.html#a9dc6bc1ef7aa22efbcc030e3a22f3c69">More...</a><br /></td></tr>
+<tr class="separator:a9dc6bc1ef7aa22efbcc030e3a22f3c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa0ce9ae6ee170d0c8b44349582d0764"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#aaa0ce9ae6ee170d0c8b44349582d0764">FindItem</a> (GameObject itemToFind)</td></tr>
 <tr class="memdesc:aaa0ce9ae6ee170d0c8b44349582d0764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function for find an item.  <a href="class_a_r_items_handling.html#aaa0ce9ae6ee170d0c8b44349582d0764">More...</a><br /></td></tr>
 <tr class="separator:aaa0ce9ae6ee170d0c8b44349582d0764"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -171,9 +181,30 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a62d478fa357ab2024ee75d4edeb5b317"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_camera_handler.html">CameraHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a62d478fa357ab2024ee75d4edeb5b317">cameraHandler</a></td></tr>
 <tr class="memdesc:a62d478fa357ab2024ee75d4edeb5b317"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_camera_handler.html" title="Class for camera management between Runtime or Editor mode.">CameraHandler</a> object for the camera in the stage.  <a href="class_a_r_items_handling.html#a62d478fa357ab2024ee75d4edeb5b317">More...</a><br /></td></tr>
 <tr class="separator:a62d478fa357ab2024ee75d4edeb5b317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a2692c8c0b147f88fe92f453d44094b"><td class="memItemLeft" align="right" valign="top">ARRaycastManager&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a0a2692c8c0b147f88fe92f453d44094b">_arRaycastManager</a></td></tr>
+<tr class="memdesc:a0a2692c8c0b147f88fe92f453d44094b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ARRaycastManager object for the detector of area in the stage.  <a href="class_a_r_items_handling.html#a0a2692c8c0b147f88fe92f453d44094b">More...</a><br /></td></tr>
+<tr class="separator:a0a2692c8c0b147f88fe92f453d44094b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0291d0ef2d63c54e53d18692c93ba7ff"><td class="memItemLeft" align="right" valign="top">List&lt; GameObject &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a0291d0ef2d63c54e53d18692c93ba7ff">Items</a> = new List&lt;GameObject&gt;()</td></tr>
+<tr class="memdesc:a0291d0ef2d63c54e53d18692c93ba7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of GameObject for list the items in the stage.  <a href="class_a_r_items_handling.html#a0291d0ef2d63c54e53d18692c93ba7ff">More...</a><br /></td></tr>
+<tr class="separator:a0291d0ef2d63c54e53d18692c93ba7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2ef2f01c28c66c2236c3cdf7ea63f5"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_a_r_items_handling_1_1_config_item.html">ConfigItem</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#aab2ef2f01c28c66c2236c3cdf7ea63f5">ConfigItems</a> = new List&lt;<a class="el" href="class_a_r_items_handling_1_1_config_item.html">ConfigItem</a>&gt;()</td></tr>
+<tr class="memdesc:aab2ef2f01c28c66c2236c3cdf7ea63f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of ConfigItems objects.  <a href="class_a_r_items_handling.html#aab2ef2f01c28c66c2236c3cdf7ea63f5">More...</a><br /></td></tr>
+<tr class="separator:aab2ef2f01c28c66c2236c3cdf7ea63f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e1759f1639ac9c647bde109f5e48e41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_prefab_j_s_o_n.html">PrefabJSON</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a5e1759f1639ac9c647bde109f5e48e41">prefabDescription</a></td></tr>
 <tr class="memdesc:a5e1759f1639ac9c647bde109f5e48e41"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_prefab_j_s_o_n.html" title="Class in reference to JSON object for virtual furniture description.">PrefabJSON</a> object containing the description of a virtual furniture.  <a href="class_a_r_items_handling.html#a5e1759f1639ac9c647bde109f5e48e41">More...</a><br /></td></tr>
 <tr class="separator:a5e1759f1639ac9c647bde109f5e48e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dc8a12d3cbc466f5bd5d25d9e554685"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a8dc8a12d3cbc466f5bd5d25d9e554685">onTouchHold</a> = false</td></tr>
+<tr class="memdesc:a8dc8a12d3cbc466f5bd5d25d9e554685"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean for detect when the user hold the pression on the screen. It's allow to detect the "drag and drop" process.  <a href="class_a_r_items_handling.html#a8dc8a12d3cbc466f5bd5d25d9e554685">More...</a><br /></td></tr>
+<tr class="separator:a8dc8a12d3cbc466f5bd5d25d9e554685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6ad6948867f582afe00a2a10eb1600"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#a9b6ad6948867f582afe00a2a10eb1600">touchPosition</a></td></tr>
+<tr class="memdesc:a9b6ad6948867f582afe00a2a10eb1600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector2 object containing the contact informations of the position touched by the user.  <a href="class_a_r_items_handling.html#a9b6ad6948867f582afe00a2a10eb1600">More...</a><br /></td></tr>
+<tr class="separator:a9b6ad6948867f582afe00a2a10eb1600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:affb9927ee0fc09d6930688be5d085385"><td class="memItemLeft" align="right" valign="top">static List&lt; ARRaycastHit &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_items_handling.html#affb9927ee0fc09d6930688be5d085385">hits</a> = new List&lt;ARRaycastHit&gt;()</td></tr>
+<tr class="memdesc:affb9927ee0fc09d6930688be5d085385"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of ARRaycastHit object for resume points and placements where the user hit the screen.  <a href="class_a_r_items_handling.html#affb9927ee0fc09d6930688be5d085385">More...</a><br /></td></tr>
+<tr class="separator:affb9927ee0fc09d6930688be5d085385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for manage the selection and the emergence of items in the screen. </p>
@@ -261,6 +292,34 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aa9ad787a6bb6bf3048892dabcca8f7ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9ad787a6bb6bf3048892dabcca8f7ea">&#9670;&nbsp;</a></span>Awake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ARItemsHandling.Awake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function executed when the script is started. </p>
+<p>Load the prefab files in ConfigItems object and set in a list. </p>
 
 </div>
 </div>
@@ -392,6 +451,41 @@ If the color is set on "default" so the object will not have color but only the 
 
 </div>
 </div>
+<a id="a9dc6bc1ef7aa22efbcc030e3a22f3c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc6bc1ef7aa22efbcc030e3a22f3c69">&#9670;&nbsp;</a></span>GetModelBehaviour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_model_behaviour.html">ModelBehaviour</a> ARItemsHandling.GetModelBehaviour </td>
+          <td>(</td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function which allow to get an item as <a class="el" href="class_model_behaviour.html">ModelBehaviour</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>A GameObject item. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>ModelBehavious object from an item. </dd></dl>
+
+</div>
+</div>
 <a id="a38c77de71e59837632d76dd203eb769c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a38c77de71e59837632d76dd203eb769c">&#9670;&nbsp;</a></span>IsAnItemSelected()</h2>
 
@@ -517,7 +611,51 @@ If the color is set on "default" so the object will not have color but only the 
 
 </div>
 </div>
+<a id="ad156cd2ae2dc37bc410529839593d860"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad156cd2ae2dc37bc410529839593d860">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ARItemsHandling.Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Function executed once per frame. </p>
+<p>Detect the area and manage the hit on the screen. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0a2692c8c0b147f88fe92f453d44094b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a2692c8c0b147f88fe92f453d44094b">&#9670;&nbsp;</a></span>_arRaycastManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ARRaycastManager ARItemsHandling._arRaycastManager</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ARRaycastManager object for the detector of area in the stage. </p>
+
+</div>
+</div>
 <a id="a62d478fa357ab2024ee75d4edeb5b317"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a62d478fa357ab2024ee75d4edeb5b317">&#9670;&nbsp;</a></span>cameraHandler</h2>
 
@@ -531,6 +669,23 @@ If the color is set on "default" so the object will not have color but only the 
 </div><div class="memdoc">
 
 <p><a class="el" href="class_camera_handler.html" title="Class for camera management between Runtime or Editor mode.">CameraHandler</a> object for the camera in the stage. </p>
+
+</div>
+</div>
+<a id="aab2ef2f01c28c66c2236c3cdf7ea63f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab2ef2f01c28c66c2236c3cdf7ea63f5">&#9670;&nbsp;</a></span>ConfigItems</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_a_r_items_handling_1_1_config_item.html">ConfigItem</a>&gt; ARItemsHandling.ConfigItems = new List&lt;<a class="el" href="class_a_r_items_handling_1_1_config_item.html">ConfigItem</a>&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of ConfigItems objects. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_r_items_handling.html#aab2ef2f01c28c66c2236c3cdf7ea63f5" title="List of ConfigItems objects.">ConfigItems</a> </dd></dl>
 
 </div>
 </div>
@@ -550,6 +705,46 @@ If the color is set on "default" so the object will not have color but only the 
 
 </div>
 </div>
+<a id="affb9927ee0fc09d6930688be5d085385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb9927ee0fc09d6930688be5d085385">&#9670;&nbsp;</a></span>hits</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;ARRaycastHit&gt; ARItemsHandling.hits = new List&lt;ARRaycastHit&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>List of ARRaycastHit object for resume points and placements where the user hit the screen. </p>
+
+</div>
+</div>
+<a id="a0291d0ef2d63c54e53d18692c93ba7ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0291d0ef2d63c54e53d18692c93ba7ff">&#9670;&nbsp;</a></span>Items</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;GameObject&gt; ARItemsHandling.Items = new List&lt;GameObject&gt;()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>List of GameObject for list the items in the stage. </p>
+
+</div>
+</div>
 <a id="a97b7f06a4652131631450c345e768c26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97b7f06a4652131631450c345e768c26">&#9670;&nbsp;</a></span>MovementJoystick</h2>
 
@@ -561,6 +756,22 @@ If the color is set on "default" so the object will not have color but only the 
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8dc8a12d3cbc466f5bd5d25d9e554685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dc8a12d3cbc466f5bd5d25d9e554685">&#9670;&nbsp;</a></span>onTouchHold</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ARItemsHandling.onTouchHold = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Boolean for detect when the user hold the pression on the screen. It's allow to detect the "drag and drop" process. </p>
 
 </div>
 </div>
@@ -609,6 +820,22 @@ If the color is set on "default" so the object will not have color but only the 
 </div><div class="memdoc">
 
 <p>GameObject object for item selected in the stage. </p>
+
+</div>
+</div>
+<a id="a9b6ad6948867f582afe00a2a10eb1600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6ad6948867f582afe00a2a10eb1600">&#9670;&nbsp;</a></span>touchPosition</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 ARItemsHandling.touchPosition</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vector2 object containing the contact informations of the position touched by the user. </p>
 
 </div>
 </div>

@@ -44,7 +44,7 @@ public class CreatorManager : MonoBehaviour
 
     /// Function executed when the script is started.
     /// Initiate the canvas template.
-    void Start()
+    public void Start()
     {
         canvasTemplate = this.content.transform.GetChild(0).gameObject;
     }

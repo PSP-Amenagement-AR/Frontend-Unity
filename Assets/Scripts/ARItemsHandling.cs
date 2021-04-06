@@ -61,25 +61,25 @@ public class ARItemsHandling : MonoBehaviour
     /// <summary>CameraHandler object for the camera in the stage.</summary>
     public CameraHandler cameraHandler;
     /// <summary>ARRaycastManager object for the detector of area in the stage.</summary>
-    private ARRaycastManager _arRaycastManager;
+    public ARRaycastManager _arRaycastManager;
 
     /// <summary>List of GameObject for list the items in the stage.</summary>
-    private List<GameObject> Items = new List<GameObject>();
+    public List<GameObject> Items = new List<GameObject>();
     /// <summary>List of ConfigItems objects.</summary>
     /// @see ConfigItems
-    private List<ConfigItem> ConfigItems = new List<ConfigItem>();
+    public List<ConfigItem> ConfigItems = new List<ConfigItem>();
 
     /// <summary>List of ARRaycastHit object for resume points and placements where the user hit the screen.</summary>
-    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    public static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     /// <summary>PrefabJSON object containing the description of a virtual furniture.</summary>
     public PrefabJSON prefabDescription;
 
     /// <summary>Boolean for detect when the user hold the pression on the screen. It's allow to detect the "drag and drop" process.</summary>
-    private bool onTouchHold = false;
+    public bool onTouchHold = false;
 
     /// <summary>Vector2 object containing the contact informations of the position touched by the user.</summary>
-    private Vector2 touchPosition;
+    public Vector2 touchPosition;
 
     /// Get the list of ConfigItems objects.
     /// @returns The list of ConfigItems objects.
@@ -90,7 +90,7 @@ public class ARItemsHandling : MonoBehaviour
 
     /// Function executed when the script is started.
     /// Load the prefab files in ConfigItems object and set in a list.
-    private void Awake()
+    public void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
 
@@ -101,7 +101,7 @@ public class ARItemsHandling : MonoBehaviour
 
     /// Function executed once per frame.
     /// Detect the area and manage the hit on the screen.
-    void Update()
+    public void Update()
     {
         if (!IsAnItemSelected() && Input.GetMouseButtonDown(0))
         {
@@ -167,7 +167,7 @@ public class ARItemsHandling : MonoBehaviour
     /// Function which allow to get an item as ModelBehaviour object.
     /// @param item A GameObject item.
     /// @returns ModelBehavious object from an item.
-    ModelBehaviour GetModelBehaviour(GameObject item)
+    public ModelBehaviour GetModelBehaviour(GameObject item)
     {
         return item.GetComponent<ModelBehaviour>();
     }

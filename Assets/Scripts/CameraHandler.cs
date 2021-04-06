@@ -15,7 +15,7 @@ public class CameraHandler : MonoBehaviour
     /// Check the availability of the AR mode.
     /// @returns Return an ARSession object in terms of the availability of the execution mode.
     /// @see ARSession()
-    IEnumerator Start()
+    public IEnumerator Start()
     {
         if ((ARSession.state == ARSessionState.None) ||
             (ARSession.state == ARSessionState.CheckingAvailability))

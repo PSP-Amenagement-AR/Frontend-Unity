@@ -1,11 +1,21 @@
 var searchData=
 [
-  ['readfeatures_184',['ReadFeatures',['../class_creator_manager.html#ab5dd2ec4f4952d5610a1bf2ccecaa493',1,'CreatorManager']]],
-  ['readprefabjson_185',['ReadPrefabJSON',['../class_inventory_button.html#a2cf0b295048eb607a07f676c859d628d',1,'InventoryButton']]],
-  ['remove_186',['Remove',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a5dadbd4d866ee4cd87b2ec388e2fef19',1,'SimpleJSON.JSONNode.Remove(string aKey)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ae3def64bf1ebeaa35a1863adeaae2bfa',1,'SimpleJSON.JSONNode.Remove(int aIndex)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a3e9d1edd18d48652e73bdd8df0916ff8',1,'SimpleJSON.JSONNode.Remove(JSONNode aNode)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html#aed3b61a8962499ef06e555e434d7affc',1,'SimpleJSON.JSONArray.Remove(int aIndex)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html#a6e24a51eb5e1f70b2f615399141e291b',1,'SimpleJSON.JSONArray.Remove(JSONNode aNode)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#a4c282478102eff961df08212da11a8b9',1,'SimpleJSON.JSONObject.Remove(string aKey)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#a4d1b339bf85e82baf2a143559ff5689a',1,'SimpleJSON.JSONObject.Remove(int aIndex)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html#a5fefce72acdb086a4859046ed0e38b06',1,'SimpleJSON.JSONObject.Remove(JSONNode aNode)']]],
-  ['reset_187',['Reset',['../class_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_linq_enumerator.html#a4002a7e067a082b0459c0b144fcf65f1',1,'SimpleJSON::JSONNode::LinqEnumerator']]],
-  ['returnloginbutton_188',['returnLoginButton',['../class_user_controller.html#a6fd5c443b775ff361f3c705055035552',1,'UserController']]],
-  ['returnregistrationbutton_189',['returnRegistrationButton',['../class_user_controller.html#a834a92ce8a3f36e7565bcd57c41ce3aa',1,'UserController']]],
-  ['reusesameinstance_190',['reuseSameInstance',['../class_simple_j_s_o_n_1_1_j_s_o_n_null.html#a6848d43d9f2673a8b00d8c9f07377410',1,'SimpleJSON::JSONNull']]],
-  ['rotationjoystick_191',['RotationJoystick',['../class_a_r_items_handling.html#ae58bc02298c2aa2061fe7e6297d04b2b',1,'ARItemsHandling.RotationJoystick()'],['../class_model_behaviour.html#afdf16e801e2f4e08596841f141ce87da',1,'ModelBehaviour.RotationJoystick()']]]
+  ['panelplacementindicator_180',['PanelPlacementIndicator',['../class_a_r_tap_to_place_object.html#ae8722b658097bc924e6b0357ace048d5',1,'ARTapToPlaceObject']]],
+  ['parse_181',['Parse',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#af4f82de403afd2df381137972ded5981',1,'SimpleJSON::JSONNode']]],
+  ['password_182',['password',['../class_users.html#aa90cead4538509e12144f56cce5fcbf6',1,'Users']]],
+  ['passwordfield_183',['passwordField',['../class_user_controller.html#a8bd6d3ba03496811cd2226c0c5c2d2b4',1,'UserController']]],
+  ['passwordprofilfield_184',['passwordProfilField',['../class_user_controller.html#a0744b329e92e40ef5c3cfe203ae1f055',1,'UserController']]],
+  ['playerinventory_185',['playerInventory',['../class_inventory_control.html#a49024d212f97366d96be9d09f55e768f',1,'InventoryControl']]],
+  ['playeritem_186',['PlayerItem',['../class_inventory_control_1_1_player_item.html',1,'InventoryControl']]],
+  ['popup_187',['popup',['../class_user_controller.html#a500ad25dcc309d10b996d044e5ebe0e2',1,'UserController']]],
+  ['popuptext_188',['popupText',['../class_user_controller.html#a64a7f9d39291bf17b41dee6e18cd6402',1,'UserController']]],
+  ['preadditem_189',['PreAddItem',['../class_a_r_tap_to_place_object.html#a0f3ed5013098b70ce94bfd2fdfbcac77',1,'ARTapToPlaceObject']]],
+  ['prefab_190',['prefab',['../class_creator_manager.html#ab908a1d44c23cf07686dbbbc4e9a4124',1,'CreatorManager']]],
+  ['prefabdescription_191',['prefabDescription',['../class_a_r_items_handling.html#a5e1759f1639ac9c647bde109f5e48e41',1,'ARItemsHandling.prefabDescription()'],['../class_inventory_button.html#a8e3f72e9f9706db5e368640470bc26f0',1,'InventoryButton.prefabDescription()']]],
+  ['prefabjson_192',['PrefabJSON',['../class_prefab_j_s_o_n.html',1,'']]],
+  ['prefabjson_2ecs_193',['PrefabJSON.cs',['../_prefab_j_s_o_n_8cs.html',1,'']]],
+  ['prefabpath_194',['PrefabPath',['../class_a_r_items_handling_1_1_config_item.html#a030148af07e5e76c948e00890c9dc597',1,'ARItemsHandling::ConfigItem']]],
+  ['profilbutton_195',['ProfilButton',['../class_user_controller.html#a46554ad6c323ffa29da46b67f7b29a1e',1,'UserController']]],
+  ['profilebutton_196',['ProfileButton',['../class_screen_handler.html#af7f3a443545d8b622bb4a3ecc1c6a658',1,'ScreenHandler']]],
+  ['puttransparency_197',['PutTransparency',['../class_inventory_button.html#af42f1e5eaa1f5b907da0654619493faa',1,'InventoryButton']]]
 ];

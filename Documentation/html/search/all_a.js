@@ -1,5 +1,12 @@
 var searchData=
 [
-  ['keyenumerator_119',['KeyEnumerator',['../struct_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_key_enumerator.html#a76b68b145b027cca387ea233f8c883b2',1,'SimpleJSON.JSONNode.KeyEnumerator.KeyEnumerator(List&lt; JSONNode &gt;.Enumerator aArrayEnum)'],['../struct_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_key_enumerator.html#aec42f848bdc5c9aacab79d2feda30cdf',1,'SimpleJSON.JSONNode.KeyEnumerator.KeyEnumerator(Dictionary&lt; string, JSONNode &gt;.Enumerator aDictEnum)'],['../struct_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_key_enumerator.html#af08770a44e38a54fb59f36726eedea4a',1,'SimpleJSON.JSONNode.KeyEnumerator.KeyEnumerator(Enumerator aEnumerator)'],['../struct_simple_j_s_o_n_1_1_j_s_o_n_node_1_1_key_enumerator.html',1,'SimpleJSON.JSONNode.KeyEnumerator']]],
-  ['keys_120',['Keys',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a81eba64175e309a73930e4cbef5c0415',1,'SimpleJSON::JSONNode']]]
+  ['jsonarray_120',['JSONArray',['../class_simple_j_s_o_n_1_1_j_s_o_n_array.html',1,'SimpleJSON']]],
+  ['jsonbool_121',['JSONBool',['../class_simple_j_s_o_n_1_1_j_s_o_n_bool.html#aa8802752ab09e90103365d075a7344f0',1,'SimpleJSON.JSONBool.JSONBool(bool aData)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_bool.html#a41cfc348877baaeb84146fb7b9dc7ce7',1,'SimpleJSON.JSONBool.JSONBool(string aData)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_bool.html',1,'SimpleJSON.JSONBool']]],
+  ['jsonnode_122',['JSONNode',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html',1,'SimpleJSON']]],
+  ['jsonnodetype_123',['JSONNodeType',['../namespace_simple_j_s_o_n.html#a62af00acc7925cc0284e634fb10626f5',1,'SimpleJSON']]],
+  ['jsonnull_124',['JSONNull',['../class_simple_j_s_o_n_1_1_j_s_o_n_null.html',1,'SimpleJSON']]],
+  ['jsonnumber_125',['JSONNumber',['../class_simple_j_s_o_n_1_1_j_s_o_n_number.html#a025fec03c0234346f61ce3bc3e26e2fd',1,'SimpleJSON.JSONNumber.JSONNumber(double aData)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_number.html#ab50199198312b01b6d72a168bf97b158',1,'SimpleJSON.JSONNumber.JSONNumber(string aData)'],['../class_simple_j_s_o_n_1_1_j_s_o_n_number.html',1,'SimpleJSON.JSONNumber']]],
+  ['jsonobject_126',['JSONObject',['../class_simple_j_s_o_n_1_1_j_s_o_n_object.html',1,'SimpleJSON']]],
+  ['jsonstring_127',['JSONString',['../class_simple_j_s_o_n_1_1_j_s_o_n_string.html#a04c6b1eac02af092eb905d13faa0ae56',1,'SimpleJSON.JSONString.JSONString()'],['../class_simple_j_s_o_n_1_1_j_s_o_n_string.html',1,'SimpleJSON.JSONString']]],
+  ['jsontextmode_128',['JSONTextMode',['../namespace_simple_j_s_o_n.html#a3981ef39adf14ef6bd21bd800720ca0e',1,'SimpleJSON']]]
 ];

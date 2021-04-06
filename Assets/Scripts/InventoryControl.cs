@@ -3,21 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Class for the inventory button control.
+/// </summary>
 public class InventoryControl : MonoBehaviour
 {
-    private List<PlayerItem> playerInventory;
+    /// List of PlayerItem objects in the inventory.
+    /// @see PlayerItem
+    public List<PlayerItem> playerInventory;
 
+    /// GameObject for the button template.
     [SerializeField]
-    private GameObject buttonTemplate;
+    public GameObject buttonTemplate;
 
+    /// GameObject for the grid in the interface containing the inventory.
     [SerializeField]
-    private GridLayoutGroup gridGroup;
+    public GridLayoutGroup gridGroup;
 
+    /// ARItemsHandling object for manage item handling.
+    /// @see ARItemsHandling()
     public ARItemsHandling aRItemsHandling;
 
+    /// Boolean indicating if the item is in the list.
     public bool isItemList;
 
-    void Start()
+    /// Initialization of PlayerItem list and update of stage and item inventory.
+    /// @see PlayerItem
+    public void Start()
     {
         buttonTemplate.SetActive(false);
         playerInventory = new List<PlayerItem>();
@@ -30,7 +42,8 @@ public class InventoryControl : MonoBehaviour
         GenInventory();
     }
 
-    void UpdateListItems()
+    /// Update of the items list.
+    public void UpdateListItems()
     {
         List<ARItemsHandling.ConfigItem>  configItems = aRItemsHandling.GetConfigItems();
         foreach (ARItemsHandling.ConfigItem configItem in configItems)
@@ -39,7 +52,8 @@ public class InventoryControl : MonoBehaviour
         }
     }
 
-    void UpdateListStages()
+    /// Update of the stage list.
+    public void UpdateListStages()
     {
         AddNewItem("hall", "Sprites/Stages/hall");
         AddNewItem("kitchen", "Sprites/Stages/kitchen");
@@ -47,7 +61,10 @@ public class InventoryControl : MonoBehaviour
         AddNewItem("room", "Sprites/Stages/room");
     }
 
-    void AddNewItem(string name, string spritePath)
+    /// Add of a new item in the items list.
+    /// @param name Name of the item
+    /// @param spritePath Paht of the sprite
+    public void AddNewItem(string name, string spritePath)
     {
         PlayerItem newItem = new PlayerItem();
 
@@ -57,7 +74,8 @@ public class InventoryControl : MonoBehaviour
 
     }
 
-    void GenInventory()
+    /// Inventory generation.
+    public void GenInventory()
     {
         if (playerInventory.Count < 5)
         {
@@ -80,9 +98,12 @@ public class InventoryControl : MonoBehaviour
         }
     }
 
+    /// Class containing item informations
     public class PlayerItem
     {
+        /// Sprite object for the item sprite.
         public Sprite iconSprite;
+        /// Name of the icon.
         public string iconName;
     }
 }

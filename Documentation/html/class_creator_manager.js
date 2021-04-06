@@ -13,6 +13,7 @@ var class_creator_manager =
     [ "SetObject", "class_creator_manager.html#a0e89ad05d0a4ae3eee30eb6da36c73e7", null ],
     [ "SetPrefab", "class_creator_manager.html#afc6c68356e3ad0a2ca0838fd51c4e99d", null ],
     [ "SetTitle", "class_creator_manager.html#a765f0fcf716adf8d4d28d90946d71fc2", null ],
+    [ "Start", "class_creator_manager.html#a3bbd63a2cb276291c6f417931a7c9e38", null ],
     [ "UpdateCreatorManager", "class_creator_manager.html#aefdeaf084c8f0c852a7fafcaabd2ab82", null ],
     [ "UpdateInventory", "class_creator_manager.html#ad0ae5451a813fa9bf8cc47b998b13887", null ],
     [ "buttonTemplate", "class_creator_manager.html#a0fa68c422c79a02d52a612ab69748265", null ],

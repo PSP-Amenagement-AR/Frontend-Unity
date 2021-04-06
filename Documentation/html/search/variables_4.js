@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['email_407',['email',['../class_users.html#a26115d5c734031d1f239ec1802d3673f',1,'Users']]]
+  ['deletebutton_434',['DeleteButton',['../class_a_r_items_handling.html#ae9b23b06f7b84df7802e5266038ff3a6',1,'ARItemsHandling']]],
+  ['deletebutton_435',['deleteButton',['../class_user_controller.html#add1a7627ef8b7f48efe39741e3ad467e',1,'UserController']]]
 ];
