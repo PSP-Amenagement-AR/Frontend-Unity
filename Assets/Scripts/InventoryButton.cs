@@ -4,29 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
 
+/// <summary> Class for inventory button. </summary>
 public class InventoryButton : MonoBehaviour
 {
+    /// Image object for the button icon.
     [SerializeField]
     public Image icon;
-
+    /// Name of the button.
     [SerializeField]
     private Text name;
-
+    /// The button assigned to the InventoryButton object.
     public Button myButton;
-
+    /// The plane scaned.
+    /// @see ARTapToPlaceObject()
     [SerializeField]
     public ARTapToPlaceObject myPlane;
-
+    /// Boolean indicating if an item is selected.
     public bool isItem;
-
+    /// PrefabJSON object containing the objectt description.
+    /// @see PrefabJSON()
     public PrefabJSON prefabDescription;
 
+    /// Intiate the button.
     void Start()
     {
         Button btn = myButton.GetComponent<Button>();
         btn.onClick.AddListener(TaskOnClick);
     }
 
+    /// Task executed during a click.
     public void TaskOnClick()
     {
         ReadPrefabJSON();
@@ -36,16 +42,22 @@ public class InventoryButton : MonoBehaviour
         }
     }
 
+    /// Set the icon.
+    /// @param mySprite Sprite object containing the icon.
     public void SetIcon(Sprite mySprite)
     {
         icon.sprite = mySprite;
     }
 
+    /// Set the name.
+    /// @param myName The name of the object.
     public void SetName(string myName)
     {
         name.text = myName;
     }
 
+    /// Apply some transparency on a button.
+    /// @param transparency Percentage of transparency.
     public void PutTransparency(float transparency)
     {
         Color color = icon.color;
@@ -53,6 +65,9 @@ public class InventoryButton : MonoBehaviour
         icon.color = color;
     }
 
+    /// Initiate the PrefabJSON object for the button.
+    /// Each type of features have color and texture set with default values in terms of prefab name.
+    /// @see PrefabJSON()
     public void InitPrefabJSON()
     {
         prefabDescription = new PrefabJSON();
@@ -82,11 +97,17 @@ public class InventoryButton : MonoBehaviour
         }
     }
 
+    /// Set the prefab JSON description.
+    /// @param prefab PrefabJSON object containing object description.
+    /// @see PrefabJSON()
     public void SetPrefabJSON(PrefabJSON prefab)
     {
         this.prefabDescription = prefab;
     }
 
+    /// Read the prefab JSON description.
+    /// @remarks Function useful only when debugging.
+    /// @see PrefabJSON()
     public void ReadPrefabJSON()
     {
         string JSONresult = JsonConvert.SerializeObject(this.prefabDescription);
