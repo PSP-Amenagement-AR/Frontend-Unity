@@ -25,5 +25,5 @@ var searchData=
   ['asfloat_24',['AsFloat',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a78fd9e2a7fb6a99a4f9b106f793e7686',1,'SimpleJSON::JSONNode']]],
   ['asint_25',['AsInt',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#a1e771cb19c2928bcea2ad18f96021610',1,'SimpleJSON::JSONNode']]],
   ['asobject_26',['AsObject',['../class_simple_j_s_o_n_1_1_j_s_o_n_node.html#ae77298ed6cea74259c6d3c35479a3f0c',1,'SimpleJSON::JSONNode']]],
-  ['awake_27',['Awake',['../class_a_r_items_handling.html#aa9ad787a6bb6bf3048892dabcca8f7ea',1,'ARItemsHandling.Awake()'],['../class_a_r_tap_to_place_object.html#a931a77ffc5086f551c3b0f4af8955df4',1,'ARTapToPlaceObject.Awake()'],['../class_model_behaviour.html#ad356e9d43e9387c77b6f4b3d2f5687ba',1,'ModelBehaviour.Awake()'],['../class_screen_handler.html#a6f005cba3ca19fe53696a16a2859e6b0',1,'ScreenHandler.Awake()']]]
+  ['awake_27',['Awake',['../class_a_r_items_handling.html#aa9ad787a6bb6bf3048892dabcca8f7ea',1,'ARItemsHandling.Awake()'],['../class_a_r_tap_to_place_object.html#a931a77ffc5086f551c3b0f4af8955df4',1,'ARTapToPlaceObject.Awake()'],['../class_model_behaviour.html#ad356e9d43e9387c77b6f4b3d2f5687ba',1,'ModelBehaviour.Awake()'],['../class_screen_handler.html#a6f005cba3ca19fe53696a16a2859e6b0',1,'ScreenHandler.Awake()'],['../class_user_controller.html#a0d42e016d1428255def6c3d9b7050523',1,'UserController.Awake()']]]
 ];

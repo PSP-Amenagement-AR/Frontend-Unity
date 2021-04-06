@@ -5,45 +5,76 @@ using UnityEngine;
 using UnityEngine.UI;
 using SimpleJSON;
 
+/// <summary>
+/// Class for manage user controller.
+/// </summary>
 public class UserController : MonoBehaviour
 {
+    /// GameObject for popup interface.
     public GameObject popup;
+    /// Text of popup interface.
     public Text popupText;
+    /// ScreenHandler object for the canvas.
+    /// @see ScreenHandler
     public ScreenHandler canvas;
 
     // Buttons
+    /// Logout button.
     public Button logoutButton;
+    /// Profil button.
     public Button ProfilButton;
+    /// Submit button.
     public Button submitButton;
+    /// Login button.
     public Button loginButton;
+    /// Update button.
     public Button updateButton;
+    /// Delete button.
     public Button deleteButton;
+    /// Return from login button.
     public Button returnLoginButton;
+    /// Return from registration button.
     public Button returnRegistrationButton;
 
     // Login fields
+    /// Input filed for email in login interface.
     public InputField loginMailField;
+    /// Input field for password in login interface.
     public InputField loginPasswordField;
 
     // Registration fields
+    /// Input field for firstname in registration interface.
     public InputField firstnameField;
+    /// Input field for lastname in registration interface.
     public InputField lastnameField;
+    /// Input field for email in registration interface.
     public InputField mailField;
+    /// Input field for password in registration interface.
     public InputField passwordField;
+    /// Input field for confirm password in registration interface.
     public InputField confirmedPasswordField;
 
     // Profil page fields (update)
+    /// Input field for firstname in profil interface.
     public InputField firstnameProfilField;
+    /// Input field for lastname in profil interface.
     public InputField lastnameProfilField;
+    /// Input field for email in profil interface.
     public InputField mailProfilField;
+    /// Input field for password in profil interface.
     public InputField passwordProfilField;
 
     // User informations
-    private string firstname = "";
-    private string lastname = "";
-    private string id = "";
+    /// Firstname of the user connected.
+    public string firstname = "";
+    /// Lastname of the user connected.
+    public string lastname = "";
+    /// Id of the user connected.
+    public string id = "";
 
-    private void Awake()
+    /// Initiate interfaces and buttons listener.
+    /// @note Function executed when the script is started.
+    public void Awake()
     {
         submitButton.onClick.AddListener(() =>
         {
@@ -145,7 +176,10 @@ public class UserController : MonoBehaviour
         
     }
 
-    JSONNode Registration()
+    /// Send registration request to Back service.
+    /// @see Users
+    /// @returns JSON response or null if error.
+    public JSONNode Registration()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users/register", "POST", new Users { email = mailField.text.ToString(), password = passwordField.text.ToString(), firstName = firstnameField.text.ToString(), lastName = lastnameField.text.ToString() });
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
@@ -166,7 +200,10 @@ public class UserController : MonoBehaviour
             return null;
     }
 
-    JSONNode Login()
+    /// Send login request to Back service.
+    /// @see Users
+    /// @returns JSON response or null if error.
+    public JSONNode Login()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users/login", "POST", new Users { email = loginMailField.text.ToString(), password = loginPasswordField.text.ToString() });
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
@@ -187,7 +224,9 @@ public class UserController : MonoBehaviour
            return null;
     }
 
-    JSONNode Logout()
+    /// Send logout request to Back service.
+    /// @returns JSON response or null if error.
+    public JSONNode Logout()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users/disconnect", "GET");
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
@@ -205,7 +244,10 @@ public class UserController : MonoBehaviour
         
     }
 
-    JSONNode UpdateInfos()
+    /// Send update user informations request to Back service.
+    /// @see Users
+    /// @returns JSON response or null if error.
+    public JSONNode UpdateInfos()
     {
         var request = GlobalStatus.webApi.SendApiRequest("/users", "PUT", new Users { email = mailProfilField.text.ToString(), password = passwordProfilField.text.ToString(), firstName = firstnameProfilField.text.ToString(), lastName = lastnameProfilField.text.ToString() });
         JSONNode dataJSON = JSON.Parse(request.downloadHandler.text);
@@ -221,7 +263,9 @@ public class UserController : MonoBehaviour
         }
     }
 
-    JSONNode Deletion()
+    /// Send delete user request to Back service
+    /// @returns JSON response or null if error.
+    public JSONNode Deletion()
     {
         var url = "/users/" + this.id;
         var request = GlobalStatus.webApi.SendApiRequest(url, "DELETE");
@@ -242,7 +286,9 @@ public class UserController : MonoBehaviour
         }
     }
 
-    bool RegistrationCheckInformations()
+    /// Check user informations for validate a registration.
+    /// @returns Boolean if the validation is good or not.
+    public bool RegistrationCheckInformations()
     {
         bool created;
         if ((firstnameField.text.ToString() != "") && (lastnameField.text.ToString() != "") &&
@@ -277,7 +323,9 @@ public class UserController : MonoBehaviour
         return created;
     }
 
-    bool LoginCheckInformations()
+    /// Check user information for validate the login.
+    /// @returns Boolean if the validation is good or not.
+    public bool LoginCheckInformations()
     {
         bool connected;
         if ((loginMailField.text.ToString() != "") && (loginPasswordField.text.ToString() != ""))
@@ -301,7 +349,9 @@ public class UserController : MonoBehaviour
         return connected;
     }
 
-    void InitPopup(string str)
+    /// Initiate the popup text.
+    /// 
+    public void InitPopup(string str)
     {
         popupText.text = str;
         if (str != "Connected")
@@ -310,14 +360,17 @@ public class UserController : MonoBehaviour
         } 
     }
 
-    IEnumerator PopupText()
+    /// Activate for a time the popup interface.
+    /// @returns IEnumerator delay
+    public IEnumerator PopupText()
     {
         popup.SetActive(true);
         yield return new WaitForSeconds(2);
         popup.SetActive(false);
     }
 
-    void DeleteUserInformations()
+    /// Delete the user informations after a logout.
+    public void DeleteUserInformations()
     {
         GlobalStatus.token = "";
         this.firstname = "";
@@ -325,7 +378,8 @@ public class UserController : MonoBehaviour
         this.id = "";
     }
 
-    void CleanFields(bool flag)
+    /// Clean all fields in the interface wich can contains any informations about the user.
+    public void CleanFields(bool flag)
     {
         if (flag)
         {
@@ -343,10 +397,15 @@ public class UserController : MonoBehaviour
     }
 }
 
+/// Class specifying user informations in order to construct JSON body.
 public class Users
 {
+    /// User email.
     public string email;
+    /// User password.
     public string password;
+    /// User firstname.
     public string firstName;
+    /// User lastname;
     public string lastName;
 }
