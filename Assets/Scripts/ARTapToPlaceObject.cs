@@ -4,31 +4,44 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/// <summary>Class for manage the tap of user on screen and object placement in the stage.</summary>
 [RequireComponent(typeof(ARRaycastManager))]
 public class ARTapToPlaceObject : MonoBehaviour
 {
-
-    //public GameObject gameObjectToInstantiate;
-
+    /// <summary>Boolean if object is placed or not.</summary>
     private bool objectToPlace = false;
+    /// <summary>ARRaycastManager object for plane detection.</summary>
+    /// @see ARRaycastManager()
     private ARRaycastManager _arRaycastManager;
-    //public Joystick MovementJoystick;
+    /// <summary>Add of a new panel.</summary>
     public GameObject AddPanel;
+    /// <summary>Indicator for the object placement.</summary>
     public GameObject PanelPlacementIndicator;
+    /// <summary>Instance of ScreenHandler class.</summary>
+    /// @see ScreenHandler()
     public ScreenHandler screenHandler;
-
+    /// <summary>List of ARRaycastHit for each hit of the user on screen.</summary>
+    /// @see ARRaycastHit()
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+    /// <summary>GameObject for the object to place in the stage.</summary>
     private GameObject ItemToPlace;
+    /// <summary>List of the 3D objects.</summary>
     GameObject[] List3DModels;
-
+    /// <summary>Instance of ARItemsHandling class.</summary>
+    /// @see ARItemsHandling
     public ARItemsHandling itemsHandling;
 
+    /// Function executed when the script is started.
+    /// Load prefab objects from the ressources and get of scanned plane.
     private void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
         List3DModels = Resources.LoadAll<GameObject>("Prefabs");
     }
 
+    /// Try to get the touched position by the user.
+    /// @param touchPosition Vector2 object which contains the position of the touch point.
+    /// @return Return a boolean if the touched position is valid.
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
         if (Input.touchCount > 0)
@@ -44,6 +57,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         return false;
     }
 
+    /// Get 3D Model from the list by his name.
+    /// @param name Name of the 3D object to get.
+    /// @return Return the 3D object or null if it is not recovered.
     public GameObject GetModel3D(string name)
     {
         foreach (GameObject model3D in List3DModels)
@@ -65,7 +81,8 @@ public class ARTapToPlaceObject : MonoBehaviour
         return null;
     }
 
-
+    /// Get prefab of the object to place.
+    /// @param prefab PrefabJSON object to place.
     public void PreAddItem(PrefabJSON prefab)
     {
         ARItemsHandling.ConfigItem found = itemsHandling.GetConfigItems().Find((config) => config.name == prefab.typeName);
@@ -79,12 +96,15 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
     }
 
+    /// Activation of the selection interface when an object is selected.
     public void EnableInterface()
     {
         PanelPlacementIndicator.SetActive(true);
         this.objectToPlace = true;
         screenHandler.HideUi();
     }
+
+    /// Clean of the interface.
     public void CleanInterface()
     {
         PanelPlacementIndicator.SetActive(false);
@@ -93,6 +113,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         screenHandler.ShowUi();
     }
 
+    /// Function executed once per frame.
+    /// If there is an object to place, the interface is set.
+    /// If the user hit the screen, the function analyze if the position is valid or if the his is for set an object.
     public void Update()
     {
         if (objectToPlace)

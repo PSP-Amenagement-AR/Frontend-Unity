@@ -99,7 +99,7 @@ public class ARItemsHandling : MonoBehaviour
         ConfigItems.Add(new ConfigItem("torchere_1"));
     }
 
-    /// Function executed once per frame.*
+    /// Function executed once per frame.
     /// Detect the area and manage the hit on the screen.
     void Update()
     {
