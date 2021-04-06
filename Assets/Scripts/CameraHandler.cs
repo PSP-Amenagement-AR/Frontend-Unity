@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
+/// <summary>Class for camera management between Runtime or Editor mode.</summary>
 public class CameraHandler : MonoBehaviour
 {
+    /// <summary>The AR camera.</summary>
     public Camera ARCamera;
+    /// <summary>The default camera.</summary>
     public Camera Camera;
+
+    /// Function executed when the script is started.
+    /// Check the availability of the AR mode.
+    /// @returns Return an ARSession object in terms of the availability of the execution mode.
+    /// @see ARSession()
     IEnumerator Start()
     {
         if ((ARSession.state == ARSessionState.None) ||
@@ -28,6 +36,8 @@ public class CameraHandler : MonoBehaviour
         }
     }
 
+    /// Get the camera in terms of the mode of execution of the project.
+    /// @returns The standard camera or the AR camera.
     public Camera GetCamera()
     {
         if (ARSession.state == ARSessionState.Unsupported)
