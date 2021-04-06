@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['texthandler_291',['TextHandler',['../class_text_handler.html',1,'']]]
+  ['texthandler_298',['TextHandler',['../class_text_handler.html',1,'']]]
 ];

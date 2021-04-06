@@ -28,7 +28,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "ScreenHandler", "class_screen_handler.html", "class_screen_handler" ]
     ] ],
     [ "SelectionIndicator.cs", "_selection_indicator_8cs.html", [
-      [ "SelectionIndicator", "class_selection_indicator.html", null ]
+      [ "SelectionIndicator", "class_selection_indicator.html", "class_selection_indicator" ]
     ] ],
     [ "Settings.cs", "_settings_8cs.html", [
       [ "Settings", "class_settings.html", null ]

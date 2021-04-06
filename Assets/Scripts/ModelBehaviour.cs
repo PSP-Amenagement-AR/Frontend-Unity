@@ -6,20 +6,31 @@ using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
+/// <summary>
+/// Class for model behaviour.
+/// </summary>
 public class ModelBehaviour : MonoBehaviour
 {
     //movement speed in units per second
-    private float movementSpeed;
-    private bool Selected = false;
-    private Guid _guid;
+    /// Float variable for movement speed.
+    public float movementSpeed;
+    /// Boolean for the selection.
+    public bool Selected = false;
+    /// Guid object.
+    /// @see Guid
+    public Guid _guid;
+    /// Joystick object for the movement joystick.
     public Joystick MovementJoystick;
+    /// Joystick object for the rotation joystick.
     public Joystick RotationJoystick;
     //public Joystick VerticalRotationJoystick;
 
-
+    /// CameraHandler object.
     public CameraHandler cameraHandler;
 
-    private void Awake()
+    /// Function executed when the script is started.
+    /// Initiate Guid object and the speed.
+    public void Awake()
     {
         this._guid = Guid.NewGuid();
         if (ARSession.state == ARSessionState.Unsupported)
@@ -33,22 +44,20 @@ public class ModelBehaviour : MonoBehaviour
 
     }
 
+    /// Get id.
+    /// @returns Guid object.
+    /// @see Guid
     public Guid GetId()
     {
         return this._guid;
     }
 
-
-    private void Update()
+    /// Function executed once per frame.
+    /// Update the position when the joystick is used.
+    public void Update()
     {
         if (!Selected)
             return;
-
-        //var rigidbody = GetComponent<Rigidbody>();
-        //rigidbody.velocity = new Vector3(MovementJoystick.Horizontal * 100f,
-        //    rigidbody.velocity.y,
-        //    MovementJoystick.Vertical * 100f);
-        //float speed = RotationJoystick.Horizontal * 1f;
 
         float speed = RotationJoystick.Horizontal * -1f;
         transform.Rotate(0, 0, speed * 50f * Time.deltaTime);
@@ -58,16 +67,16 @@ public class ModelBehaviour : MonoBehaviour
             Vector3 newPos = transform.position + new Vector3(MovementJoystick.Horizontal * movementSpeed * Time.deltaTime, 0, MovementJoystick.Vertical * movementSpeed * Time.deltaTime);
             transform.position = newPos;
         }
-
-        /*float rotateVertical = MovementJoystick.Vertical * 1f;
-        float rotateHorizontal = MovementJoystick.Horizontal * 1f;*/
-        //transform.Rotate(rotateHorizontal, 0, rotateVertical);
     }
 
+    /// Set the boolean if there is a selection.
+    /// @param val Boolean indicating the selection.
     public void SetSelected(bool val)
     {
         Selected = val;
     }
+    /// Indicate if it's selected.
+    /// @returns Boolean variable.
     public bool IsSelected()
     {
         return Selected;

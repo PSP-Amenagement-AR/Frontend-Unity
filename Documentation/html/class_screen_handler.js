@@ -1,5 +1,7 @@
 var class_screen_handler =
 [
+    [ "Awake", "class_screen_handler.html#a6f005cba3ca19fe53696a16a2859e6b0", null ],
+    [ "changeStateOf", "class_screen_handler.html#a092593c19fcede63757b27933dfa179a", null ],
     [ "CloseAdd", "class_screen_handler.html#af0dffc3c6f88c57f31dc11cd73aa0842", null ],
     [ "CloseLogin", "class_screen_handler.html#ac7d660f11a64d89d8df5328e00b70dce", null ],
     [ "CloseMenu", "class_screen_handler.html#ad2afd2cc7681ade35c86c5ed9ee09184", null ],

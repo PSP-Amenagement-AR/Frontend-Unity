@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class for managing the selection indicator.
+/// </summary>
 public class SelectionIndicator : MonoBehaviour
 {
-    ARItemsHandling ItemsHandler;
-    // Start is called before the first frame update
-    void Start()
+    /// ARItemsHandling object for manage the items handler.
+    /// @see ARItemsHandling
+    public ARItemsHandling ItemsHandler;
+
+    /// Initiate the items handler.
+    public void Start()
     {
         this.gameObject.SetActive(true);
         ItemsHandler = GameObject.FindObjectOfType<ARItemsHandling>();
     }
 
-    void ShowIndicator()
+    /// Make appear the indicator.
+    public void ShowIndicator()
     {
         if (!this.gameObject.GetComponentInChildren<Renderer>().enabled)
         {
@@ -21,7 +28,8 @@ public class SelectionIndicator : MonoBehaviour
         } 
     }
 
-    void HideIndicator()
+    /// Hide the indicator
+    public void HideIndicator()
     {
         if (this.gameObject.GetComponentInChildren<Renderer>().enabled)
         {
@@ -30,8 +38,9 @@ public class SelectionIndicator : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// Function called once per frame.
+    /// Manage the appearance of indicator.
+    public void Update()
     {
         if (ItemsHandler.IsAnItemSelected())
         {
