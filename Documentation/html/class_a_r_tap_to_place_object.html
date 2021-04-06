@@ -116,7 +116,7 @@ Inheritance diagram for ARTapToPlaceObject:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a931a77ffc5086f551c3b0f4af8955df4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_tap_to_place_object.html#a931a77ffc5086f551c3b0f4af8955df4">Awake</a> ()</td></tr>
-<tr class="memdesc:a931a77ffc5086f551c3b0f4af8955df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function executed when the script is started.  <a href="class_a_r_tap_to_place_object.html#a931a77ffc5086f551c3b0f4af8955df4">More...</a><br /></td></tr>
+<tr class="memdesc:a931a77ffc5086f551c3b0f4af8955df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load prefab objects from the ressources and get of scanned plane.  <a href="class_a_r_tap_to_place_object.html#a931a77ffc5086f551c3b0f4af8955df4">More...</a><br /></td></tr>
 <tr class="separator:a931a77ffc5086f551c3b0f4af8955df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3b41ed202ff0f1b6a00485f4c5b444"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_tap_to_place_object.html#a0a3b41ed202ff0f1b6a00485f4c5b444">TryGetTouchPosition</a> (out Vector2 touchPosition)</td></tr>
 <tr class="memdesc:a0a3b41ed202ff0f1b6a00485f4c5b444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to get the touched position by the user.  <a href="class_a_r_tap_to_place_object.html#a0a3b41ed202ff0f1b6a00485f4c5b444">More...</a><br /></td></tr>
@@ -134,7 +134,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a3f793d6f5e74cc4a795c1275f92a3023"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clean of the interface.  <a href="class_a_r_tap_to_place_object.html#a3f793d6f5e74cc4a795c1275f92a3023">More...</a><br /></td></tr>
 <tr class="separator:a3f793d6f5e74cc4a795c1275f92a3023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85699257cbf6cbf185098bf19cd6e939"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_r_tap_to_place_object.html#a85699257cbf6cbf185098bf19cd6e939">Update</a> ()</td></tr>
-<tr class="memdesc:a85699257cbf6cbf185098bf19cd6e939"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function executed once per frame.  <a href="class_a_r_tap_to_place_object.html#a85699257cbf6cbf185098bf19cd6e939">More...</a><br /></td></tr>
+<tr class="memdesc:a85699257cbf6cbf185098bf19cd6e939"><td class="mdescLeft">&#160;</td><td class="mdescRight">If there is an object to place, the interface is set.  <a href="class_a_r_tap_to_place_object.html#a85699257cbf6cbf185098bf19cd6e939">More...</a><br /></td></tr>
 <tr class="separator:a85699257cbf6cbf185098bf19cd6e939"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -196,8 +196,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Function executed when the script is started. </p>
 <p>Load prefab objects from the ressources and get of scanned plane. </p>
+<dl class="section note"><dt>Note</dt><dd>Function executed when the script is started. </dd></dl>
 
 </div>
 </div>
@@ -382,8 +382,8 @@ Static Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Function executed once per frame. </p>
-<p>If there is an object to place, the interface is set. If the user hit the screen, the function analyze if the position is valid or if the his is for set an object. </p>
+<p>If there is an object to place, the interface is set. </p>
+<p>If the user hit the screen, the function analyze if the position is valid or if the his is for set an object. </p><dl class="section note"><dt>Note</dt><dd>Function executed once per frame. </dd></dl>
 
 </div>
 </div>

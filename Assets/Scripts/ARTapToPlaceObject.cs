@@ -31,8 +31,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     /// @see ARItemsHandling
     public ARItemsHandling itemsHandling;
 
-    /// Function executed when the script is started.
     /// Load prefab objects from the ressources and get of scanned plane.
+    /// @note Function executed when the script is started.
     public void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
@@ -113,9 +113,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         screenHandler.ShowUi();
     }
 
-    /// Function executed once per frame.
     /// If there is an object to place, the interface is set.
     /// If the user hit the screen, the function analyze if the position is valid or if the his is for set an object.
+    /// @note Function executed once per frame.
     public void Update()
     {
         if (objectToPlace)

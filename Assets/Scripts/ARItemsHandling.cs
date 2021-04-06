@@ -88,8 +88,8 @@ public class ARItemsHandling : MonoBehaviour
         return this.ConfigItems;
     }
 
-    /// Function executed when the script is started.
     /// Load the prefab files in ConfigItems object and set in a list.
+    /// @note Function executed when the script is started.
     public void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
@@ -99,8 +99,8 @@ public class ARItemsHandling : MonoBehaviour
         ConfigItems.Add(new ConfigItem("torchere_1"));
     }
 
-    /// Function executed once per frame.
     /// Detect the area and manage the hit on the screen.
+    /// @note Function executed once per frame.
     public void Update()
     {
         if (!IsAnItemSelected() && Input.GetMouseButtonDown(0))

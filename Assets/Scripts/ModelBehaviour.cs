@@ -28,8 +28,8 @@ public class ModelBehaviour : MonoBehaviour
     /// CameraHandler object.
     public CameraHandler cameraHandler;
 
-    /// Function executed when the script is started.
     /// Initiate Guid object and the speed.
+    /// @note Function executed when the script is started.
     public void Awake()
     {
         this._guid = Guid.NewGuid();
@@ -52,8 +52,8 @@ public class ModelBehaviour : MonoBehaviour
         return this._guid;
     }
 
-    /// Function executed once per frame.
     /// Update the position when the joystick is used.
+    /// @note Function executed once per frame.
     public void Update()
     {
         if (!Selected)

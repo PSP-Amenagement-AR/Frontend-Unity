@@ -106,7 +106,7 @@ public class InventoryButton : MonoBehaviour
     }
 
     /// Read the prefab JSON description.
-    /// @remarks Function useful only when debugging.
+    /// @note Function useful only when debugging.
     /// @see PrefabJSON()
     public void ReadPrefabJSON()
     {

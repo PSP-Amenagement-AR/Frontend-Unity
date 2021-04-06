@@ -42,8 +42,8 @@ public class CreatorManager : MonoBehaviour
     ///InputField object for the title field.
     public InputField titleField;
 
-    /// Function executed when the script is started.
     /// Initiate the canvas template.
+    /// @note Function executed when the script is started.
     public void Start()
     {
         canvasTemplate = this.content.transform.GetChild(0).gameObject;
@@ -197,7 +197,7 @@ public class CreatorManager : MonoBehaviour
     }
 
     /// Read the description of each features.
-    /// @remarks Function only useful when debugging.
+    /// @note Function only useful when debugging.
     public void ReadFeatures()
     {
         foreach (var pair in this.features)
@@ -288,7 +288,7 @@ public class CreatorManager : MonoBehaviour
 
     /// Update the inventory and add a new button in terms of the template used.
     /// @param prf PrefabJSON object which contains the description of the object.
-    /// @remarks Each button own a prefab JSON parameter with the description of the object to which it is assigned.
+    /// @note Each button own a prefab JSON parameter with the description of the object to which it is assigned.
     public void UpdateInventory(PrefabJSON prf)
     {
         if (buttonTemplate) { Debug.Log("Test 1"); }

@@ -38,8 +38,8 @@ public class SelectionIndicator : MonoBehaviour
         }
     }
 
-    /// Function called once per frame.
     /// Manage the appearance of indicator.
+    /// @note Function called once per frame.
     public void Update()
     {
         if (ItemsHandler.IsAnItemSelected())

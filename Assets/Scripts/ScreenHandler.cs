@@ -15,8 +15,8 @@ public class ScreenHandler : MonoBehaviour
     ///Profil button.
     public GameObject ProfileButton;
 
-    /// Function executed when the script is started.
     /// Show the user interface when the application start.
+    /// @note Function executed when the script is started.
     public void Awake()
     {
         this.ShowUi();
