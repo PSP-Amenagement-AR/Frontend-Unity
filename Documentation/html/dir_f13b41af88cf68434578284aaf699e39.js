@@ -31,7 +31,7 @@ var dir_f13b41af88cf68434578284aaf699e39 =
       [ "SelectionIndicator", "class_selection_indicator.html", "class_selection_indicator" ]
     ] ],
     [ "Settings.cs", "_settings_8cs.html", [
-      [ "Settings", "class_settings.html", null ]
+      [ "Settings", "class_settings.html", "class_settings" ]
     ] ],
     [ "TextHandler.cs", "_text_handler_8cs.html", [
       [ "TextHandler", "class_text_handler.html", "class_text_handler" ]

@@ -27,7 +27,7 @@ var searchData=
   ['simplejson_235',['SimpleJSON',['../namespace_simple_j_s_o_n.html',1,'']]],
   ['simplejson_2ecs_236',['SimpleJSON.cs',['../_simple_j_s_o_n_8cs.html',1,'']]],
   ['spritepath_237',['SpritePath',['../class_a_r_items_handling_1_1_config_item.html#acf89d200691c240cdd93aa67a7410658',1,'ARItemsHandling::ConfigItem']]],
-  ['start_238',['Start',['../class_camera_handler.html#a6bd3cce2e362cf33e78378c90b26942c',1,'CameraHandler.Start()'],['../class_creator_manager.html#a3bbd63a2cb276291c6f417931a7c9e38',1,'CreatorManager.Start()'],['../class_inventory_button.html#a86a19fb830094e78329b4e1bac83cc7c',1,'InventoryButton.Start()'],['../class_inventory_control.html#afc61328062b61af86851f19afcfc43c6',1,'InventoryControl.Start()'],['../class_selection_indicator.html#a7ba1f2da0b8069cfc4fd5a1cc2fcd86f',1,'SelectionIndicator.Start()']]],
+  ['start_238',['Start',['../class_camera_handler.html#a6bd3cce2e362cf33e78378c90b26942c',1,'CameraHandler.Start()'],['../class_creator_manager.html#a3bbd63a2cb276291c6f417931a7c9e38',1,'CreatorManager.Start()'],['../class_inventory_button.html#a86a19fb830094e78329b4e1bac83cc7c',1,'InventoryButton.Start()'],['../class_inventory_control.html#afc61328062b61af86851f19afcfc43c6',1,'InventoryControl.Start()'],['../class_selection_indicator.html#a7ba1f2da0b8069cfc4fd5a1cc2fcd86f',1,'SelectionIndicator.Start()'],['../class_settings.html#a391d96f3dbdf828df1ed7dd2cd4b70fa',1,'Settings.Start()']]],
   ['string_239',['String',['../namespace_simple_j_s_o_n.html#a62af00acc7925cc0284e634fb10626f5a27118326006d3829667a400ad23d5d98',1,'SimpleJSON']]],
   ['submitbutton_240',['submitButton',['../class_user_controller.html#a27f936303c3064b1e85c9445757ab7e7',1,'UserController']]]
 ];

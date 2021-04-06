@@ -22,7 +22,7 @@ var annotated_dup =
     [ "PrefabJSON", "class_prefab_j_s_o_n.html", "class_prefab_j_s_o_n" ],
     [ "ScreenHandler", "class_screen_handler.html", "class_screen_handler" ],
     [ "SelectionIndicator", "class_selection_indicator.html", "class_selection_indicator" ],
-    [ "Settings", "class_settings.html", null ],
+    [ "Settings", "class_settings.html", "class_settings" ],
     [ "TextHandler", "class_text_handler.html", "class_text_handler" ],
     [ "UserController", "class_user_controller.html", "class_user_controller" ],
     [ "Users", "class_users.html", "class_users" ]
