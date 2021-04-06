@@ -10,39 +10,50 @@ using System.IO;
 using Newtonsoft.Json;
 using SimpleJSON;
 
-// TODO
-// Ajouter d'autres objets dans le Customiseur de prefab
-// lorsque un Color ou Texture palette est ouvert, bloquer les autres features
-//
-// TODO
-
+/// <summary>Class for manage the custom 3D object creator.</summary>
 public class CreatorManager : MonoBehaviour
 {
-    private string objectType;
-    private GameObject prefab;
-    private Dictionary<GameObject, Appearance> features;
-    private GameObject canvasTemplate;
-    private string title;
-
+    /// Type of the object.
+    public string objectType;
+    /// The prefab of the object.
+    public GameObject prefab;
+    ///Dictionnary which contains the prefab and a Appearnace object whith the design and specificty of each features in the object.
+    /// @see Appearance()
+    public Dictionary<GameObject, Appearance> features;
+    ///Template of the canvas which contains a description of each feature of the object and the access to the pallets.
+    public GameObject canvasTemplate;
+    ///Tite of the object to create.
+    public string title;
+    ///GameObject which contain "content" panel.
     [SerializeField]
-    private GameObject content;
+    public GameObject content;
+    ///Text object for the index of the feature.
     [SerializeField]
     Text indice;
+    ///GameObject for the color pallet.
     [SerializeField]
-    private GameObject colorWindow;
+    public GameObject colorWindow;
+    ///GameObject for the texture pallet.
     [SerializeField]
-    private GameObject textureWindow;
+    public GameObject textureWindow;
+    ///GameObject for the button template.
     [SerializeField]
-    private GameObject buttonTemplate;
+    public GameObject buttonTemplate;
+    ///InputField object for the title field.
     public InputField titleField;
 
+    /// Function executed when the script is started.
+    /// Initiate the canvas template.
     void Start()
     {
         canvasTemplate = this.content.transform.GetChild(0).gameObject;
     }
 
+    /// Function executed once per frame.
     void Update() { }
 
+    /// Set of the object from his name.
+    /// @param name Name of the object to set.
     public void SetObject(string name)
     {
         this.objectType = name;
@@ -53,6 +64,8 @@ public class CreatorManager : MonoBehaviour
         UpdateCreatorManager();
     }
 
+    /// Set the prefab from the prefab directory.
+    /// @returns A GameObject which contains the prefab.
     public GameObject SetPrefab()
     {
         string pathToPrefab = "Items/" + this.objectType + "/" + this.objectType;
@@ -60,6 +73,7 @@ public class CreatorManager : MonoBehaviour
         return Resources.Load<GameObject>(pathToPrefab);
     }
 
+    /// Add of the description of all object features in the dictionnary.
     public void SelectFeatures()
     {
         Appearance val;
@@ -77,6 +91,7 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Update the creator manager interface and add new features.
     public void UpdateCreatorManager()
     {
         int indice = 0;
@@ -104,6 +119,7 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Clear the creator manager interface and delete the features on it.
     public void ClearFeatures()
     {
         int counter = content.transform.childCount;
@@ -124,6 +140,8 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Set the color selected for a feature in terms of the index.
+    /// @param pColor The name of the color selected.
     public void ApplyColor(string pColor)
     {
         int index = Convert.ToInt16(this.indice.text);
@@ -146,6 +164,8 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Set the texture selected for a feature in terms of the index.
+    /// @param pTexture The name of the texture selected.
     public void ApplyTexture(string pTexture)
     {
         int index = Convert.ToInt16(this.indice.text);
@@ -168,12 +188,16 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Change the index to the index of the feature selected only if no pallet is open.
+    /// @param indice Text object which contains the index of the feature selected by the user.
     public void SetIndice(Text indice)
     {
         if (!this.textureWindow.activeSelf && !this.colorWindow.activeSelf)
             this.indice = indice;
     }
 
+    /// Read the description of each features.
+    /// @remarks Function only useful when debugging.
     public void ReadFeatures()
     {
         foreach (var pair in this.features)
@@ -185,16 +209,19 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Open the color pallet.
     public void OpenColorPalette()
     {
         if (!this.textureWindow.activeSelf) { this.colorWindow.SetActive(true); }
     }
 
+    /// Open the texture pallet.
     public void OpenTexturePalette()
     {
         if (!this.colorWindow.activeSelf) { this.textureWindow.SetActive(true); }
     }
 
+    /// Set the title of the new object created.
     public void SetTitle()
     {
         if (titleField.text == "" || titleField.text == null)
@@ -204,6 +231,8 @@ public class CreatorManager : MonoBehaviour
         titleField.text = "";
     }
 
+    /// Save the object description in Database if the user is connected.
+    /// The inventory is updated.
     public void SaveObject()
     {
         int i = 0;
@@ -237,6 +266,8 @@ public class CreatorManager : MonoBehaviour
         this.UpdateInventory(prf);
     }
 
+    /// Save the new object description in database.
+    /// @param JSONresult Body of the request.
     public JSONNode SaveToBack(string JSONresult)
     {
         var request = GlobalStatus.webApi.SendApiRequest("/objects", "POST", JSONresult);
@@ -255,6 +286,9 @@ public class CreatorManager : MonoBehaviour
         }
     }
 
+    /// Update the inventory and add a new button in terms of the template used.
+    /// @param prf PrefabJSON object which contains the description of the object.
+    /// @remarks Each button own a prefab JSON parameter with the description of the object to which it is assigned.
     public void UpdateInventory(PrefabJSON prf)
     {
         if (buttonTemplate) { Debug.Log("Test 1"); }

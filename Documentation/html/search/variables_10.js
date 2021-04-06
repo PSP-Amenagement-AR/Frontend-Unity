@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['webapi_445',['webApi',['../class_global_status.html#aa7499e87c342ea419fad0aed454ca9f4',1,'GlobalStatus']]]
+  ['validatebutton_460',['ValidateButton',['../class_a_r_items_handling.html#a4aa33848aa8e09e14702070335accad9',1,'ARItemsHandling']]]
 ];

@@ -15,5 +15,14 @@ var class_creator_manager =
     [ "SetTitle", "class_creator_manager.html#a765f0fcf716adf8d4d28d90946d71fc2", null ],
     [ "UpdateCreatorManager", "class_creator_manager.html#aefdeaf084c8f0c852a7fafcaabd2ab82", null ],
     [ "UpdateInventory", "class_creator_manager.html#ad0ae5451a813fa9bf8cc47b998b13887", null ],
+    [ "buttonTemplate", "class_creator_manager.html#a0fa68c422c79a02d52a612ab69748265", null ],
+    [ "canvasTemplate", "class_creator_manager.html#ae11627a3f1630c73bf62bc2ca90bef45", null ],
+    [ "colorWindow", "class_creator_manager.html#a765f70d52e6a4383cec02bbba0c88cdc", null ],
+    [ "content", "class_creator_manager.html#aeaeef5d7a00fd210f5e75935b81de2fd", null ],
+    [ "features", "class_creator_manager.html#ab8f368705a6d696abc94bf8d0b4ca7db", null ],
+    [ "objectType", "class_creator_manager.html#ae174f547fa0fb11d14efeff61fba3e91", null ],
+    [ "prefab", "class_creator_manager.html#ab908a1d44c23cf07686dbbbc4e9a4124", null ],
+    [ "textureWindow", "class_creator_manager.html#aad57390549bfe8839ee515de513af24f", null ],
+    [ "title", "class_creator_manager.html#a8d66fe3b5e3bde8837554efd5850da39", null ],
     [ "titleField", "class_creator_manager.html#ae5b2614a3f38ad6d165517e68ea83a77", null ]
 ];

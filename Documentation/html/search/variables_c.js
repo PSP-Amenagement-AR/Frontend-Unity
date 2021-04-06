@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['screenhandler_434',['screenHandler',['../class_a_r_tap_to_place_object.html#a9220f599cd55588d915e6d345a7b3217',1,'ARTapToPlaceObject']]],
-  ['selecteditem_435',['SelectedItem',['../class_a_r_items_handling.html#a10717f16c3b3f433ffdf109684a83e2b',1,'ARItemsHandling']]],
-  ['submitbutton_436',['submitButton',['../class_user_controller.html#a27f936303c3064b1e85c9445757ab7e7',1,'UserController']]]
+  ['returnloginbutton_445',['returnLoginButton',['../class_user_controller.html#a6fd5c443b775ff361f3c705055035552',1,'UserController']]],
+  ['returnregistrationbutton_446',['returnRegistrationButton',['../class_user_controller.html#a834a92ce8a3f36e7565bcd57c41ce3aa',1,'UserController']]],
+  ['reusesameinstance_447',['reuseSameInstance',['../class_simple_j_s_o_n_1_1_j_s_o_n_null.html#a6848d43d9f2673a8b00d8c9f07377410',1,'SimpleJSON::JSONNull']]],
+  ['rotationjoystick_448',['RotationJoystick',['../class_a_r_items_handling.html#ae58bc02298c2aa2061fe7e6297d04b2b',1,'ARItemsHandling.RotationJoystick()'],['../class_model_behaviour.html#afdf16e801e2f4e08596841f141ce87da',1,'ModelBehaviour.RotationJoystick()']]]
 ];
