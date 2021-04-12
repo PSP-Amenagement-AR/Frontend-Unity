@@ -308,8 +308,8 @@ public class ARItemsHandling : MonoBehaviour
             ColorUtility.TryParseHtmlString(valColor, out myColor);
 
             feature_to_edit = prefab.transform.Find(feature_name).gameObject;
-            feature_to_edit.GetComponent<MeshRenderer>().sharedMaterial = myMaterial;
-            feature_to_edit.GetComponent<MeshRenderer>().sharedMaterial.SetColor("_Color", myColor);
+            feature_to_edit.GetComponent<MeshRenderer>().material = myMaterial;
+            feature_to_edit.GetComponent<MeshRenderer>().material.SetColor("_Color", myColor);
         }
     }
 }
