@@ -19,6 +19,9 @@ jobs:
         with:
           unity-version: 2020.3.6f1
           unity-modules: android
+          
+      - name: Unit Test
+        run:  Unity.exe -runTests -batchmode -projectPath ./ -testResults ./results.xml -testPlatform PS4
 
       - name: Activate Unity
         uses: kuler90/activate-unity@v1
