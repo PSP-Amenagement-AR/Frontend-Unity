@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: gableroux/unity3d:2019.3.1f1
+    container: gableroux/unity3d:2019.3.6f1
     steps:
         - name: Checkout Project
           uses: actions/checkout@v1
@@ -23,8 +23,11 @@ jobs:
         - name: Activate Unity
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -manualLicenseFile .github/Unity_v2019.x.ulf || exit 0
             
-        - name: Unit Test
-          run: /opt/Unity/Editor/Unity -runTests -batchmode -projectPath ./ -testResults ./results.xml -testPlatform PS4
+        - name: Run tests
+          uses: webbertakken/unity-test-runner@v1.3
+          with:
+            projectPath: test-project
+            unityVersion: 2019.3.6f1
         
         # Build Windows and OSX
         - name: Build Windows Player
