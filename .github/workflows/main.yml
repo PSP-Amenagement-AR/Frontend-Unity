@@ -23,6 +23,9 @@ jobs:
         - name: Activate Unity
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -manualLicenseFile .github/Unity_v2019.x.ulf || exit 0
             
+        - name: Unit Test
+          run: /opt/Unity/Editor/Unity -runTests -batchmode -projectPath ./ -testResults ./results.xml -testPlatform PS4
+        
         # Build Windows and OSX
         - name: Build Windows Player
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildWindows64Player ./bin-win64/CISample.exe
