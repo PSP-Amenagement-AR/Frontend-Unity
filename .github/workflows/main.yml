@@ -3,35 +3,75 @@ name: Unity CI
 on:
   push:
     branches: [ main_devops ]
-  #pull_request:
-  #  branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  build:
-    runs-on: windows-latest
-    #container: gableroux/unity3d:2019.3.6f1
+  setupUnity:
+    strategy:
+      matrix:
+        unity: ["2019.3.6f1"]
+        include:
+          - unity: 2019.3.6f1
+            license: UNITY_LICENSE_2019
+    runs-on: ubuntu-latest
+    container: gableroux/unity3d:2019.3.6f1
     steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
+        - name: Checkout Project
+          uses: actions/checkout@v2
+          with:
+            lfs: true
 
-      - name: Setup Unity
-        uses: kuler90/setup-unity@v1
-        with:
-          unity-version: 2020.3.6f1
-          unity-modules: android
-          
-      - name: Unit Test
-        run:  Unity.exe -runTests -batchmode -projectPath ./ -testResults ./results.xml -testPlatform PS4
+        - name: Decrypt the license file
+          run: openssl aes-256-cbc -d -in .github/Unity_v2019.x.ulf.enc -k ${{ secrets.UNITY_LICENSE_DECRYPT_KEY }} >> .github/Unity_v2019.x.ulf
+        
+        # Activate unity
+        - name: Activate Unity
+          run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -manualLicenseFile .github/Unity_v2019.x.ulf || exit 0
+            
+        - name: Build UnitTest(Linux64, mono)
+          uses: game-ci/unity-builder@v2.0-alpha-6
+          with:
+            projectPath: RuntimeUnitTestToolkit
+            unityVersion: ${{ matrix.unity }}
+            targetPlatform: StandaloneLinux64
+            buildMethod: UnitTestBuilder.BuildUnitTest
+            customParameters: /headless /ScriptBackend Mono2x
+            versioning: None
+        - name: Execute UnitTest
+          run: ./RuntimeUnitTestToolkit/bin/UnitTest/StandaloneLinux64_Mono2x/test
 
-      - name: Activate Unity
-        uses: kuler90/activate-unity@v1
-        with:
-          unity-username: ${{ secrets.UNITY_USERNAME }}
-          unity-password: ${{ secrets.UNITY_PASSWORD }}
-          #unity-authenticator-key: ${{ secrets.UNITY_AUTHENTICATOR_KEY }}
+        # Execute scripts: Export Package
+        # /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -executeMethod PackageExporter.Export
+        - name: Export unitypackage
+          uses: game-ci/unity-builder@v2.0-alpha-6
+          env:
+            UNITY_LICENSE: ${{ secrets[matrix.license] }}
+          with:
+            projectPath: RuntimeUnitTestToolkit
+            unityVersion: ${{ matrix.unity }}
+            targetPlatform: StandaloneLinux64
+            buildMethod: PackageExporter.Export
+            versioning: None
+            
+  buildApk:
+    runs-on: ubuntu-latest
+    container: gableroux/unity3d:2019.3.6f1
+    steps:
+        # Build Windows and OSX
+        - name: Build Windows Player
+          run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildWindows64Player ./bin-win64/CISample.exe
+        - name: Build OSX Player
+          run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
+        
+        - name: Archive Windows Build
+          uses: actions/upload-artifact@v1
+          with:
+            name: CISampleWin64Binary
+            path: ./bin-win64
 
-      - name: Build Unity
-        uses: kuler90/build-unity@v1
-        with:
-          build-target: Android
-          build-path: ./build.apk
+        - name: Archive Mac Build
+          uses: actions/upload-artifact@v1
+          with:
+            name: CISampleOSXBinary
+            path: ./bin-osx
